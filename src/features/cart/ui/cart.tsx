@@ -12,4 +12,4 @@ export const Cart:React.FC<ISearchProps> = ({className}) => {
       <Image src={cart} alt="inro" width={17} height={17} />
     </div>
   )
-}
+} 

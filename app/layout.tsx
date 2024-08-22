@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(arimo.className, 'bg-[#FCF9EE]')}>
+      <body className={cn(arimo.className, 'bg-[#FCF9EE] color-[#111111]')}>
         <main>
           <Header></Header>
           {children}

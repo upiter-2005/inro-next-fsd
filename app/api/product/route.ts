@@ -5,7 +5,7 @@ export async function GET(req: NextRequest){
   let products: any = [];
   //const query = req.nextUrl.searchParams.get('query') || '';
   await WC_Api.get("products", {
-    per_page: 100,
+    per_page: 10,
     page: 2
    //orderby: 'menu_order',
     //lang: "en" // 20 products per page

@@ -14,7 +14,7 @@ import {
 
 export async function Home() {
 
-  const result = await productApi.getProducts()
+ // const result = await productApi.getProducts()
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -39,7 +39,7 @@ export async function Home() {
 
      <h1 className='text-sm bg-gray-50 w-[440px] text-orange-700 text-center'>Home page</h1>
   
- {result.map(( product: any) => (<p key={product.id}>{product.name}</p>))}
+ {/* {result.map(( product: any) => (<p key={product.id}>{product.name}</p>))} */}
 
     </main>
   );
