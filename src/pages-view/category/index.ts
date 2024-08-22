@@ -1,1 +1,1 @@
-export { DeeperPage} from './ui/DeeperPage'
+export { DeeperPage, metadata } from './ui/CategoryPage'

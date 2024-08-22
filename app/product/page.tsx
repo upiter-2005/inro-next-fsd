@@ -1,0 +1,1 @@
+export {productPage as default} from '@/pages-view/product'
