@@ -1,4 +1,4 @@
-import {ICategories} from "@/entities/categories"
+import {ICategories} from "@/entities/categories/model/types"
 
 export type ProductImagesType = {
   alt?: string
