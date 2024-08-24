@@ -7,6 +7,7 @@ import {
 } from "@/shared/ui/sheet"
 
 import {FiltersCheckboxGroup} from './filtersCheckboxGroup'
+import { useSet } from "react-use"
 
 interface IFilterBox {
   className?: string,
@@ -14,7 +15,12 @@ interface IFilterBox {
 }
 
 export const FilterBox:React.FC<IFilterBox> = ({className, attributes}) => {
-  console.log(attributes);
+
+  const [ml, { toggle: mlToggle }] = useSet<string>(new Set([]))
+  const [noty, { toggle: notyToggle }] = useSet<string>(new Set([]))
+  const [stany, { toggle: stanyToggle }] = useSet<string>(new Set([]))
+  const [area, { toggle: areaToggle }] = useSet<string>(new Set([]))
+
 
 
   return (
@@ -22,15 +28,38 @@ export const FilterBox:React.FC<IFilterBox> = ({className, attributes}) => {
       
       <Sheet>
         <SheetTrigger><Filter /></SheetTrigger>
-        <SheetContent className='w-[281px] overflow-auto'>
-          {attributes.map(filterObject => (
-            <FiltersCheckboxGroup 
-            title={filterObject.name}
-            name={filterObject.slug}
-            attrId={filterObject.id}
+        <SheetContent className='w-[281px] overflow-auto px-6 py-16 bg-[#fcf9ee]'>
+       
+          <FiltersCheckboxGroup 
+            title="ML"
+            name="pa_ml"
+            attrId={13}
+            selected={ml}
+            onClickCheckbox={mlToggle}
           />
-          ))}
-        
+          <FiltersCheckboxGroup 
+            title="Ноти"
+            name="pa_noty"
+            attrId={3}
+            selected={noty}
+            onClickCheckbox={notyToggle}
+          />
+          <FiltersCheckboxGroup 
+            title="По станам"
+            name="pa_po-stanam"
+            attrId={11}
+            selected={stany}
+            onClickCheckbox={stanyToggle}
+          />
+          <FiltersCheckboxGroup 
+            title="Тип приміщення"
+            name="pa_typ-prymishhennya"
+            attrId={12}
+            selected={area}
+            onClickCheckbox={areaToggle}
+          />
+         
+         
         </SheetContent>
       </Sheet>
     </div>

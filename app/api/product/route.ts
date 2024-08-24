@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import {Api as WC_Api} from "@/shared/api/index"
 
+
 export async function GET(request: NextRequest){
 
   const query = request.nextUrl.searchParams.get('query') || 'products'
@@ -18,6 +19,7 @@ export async function GET(request: NextRequest){
     .finally(() => {
       console.log("Always executed");
     });
- 
+
+    
   return NextResponse.json(products)
 }

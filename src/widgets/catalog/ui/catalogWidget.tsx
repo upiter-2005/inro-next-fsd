@@ -3,8 +3,7 @@ import { ProductFilters } from "@/features/filters";
 import {AddToCartButton} from "@/features/cartFeatures"
 import { ProductCard } from "@/entities/catalogCard"
 import { cn } from "@/shared/helpers/cn"
-
-
+// import { useRouter } from "next/navigation";
 
 interface ICatalogWidgetProps {
   className?: string,
@@ -13,6 +12,11 @@ interface ICatalogWidgetProps {
 }
 
 export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items, attributes }) => {
+
+  // const router = useRouter()
+  // router.push('/product/5555')
+
+  // console.log(router);
   
   return (
     <>

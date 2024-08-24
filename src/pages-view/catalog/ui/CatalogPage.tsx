@@ -9,13 +9,11 @@ export const metadata: Metadata = {
 };
 
 export async function CatalogPage() {
-
   //const products = await productApi.getProducts()
 
    const products = await productApi.getProducts('products?category=81&attribute=pa_ml&attribute_term=186&attribute=pa_noty&attribute_term=165')
-   
+
    const attributes = await productApi.getProductsAttributes()
-   console.log(attributes);
 
   if(!products) return("Products not found!")
 

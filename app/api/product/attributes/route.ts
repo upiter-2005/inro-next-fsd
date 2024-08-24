@@ -4,10 +4,9 @@ import {Api as WC_Api} from "@/shared/api/index"
 export async function GET(request: NextRequest){
 
   let attributes: any = [];
+  let terms: any = [];
   await WC_Api.get('products/attributes')
     .then((response: any) => {
-      console.log("Response Data:", response.data);
-
       attributes = response.data;
     })
     .catch((error: any) => {
@@ -17,5 +16,5 @@ export async function GET(request: NextRequest){
       console.log("Always executed");
     });
  
-  return NextResponse.json(attributes)
+  return NextResponse.json(attributes, )
 }
