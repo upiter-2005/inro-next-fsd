@@ -1,3 +1,4 @@
+'use client'
 import { cn } from "@/shared/helpers"
 import { Filter } from 'lucide-react';
 import {
@@ -7,20 +8,20 @@ import {
 } from "@/shared/ui/sheet"
 
 import {FiltersCheckboxGroup} from './filtersCheckboxGroup'
-import { useSet } from "react-use"
+
+
+import { useQueryFilter } from "../hooks/useQueryFilter";
+import { useFilters } from "../hooks/useFilters";
 
 interface IFilterBox {
-  className?: string,
-  attributes: any[]
+  className?: string
 }
 
-export const FilterBox:React.FC<IFilterBox> = ({className, attributes}) => {
+export const FilterBox:React.FC<IFilterBox> = ({className, }) => {
 
-  const [ml, { toggle: mlToggle }] = useSet<string>(new Set([]))
-  const [noty, { toggle: notyToggle }] = useSet<string>(new Set([]))
-  const [stany, { toggle: stanyToggle }] = useSet<string>(new Set([]))
-  const [area, { toggle: areaToggle }] = useSet<string>(new Set([]))
+  const filters = useFilters()
 
+  useQueryFilter(filters)
 
 
   return (
@@ -34,29 +35,29 @@ export const FilterBox:React.FC<IFilterBox> = ({className, attributes}) => {
             title="ML"
             name="pa_ml"
             attrId={13}
-            selected={ml}
-            onClickCheckbox={mlToggle}
+            selected={filters.ml}
+            onClickCheckbox={filters.mlToggle}
           />
           <FiltersCheckboxGroup 
             title="Ноти"
             name="pa_noty"
             attrId={3}
-            selected={noty}
-            onClickCheckbox={notyToggle}
+            selected={filters.noty}
+            onClickCheckbox={filters.notyToggle}
           />
           <FiltersCheckboxGroup 
             title="По станам"
-            name="pa_po-stanam"
+            name="pa_po_stanam"
             attrId={11}
-            selected={stany}
-            onClickCheckbox={stanyToggle}
+            selected={filters.stany}
+            onClickCheckbox={filters.stanyToggle}
           />
           <FiltersCheckboxGroup 
             title="Тип приміщення"
-            name="pa_typ-prymishhennya"
+            name="pa_typ_prymishhennya"
             attrId={12}
-            selected={area}
-            onClickCheckbox={areaToggle}
+            selected={filters.area}
+            onClickCheckbox={filters.areaToggle}
           />
          
          

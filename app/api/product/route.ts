@@ -7,7 +7,9 @@ export async function GET(request: NextRequest){
   const query = request.nextUrl.searchParams.get('query') || 'products'
 
   let products: any = [];
-  await WC_Api.get(query)
+  await WC_Api.get(query,{
+    per_page: 50
+  })
     .then((response: any) => {
       console.log("Response Data:", response.data);
 
