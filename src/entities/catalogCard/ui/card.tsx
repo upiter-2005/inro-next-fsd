@@ -6,7 +6,7 @@ import {ProductCardThumb} from "@/shared/ui/product/product-card-thumb"
 
 import {IProduct} from "@/entities/product/model/types"
 
-type CardProduct = Pick<IProduct, 'id' | 'name' | 'images' | 'price' | 'sale_price'>
+type CardProduct = Pick<IProduct, 'id' | 'name' | 'images' | 'price' | 'sale_price' | 'slug'>
 
 interface ICardProps {
   className?: string,
@@ -16,11 +16,12 @@ interface ICardProps {
 
 export const Card: React.FC<ICardProps> = ({ className, actionSlot, product }) => {
 
+
   return (
-    <div className={cn(className, "w-[156px] flex flex-col gap-4  mb-6")}>
+    <div className={cn(className, "w-[160px] sm:w-[260px] flex flex-col gap-4  mb-6")}>
 
       <ProductCardThumb image={product.images[0].src} alt={product.name} />
-      <ProductCardName name={product.name} productId={product.id} />
+      <ProductCardName name={product.name} productId={product.slug} />
       
       <ProductCardPrice
         salePrice={product.sale_price}

@@ -1,10 +1,10 @@
 import { productApi } from "@/shared/api";
 
 export interface ISearchParamsTypes {
-  pa_noty: string
-  pa_ml: string
-  pa_po_stanam: string
-  pa_typ_prymishhennya: string
+  pa_noty?: string
+  pa_ml?: string
+  pa_po_stanam?: string
+  pa_typ_prymishhennya?: string
 }
 export const findProduct = async(searchParams:ISearchParamsTypes) => {
 

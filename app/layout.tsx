@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Arimo } from "next/font/google";
-import { Inter } from "next/font/google";
 
 import "./globals.css";
 import { Header } from "@/widgets/header";
@@ -22,9 +21,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(arimo.className, 'bg-[#FCF9EE] color-[#111111]')}>
         <main>
-          <Header></Header>
+          <Header />
           {children}
-        </main></body>
+        </main>
+      </body>
     </html>
   );
 }

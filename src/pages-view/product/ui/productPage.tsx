@@ -1,3 +1,6 @@
+import { IProduct } from '@/entities/product/model/types'
+import { productApi } from '@/shared/api'
+import { SingleProduct } from '@/widgets/singleProduct'
 import type { Metadata, ResolvingMetadata } from 'next'
  
 type Props = {
@@ -14,9 +17,11 @@ export async function generateMetadata(
   }
 }
 
-
 export async function productPage<IProductParams>({params: {id}}: {params: {id: string}}) {
 
+  const response = await productApi.getProductBySlug(id)
 
-  return <div className='text-sm'>This page is productPage with id - {id}! Аромодифузори</div>;
+    if(!response) return 'product not found!'
+  console.log(response);
+  return <SingleProduct product={response[0]} />;
 }

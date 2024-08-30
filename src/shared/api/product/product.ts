@@ -13,3 +13,9 @@ export const getProductsAttributes = async():Promise<any> => {
 
   return data
 }
+
+export const getProductBySlug = async(query: string):Promise<any> => {
+  const {data} = await axiosInstance.get(ApiRoutes.GET_PRODUCT_BY_SLUG, {params: {query}})
+
+  return data
+}

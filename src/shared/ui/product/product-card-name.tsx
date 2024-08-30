@@ -2,7 +2,7 @@ import Link from "next/link"
 
 interface IProductCardName {
   name: string
-  productId: number
+  productId: string
 }
 
 export const ProductCardName:React.FC<IProductCardName> = ({name, productId}) => {

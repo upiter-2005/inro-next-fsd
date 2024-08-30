@@ -1,4 +1,3 @@
-'use client'
 import { cn } from "@/shared/helpers"
 import { Filter } from 'lucide-react';
 import {
