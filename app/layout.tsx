@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Arimo } from "next/font/google";
-
 import "./globals.css";
 import { Header } from "@/widgets/header";
+import { Navigation } from "@/widgets/navigation";
 import { cn } from "@/shared/helpers/cn";
-
 const arimo = Arimo({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,6 +21,7 @@ export default function RootLayout({
       <body className={cn(arimo.className, 'bg-[#FCF9EE] color-[#111111]')}>
         <main>
           <Header />
+          <Navigation />
           {children}
         </main>
       </body>

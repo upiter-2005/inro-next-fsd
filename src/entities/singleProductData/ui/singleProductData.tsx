@@ -1,4 +1,3 @@
-
 import { IProduct } from "@/entities/product/model/types"
 import { cn } from "@/shared/helpers"
 import { useGetCategories } from "../hooks/useGetCategiries"
@@ -13,10 +12,7 @@ interface ISingleProductData{
 }
 
 export const SingleProductData:React.FC<ISingleProductData> = ({className, product, addCartAction, addToFavouriteAction }) =>{
-
   const {items: categories} = useGetCategories(product.categories)
-
-  console.log(categories);
   return <div className={cn(className, 'flex flex-col gap-6 font-light')}>
   
       <h1 className="font-light text-[36px] leading-9">{product.name}</h1>
