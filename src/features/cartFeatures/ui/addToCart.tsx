@@ -1,4 +1,5 @@
 import {addToCart} from "@/features/cartFeatures/model/actions"
+import { cn } from "@/shared/helpers"
 import { Button } from "@/shared/ui/button"
 
 interface IAddToCartProps {
@@ -9,6 +10,6 @@ interface IAddToCartProps {
 export const AddToCart:React.FC<IAddToCartProps> = ({className, productId}) => {
 
   return (
-    <Button onClick={() => addToCart(productId)} size="default" className="text-[14px] bg-black rounded">В кошик</Button>
+    <Button onClick={() => addToCart(productId)} size="default" className={cn('text-[14px] bg-black rounded',className)}>В кошик</Button>
   )
 }

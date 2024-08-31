@@ -1,0 +1,1 @@
+export {AddToFavourite} from "@/features/addToFavourite/ui/addToFavourite"

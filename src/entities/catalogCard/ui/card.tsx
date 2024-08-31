@@ -1,5 +1,4 @@
 import { cn } from "@/shared/helpers/cn"
-
 import {ProductCardPrice} from "@/shared/ui/product/product-card-price"
 import {ProductCardName} from "@/shared/ui/product/product-card-name"
 import {ProductCardThumb} from "@/shared/ui/product/product-card-thumb"

@@ -1,0 +1,1 @@
+export {SingleProductData} from "@/entities/singleProductData/ui/singleProductData"

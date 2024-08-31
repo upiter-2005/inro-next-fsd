@@ -1,4 +1,4 @@
-import { IProduct } from '@/entities/product/model/types'
+
 import { productApi } from '@/shared/api'
 import { SingleProduct } from '@/widgets/singleProduct'
 import type { Metadata, ResolvingMetadata } from 'next'
@@ -21,7 +21,6 @@ export async function productPage<IProductParams>({params: {id}}: {params: {id: 
 
   const response = await productApi.getProductBySlug(id)
 
-    if(!response) return 'product not found!'
-  console.log(response);
+  if(!response) return 'product not found!'
   return <SingleProduct product={response[0]} />;
 }
