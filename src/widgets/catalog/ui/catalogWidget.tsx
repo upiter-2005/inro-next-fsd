@@ -12,9 +12,14 @@ interface ICatalogWidgetProps {
 
 export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items }) => {
  
+
+  
   return (
     <>
-      <ProductFilters />
+      <Suspense fallback={<p>Loading...</p>}>
+        <ProductFilters />
+      </Suspense>
+      
      
    
       <div className={cn(className, 'flex flex-wrap max-w-[1200px] w-full my-0 mx-auto justify-center gap-4')}>

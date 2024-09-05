@@ -26,16 +26,15 @@ export const Navigation:React.FC<INavigation> = ({className}) => {
         <DropdownMenuTrigger
            onMouseEnter={() => setOpenDropdown(true)}
            className="cursor-pointer outline-none"
-          >Open</DropdownMenuTrigger>
+          >Парфуми</DropdownMenuTrigger>
         <DropdownMenuContent
           onMouseLeave={() => setOpenDropdown(false)} 
         >
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Team</DropdownMenuItem>
-          <DropdownMenuItem>Subscription</DropdownMenuItem>
+          
+          <DropdownMenuItem className="cursor-pointer">Тестери ароматів</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer">Сети</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer">Team</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer"><Link href='/'>Subscription</Link></DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </nav>

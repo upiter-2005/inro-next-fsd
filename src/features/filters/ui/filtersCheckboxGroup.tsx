@@ -52,6 +52,7 @@ export const FiltersCheckboxGroup:React.FC<IFiltersCheckboxGroup> = ({
           <AccordionContent>
             {data?.map((item) => (
               <FiltersCheckbox
+                key={item.id}
                 onCheckedChange={()=>onClickCheckbox?.(item.id.toString())}
                 checked={selected?.has(item.id.toString())}
                 value={item.slug}

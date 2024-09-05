@@ -4,7 +4,6 @@ import {Api as WC_Api} from "@/shared/api/index"
 export async function GET(request: NextRequest){
 
   let attributes: any = [];
-  let terms: any = [];
   await WC_Api.get('products/attributes')
     .then((response: any) => {
       attributes = response.data;

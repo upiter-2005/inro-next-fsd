@@ -3,7 +3,7 @@ import { Filter } from 'lucide-react';
 import {
   Sheet,
   SheetContent,
-  SheetTrigger,
+  SheetTrigger
 } from "@/shared/ui/sheet"
 
 import {FiltersCheckboxGroup} from './filtersCheckboxGroup'
@@ -29,7 +29,6 @@ export const FilterBox:React.FC<IFilterBox> = ({className, }) => {
       <Sheet>
         <SheetTrigger><Filter /></SheetTrigger>
         <SheetContent className='w-[281px] overflow-auto px-6 py-16 bg-[#fcf9ee]'>
-       
           <FiltersCheckboxGroup 
             title="ML"
             name="pa_ml"

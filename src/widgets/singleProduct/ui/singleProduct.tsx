@@ -5,6 +5,7 @@ import { SingleProductData } from "@/entities/singleProductData"
 import { cn } from "@/shared/helpers"
 import { AddToCartButton } from "@/features/cartFeatures"
 import { AddToFavourite } from "@/features/addToFavourite"
+import { notFound } from "next/navigation"
 
 interface ISingleProduct {
   product: IProduct,
@@ -12,11 +13,9 @@ interface ISingleProduct {
 }
 export const SingleProduct:React.FC<ISingleProduct> = ({product, className}) => {
 
-  console.log(product);
 
-  if(!product) return 'product not found!'
-  
-  return <div className={cn(className, 'flex justify-between gap-9 max-w-[1200px] mx-auto my-6')}>
+  if(product){
+    return <div className={cn(className, 'flex justify-between gap-9 max-w-[1200px] mx-auto my-6')}>
 
     <div className="w-[680px]">
       <ProductGallery images={product.images} alt={product.name} />
@@ -30,4 +29,7 @@ export const SingleProduct:React.FC<ISingleProduct> = ({product, className}) => 
     </div>
    
   </div>;
+  }
+  
+  
 }
