@@ -5,7 +5,6 @@ import { SingleProductData } from "@/entities/singleProductData"
 import { cn } from "@/shared/helpers"
 import { AddToCartButton } from "@/features/cartFeatures"
 import { AddToFavourite } from "@/features/addToFavourite"
-import { notFound } from "next/navigation"
 
 interface ISingleProduct {
   product: IProduct,

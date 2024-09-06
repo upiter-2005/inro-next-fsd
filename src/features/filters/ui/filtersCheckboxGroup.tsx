@@ -41,7 +41,7 @@ export const FiltersCheckboxGroup:React.FC<IFiltersCheckboxGroup> = ({
     &consumer_secret=cs_84669f4a9e954e566d4817d059786263b9a05ef7`, fetcher)
 
 
-    
+    if(isLoading) return <p>Loading</p>
 
   return(
     <div className={cn(className)}>
