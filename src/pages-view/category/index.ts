@@ -1,1 +1,2 @@
-export { DeeperPage, metadata } from './ui/CategoryPage'
+export { generateMetadata } from './ui/CategoryPage'
+export { CategoryPage } from './ui/CategoryPage'

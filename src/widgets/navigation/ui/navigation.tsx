@@ -61,7 +61,7 @@ export const Navigation:React.FC<INavigation> = ({className}) => {
           <NavigationMenu.Content className="absolute top-0 left-0 w-full sm:w-auto ">
             <div className="flex">
                 <ul className="m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[900px] sm:grid-flow-col sm:grid-rows-3 shadow-violet7">
-                  {cat.child?.map(el =>  ( <li key={el.id}><a href={`/${el.slug}`}>{el.name}</a></li>))}
+                  {cat.child?.map(el =>  ( <li key={el.id}><a href={`/category/${el.slug}`}>{el.name}</a></li>))}
                 </ul>
             </div>
           

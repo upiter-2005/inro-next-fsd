@@ -4,35 +4,40 @@ import {AddToCartButton} from "@/features/cartFeatures"
 import { ProductCard } from "@/entities/catalogCard"
 import { cn } from "@/shared/helpers/cn"
 import { Suspense } from "react";
+import { IProduct } from "@/entities/product/model/types";
 
-interface ICatalogWidgetProps {
+export interface ICatalogWidgetProps {
   className?: string,
-  items: any[]
+  items: IProduct[],
+  type: string
 }
 
-export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items }) => {
- 
+export enum CatalogType {
+  CATALOG = 'catalog',
+  CATEGORY_PAGE = 'category'
+}
 
-  
+export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items, type }) => {
+ 
   return (
     <>
-      <Suspense fallback={<p>Loading...</p>}>
+
+    {CatalogType.CATALOG === type && (
+       <Suspense fallback={<p>Loading...</p>}>
         <ProductFilters />
       </Suspense>
+    )}
       
-     
-   
       <div className={cn(className, 'flex flex-wrap max-w-[1200px] w-full my-0 mx-auto justify-center gap-4')}>
         {items.map((product) => (
           <ProductCard 
             key={product.id} 
             product={product} 
-            actionSlot={<AddToCartButton productId ={product.id}/>} 
+            actionSlot={<AddToCartButton productId={product.id}/>} 
           />
         ))}
       </div>
-  
-    
+
     </>
     
   )

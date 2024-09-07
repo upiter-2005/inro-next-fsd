@@ -50,6 +50,7 @@ export const FiltersCheckboxGroup:React.FC<IFiltersCheckboxGroup> = ({
         <AccordionItem value={`item-${attrId}`} className="border-b-0 ">
           <AccordionTrigger className="py-3">{title}</AccordionTrigger>
           <AccordionContent>
+            
             {data?.map((item) => (
               <FiltersCheckbox
                 key={item.id}
