@@ -9,8 +9,8 @@ import {
 import {FiltersCheckboxGroup} from './filtersCheckboxGroup'
 
 
-import { useQueryFilter } from "../hooks/useQueryFilter";
-import { useFilters } from "../hooks/useFilters";
+import { useQueryFilter } from "../hooks/useQueryFilter"
+import { useFilters } from "../hooks/useFilters"
 
 interface IFilterBox {
   className?: string

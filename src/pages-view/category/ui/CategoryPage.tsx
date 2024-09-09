@@ -18,7 +18,7 @@ export async function generateMetadata(
     title: `Inro - ${params.slug}`,
   }
 }
-
+export const dynamic = 'force-dynamic'
 export async function CategoryPage({params, searchParams}: {
   params: {
             slug: string
@@ -27,12 +27,10 @@ export async function CategoryPage({params, searchParams}: {
 }) {
 
   const id = getCategoryId(params.slug) 
-
   const products: IProduct[] =  await getProductsByCats(id, searchParams)
 
-
   if(!products.length) return (<h2>Category is empty</h2>)
-  
+
   return <CatalogWidget items={products} type='category'  />;
   
 }

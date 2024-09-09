@@ -5,7 +5,7 @@ import {Api as WC_Api} from "@/shared/api/index"
 export async function GET(request: NextRequest){
 
   const query = request.nextUrl.searchParams.get('query') || 'products'
-console.log(request);
+
   let products: any = [];
   await WC_Api.get(query,{
     per_page: 50

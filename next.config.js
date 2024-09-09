@@ -2,7 +2,12 @@ const nextConfig = {
   //output: 'export',
   reactStrictMode: true,
   images : {
-    domains : ['www.inro.com.ua'] // <== Domain name
+    remotePatterns : [
+      {
+        protocol: 'https',
+        hostname: 'www.inro.com.ua'
+      },
+      ] // <== Domain name
   }
 }
 
