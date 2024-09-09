@@ -4,7 +4,7 @@ import "./globals.css";
 import { Header } from "@/widgets/header";
 import { Navigation } from "@/widgets/navigation";
 import { cn } from "@/shared/helpers/cn";
-const arimo = Arimo({ subsets: ["latin"] });
+const arimo = Arimo({ subsets: ["cyrillic"] });
 
 export const metadata: Metadata = {
   title: "Inro",

@@ -21,7 +21,6 @@ interface INavMenu {
 }
 
 export const NavMenu:React.FC<INavMenu> = ({className}) => {
-  console.log(categoriesObj);
     return (
 
       <Sheet>

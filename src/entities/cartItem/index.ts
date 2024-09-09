@@ -1,0 +1,1 @@
+export {CartItem} from "@/entities/cartItem/ui/CartItem"

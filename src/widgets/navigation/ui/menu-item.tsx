@@ -34,9 +34,6 @@ export interface IMenuItem {
 export const MenuItem:React.FC<IMenuItem> = ({className, cat}) => {
   const [open, setOpen] = useState(false);
 
-
-
-  console.log(cat);
   return ( 
   
   <li key={`category_${cat.id}`} >

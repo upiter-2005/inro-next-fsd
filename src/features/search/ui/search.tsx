@@ -9,7 +9,7 @@ interface ISearchProps {
 export const Search:React.FC<ISearchProps> = ({className}) => {
   return (
     <div className={cn(className, '')}>
-      <Image src={icon} alt="inro" width={16} height={16} />
+      <Image src={icon} alt="inro" width={17} height={17} />
     </div>
   )
 }
