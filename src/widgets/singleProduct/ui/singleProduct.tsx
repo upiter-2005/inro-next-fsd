@@ -3,7 +3,7 @@ import {ProductGallery} from "@/entities/productGallery"
 import { IProduct } from "@/entities/product/model/types"
 import { SingleProductData } from "@/entities/singleProductData"
 import { cn } from "@/shared/helpers"
-import { AddToCartButton } from "@/features/cartFeatures"
+import { AddToCartButton } from "@/features/cart"
 import { AddToFavourite } from "@/features/addToFavourite"
 
 interface ISingleProduct {

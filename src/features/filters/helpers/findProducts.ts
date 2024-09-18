@@ -14,7 +14,6 @@ export const findProduct = async(searchParams:ISearchParamsTypes) => {
       if(searchParams.pa_po_stanam) qs += `&attribute=pa_po_stanam&attribute_term=${searchParams.pa_po_stanam}&`
       if(searchParams.pa_typ_prymishhennya) qs += `&attribute=pa_typ_prymishhennya&attribute_term=${searchParams.pa_typ_prymishhennya}&`
 
-
   const response = await productApi.getProducts(qs)
 
   return response

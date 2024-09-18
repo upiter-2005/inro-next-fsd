@@ -24,7 +24,7 @@ export async function generateMetadata(
 export async function productPage({params}: {params: {id: string}}) {
   const response: IProduct[] =  await fetch(`${process.env.NEXT_API_HOST}/wp-json/wc/v3/products?slug=${params.id}&consumer_key=${process.env.NEXT_WC_CUSTOMER_KEY}&consumer_secret=${process.env.NEXT_WC_SECRET}`, 
     // {cache: 'no-store'}
-    { next: { revalidate: 60 }}
+    { next: { revalidate: 60 } }
   ).then(res => res.json())
 
   if(!response[0]){

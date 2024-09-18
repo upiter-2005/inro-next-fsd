@@ -1,10 +1,11 @@
 'use client'
 import { ProductFilters } from "@/features/filters";
-import {AddToCartButton} from "@/features/cartFeatures"
+import {AddToCartButton} from "@/features/cart"
 import { ProductCard } from "@/entities/catalogCard"
+import { IProduct } from "@/entities/product/model/types";
 import { cn } from "@/shared/helpers/cn"
 import { Suspense } from "react";
-import { IProduct } from "@/entities/product/model/types";
+
 
 export interface ICatalogWidgetProps {
   className?: string,
@@ -21,7 +22,6 @@ export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items,
  
   return (
     <>
-
     {CatalogType.CATALOG === type && (
        <Suspense fallback={<p>Loading...</p>}>
         <ProductFilters />
