@@ -33,7 +33,7 @@ export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items,
           <ProductCard 
             key={product.id} 
             product={product} 
-            actionSlot={<AddToCartButton productId={product.id}/>} 
+            actionSlot={<AddToCartButton product={product} />} 
           />
         ))}
       </div>

@@ -22,7 +22,7 @@ export const SingleProduct:React.FC<ISingleProduct> = ({product, className}) => 
     <div className="w-[486px] ">
       <SingleProductData 
         product={product}
-        addCartAction={<AddToCartButton productId={product.id} className="w-[225px]" />}
+        addCartAction={<AddToCartButton product={product}  className="w-[225px]" />}
         addToFavouriteAction={<AddToFavourite productId={product.id} className="w-[55px]" />}
       />
     </div>

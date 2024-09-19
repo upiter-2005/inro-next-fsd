@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Button } from "@/shared/ui/button"
 
 import clear from "@/shared/assets/images/delete.svg"
+import {useCartStore} from "@/features/cart/model/cartSlice"
 
 interface IDeleteFromCart {
   className?: string
@@ -12,11 +13,10 @@ interface IDeleteFromCart {
 }
 
 export const DeleteFromCart: React.FC<IDeleteFromCart> = ({ className, productId }) => {
-
+  const {removeItem} = useCartStore()
   return (
-    <Button onClick={() => addToCart(productId)} size="default" className={cn('', className)} variant="ghost">
-       <Image src={clear} width={26} height={26} alt="delete icon Inro"/>
-
+    <Button onClick={() => removeItem(productId)} size="default" className={cn('py-0 px-2', className)} variant="ghost">
+       <Image src={clear} width={22} height={22} className="relative -top-2" alt="delete icon Inro"/>
     </Button>
   )
 } 

@@ -1,9 +1,11 @@
 export interface ICartItem {
+  className?: string
   id: number
   name : string 
-  image?: string
+  image: string
   price: number
   quantity: number
-  className?: string
-  actionSlot?: React.ReactNode
+  actionSlot: React.ReactNode
+  increaseSlot?: React.ReactNode
+  decreaseSlot?: React.ReactNode
 }
