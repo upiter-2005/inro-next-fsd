@@ -20,9 +20,7 @@ export async function generateMetadata(
 }
 export const dynamic = 'force-dynamic'
 export async function CategoryPage({params, searchParams}: {
-  params: {
-            slug: string
-          },
+  params: {slug: string},
   searchParams: ISearchParamsCategoryTypes
 }) {
 

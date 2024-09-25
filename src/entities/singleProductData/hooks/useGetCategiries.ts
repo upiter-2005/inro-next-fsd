@@ -1,3 +1,4 @@
+'use client'
 import { ICategories } from "@/entities/categories/model/types";
 import { useEffect, useState } from "react";
 

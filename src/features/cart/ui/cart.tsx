@@ -12,13 +12,15 @@ import {
 
 import { CartList } from "./cartList"
 import { useCartStore } from "../model/cartSlice"
+import Link from "next/link"
 
 interface ICartFeaturesProps {
   className?: string
 }
 
 export const Cart:React.FC<ICartFeaturesProps> = ({className}) => {
-  const {cartItems} = useCartStore() 
+  
+  const {cartItems, total} = useCartStore() 
   const count = cartItems.length
   return (
     <div className={cn(className, '')}>
@@ -35,7 +37,21 @@ export const Cart:React.FC<ICartFeaturesProps> = ({className}) => {
         </SheetTrigger>
         <SheetContent  className='w-[412px] overflow-auto px-6 py-16 bg-[#fcf9ee]'> 
           <h3 className="text-[20px]">Кошик</h3>
+
          <CartList />
+
+        {count > 0 && (<>
+            <div className="flex justify-between items-center px-[10px] pt-[24px] pb-8">
+            <div className="text-sm" >Товари ({count})</div>
+            <div className="font-bold">₴ {total}</div>
+          </div>
+  
+          <Link href="#" className="w-full bg-[#111] text-center text-white block p-3 rounded-sm">Оформити замовлення</Link>
+          </>
+           
+        )}
+
+        
         </SheetContent>
       </Sheet>
     </div>

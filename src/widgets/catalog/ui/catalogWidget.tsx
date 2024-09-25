@@ -1,4 +1,3 @@
-'use client'
 import { ProductFilters } from "@/features/filters";
 import {AddToCartButton} from "@/features/cart"
 import { ProductCard } from "@/entities/catalogCard"

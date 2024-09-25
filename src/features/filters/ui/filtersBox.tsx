@@ -1,3 +1,4 @@
+'use client'
 import { cn } from "@/shared/helpers"
 import { Filter } from 'lucide-react';
 import {
@@ -5,10 +6,7 @@ import {
   SheetContent,
   SheetTrigger
 } from "@/shared/ui/sheet"
-
 import {FiltersCheckboxGroup} from './filtersCheckboxGroup'
-
-
 import { useQueryFilter } from "../hooks/useQueryFilter"
 import { useFilters } from "../hooks/useFilters"
 
@@ -19,9 +17,7 @@ interface IFilterBox {
 export const FilterBox:React.FC<IFilterBox> = ({className, }) => {
 
   const filters = useFilters()
-
   useQueryFilter(filters)
-
 
   return (
     <div className={cn(className, 'flex flex-wrap max-w-[1200px] w-full my-0 mx-auto')}>
@@ -57,8 +53,6 @@ export const FilterBox:React.FC<IFilterBox> = ({className, }) => {
             selected={filters.area}
             onClickCheckbox={filters.areaToggle}
           />
-         
-         
         </SheetContent>
       </Sheet>
     </div>

@@ -1,3 +1,4 @@
+'use client'
 import { useSearchParams } from "next/navigation"
 import { useSet } from "react-use"
 
@@ -11,7 +12,6 @@ interface IQueryFilters {
 export const useFilters= () => {
 
   const searchParams = useSearchParams() as unknown as Map<keyof IQueryFilters, string>
-  
   
   const [ml, { toggle: mlToggle }] = useSet<string>(new Set<string>(
     searchParams.get('pa_ml')?.split(',') || []

@@ -1,0 +1,1 @@
+export {CarouselInro} from "@/widgets/carousel/ui/carousel"

@@ -1,3 +1,4 @@
+'use client'
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import qs from "qs"
@@ -11,9 +12,7 @@ interface IFilters {
 export const useQueryFilter = (filters: IFilters) => {
   const router= useRouter()
 
-  console.log(filters);
   useEffect(()=>{
-
     const params = {
       pa_noty: Array.from(filters.noty),
       pa_ml: Array.from(filters.ml),

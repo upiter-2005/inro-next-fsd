@@ -4,38 +4,41 @@ import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { ICartItem } from '@/entities/cartItem/model/types'
 
 interface CartState {
-  cartItems: ICartItem[]
+  cartItems: ICartItem[] 
   total: number
   addCartItem: (item: any) => void
   removeItem: (id: number) => void
   increaseFromCart: (id: number) => void
   decreaseFromCart: (id: number) => void
 }
+
 export const useCartStore = create<CartState>()(
   persist(
     (set, get) => (
       {
-        cartItems: [],
+        cartItems: []  || localStorage.getItem('inroCart'),
         total: 0,
         addCartItem: (item) => {
           const existItem = get().cartItems.find((el:ICartItem) => el.id === item.id)
           if(existItem){
             existItem.quantity++
-            set({cartItems: [...get().cartItems], total: get().total + 1})
+            set({
+              cartItems: [...get().cartItems], 
+              total: get().total + parseInt(item.price)
+            })
             }else{
                 set({
                   cartItems: [ ...get().cartItems, {...item, quantity: 1} ],
-                  total: get().total + 1  
+                  total: get().total + parseInt(item.price) 
             })
           }
           
         },
         removeItem: (id) => {
           const existItem = get().cartItems.filter((el:ICartItem) => el.id === id)
-          
           if(existItem){
             const updateItems = get().cartItems.filter(el => el.id !== id)
-            const updateTotal = updateItems.reduce((acc, current) => acc + current.quantity, 0)
+            const updateTotal = updateItems.reduce((acc, current) => acc + (current.quantity * current.price), 0)
             set({cartItems: updateItems, total: updateTotal})
           }
         },
@@ -45,7 +48,7 @@ export const useCartStore = create<CartState>()(
           if(existItem) {
             existItem.quantity++
           }
-          const updateTotal = get().cartItems.reduce((acc, current) => acc + current.quantity, 0)
+          const updateTotal = get().cartItems.reduce((acc, current) => acc + (current.quantity * current.price), 0)
           set({cartItems: [...get().cartItems], total: updateTotal})
         },
 
@@ -54,15 +57,21 @@ export const useCartStore = create<CartState>()(
           if(existItem) {
             if(existItem.quantity === 1){
               const updatedItems = get().cartItems.filter((el:ICartItem) => el.id !== id)
-              const updateTotal = updatedItems.reduce((acc, current) => acc + current.quantity, 0)
-              set({cartItems: updatedItems, total: updateTotal})
+              const updateTotal = updatedItems.reduce((acc, current) => acc + (current.quantity * current.price), 0)
+              set({
+                cartItems: updatedItems, 
+                total: updateTotal
+              })
             }else{
               existItem.quantity--
-              const updateTotal = get().cartItems.reduce((acc, current) => acc + current.quantity, 0)
+              const updateTotal = get().cartItems.reduce((acc, current) => acc + (current.quantity * current.price), 0)
               set({cartItems: [...get().cartItems], total: updateTotal})
             }
           }
         },
+        clearCart: () => {
+          set({cartItems: [], total: 0})
+        }
       }
     ),
     {

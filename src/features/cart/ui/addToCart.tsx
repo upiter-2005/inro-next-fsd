@@ -1,3 +1,4 @@
+'use client'
 import { cn } from "@/shared/helpers"
 import { Button } from "@/shared/ui/button"
 import { useCartStore } from "@/features/cart/model/cartSlice"

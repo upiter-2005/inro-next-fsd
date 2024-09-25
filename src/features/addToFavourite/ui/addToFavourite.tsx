@@ -1,3 +1,4 @@
+'use client'
 import { cn } from "@/shared/helpers"
 import { Bookmark } from "lucide-react"
 interface IAddToFavourite {

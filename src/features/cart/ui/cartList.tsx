@@ -1,5 +1,3 @@
-'use client'
-
 
 import { CartItem } from "@/entities/cartItem"
 import { DeleteFromCart } from "./deleteFromCart"
@@ -13,10 +11,12 @@ interface ICartList {
 
 export const CartList:React.FC<ICartList> = ({className}) => {
   const {cartItems} = useCartStore() 
-  const items = cartItems || localStorage.getItem('inroCart')
+  
+  if(!cartItems.length){return (<p>Ваш кошик порожній</p>)}
+
   return (
     <div className={className}>
-    {items.map((item, i) => (
+    {cartItems.map((item, i) => (
         <CartItem 
           key={i} 
           id={item.id} 

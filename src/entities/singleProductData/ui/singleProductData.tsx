@@ -1,3 +1,4 @@
+'use client'
 import { IProduct } from "@/entities/product/model/types"
 import { cn } from "@/shared/helpers"
 import { useGetCategories } from "../hooks/useGetCategiries"

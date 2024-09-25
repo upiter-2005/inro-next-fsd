@@ -12,10 +12,10 @@ export const Navigation:React.FC<INavigation> = ({className}) => {
   return (
     <div className={cn('max-w-[1200px] none hidden md:block', className)}>
     <NavigationMenu.Root className="relative z-[1] flex w-screen justify-center py-2 items-center">
-      <NavigationMenu.List className=" w-full m-0 flex items-center list-none gap-[60px] py-4 border-t-[#E4E4E4] border-t-[1px] border-b-[#E4E4E4] border-b-[1px]">
+      <NavigationMenu.List className=" w-full m-0 flex items-center list-none gap-[50px]  border-t-[#E4E4E4] border-t-[1px] border-b-[#E4E4E4] border-b-[1px]">
       <NavigationMenu.Item >
           <NavigationMenu.Link
-            className="px-3  text-[15px] font-medium outline-none flex items-center h-full"
+            className="px-3 py-4 text-[15px] font-medium outline-none flex items-center h-full whitespace-nowrap"
             href="/catalog"
           >
             Каталог
@@ -25,13 +25,9 @@ export const Navigation:React.FC<INavigation> = ({className}) => {
         {categoriesObj.map((cat) => 
        
         <NavigationMenu.Item key={`category_${cat.id}`} >
-          <NavigationMenu.Trigger className="text-violet11 hover:bg-violet3 focus:shadow-violet7 group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]">
+          <NavigationMenu.Trigger className=" hover:bg-violet3 focus:shadow-violet7 group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-2 py-4 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px] whitespace-nowrap">
           {cat.name}
-          <ChevronUp
-              className=" w-3 relative  rotate-180 transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-0"
-              aria-hidden
-            />
-           
+          <ChevronUp className="w-3 relative rotate-180 transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-0" aria-hidden />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="absolute top-0 left-0 w-full sm:w-auto ">
             <div className="flex">
@@ -47,9 +43,8 @@ export const Navigation:React.FC<INavigation> = ({className}) => {
 
         <NavigationMenu.Item>
           <NavigationMenu.Link
-            className="text-violet11 hover:bg-violet3 focus:shadow-violet7 block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
-            href="/aromati-dlya-avto"
-          >
+            className="text-violet11   block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
+            href="/aromati-dlya-avto">
             Аромати в авто
           </NavigationMenu.Link>
         </NavigationMenu.Item>
