@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/widgets/header";
 import { Navigation } from "@/widgets/navigation";
 import { cn } from "@/shared/helpers/cn";
+import { Footer } from "@/widgets/footer";
 const arimo = Arimo({ subsets: ["cyrillic"] });
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({
           <Navigation />
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );

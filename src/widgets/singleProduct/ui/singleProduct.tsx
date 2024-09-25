@@ -26,8 +26,8 @@ export const SingleProduct:React.FC<ISingleProduct> = ({product, className}) => 
           />
         </div>
       </div>
-        <CarouselInro title='Товари з цим армоатом' />
-        <CarouselInro title='Також може сподобатись' />
+        <CarouselInro title='Товари з цим армоатом' advanceCard={true} />
+        <CarouselInro title='Також може сподобатись' advanceCard={false}  />
     </> )
   }
   

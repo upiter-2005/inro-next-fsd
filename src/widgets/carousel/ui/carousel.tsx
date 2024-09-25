@@ -15,10 +15,10 @@ import useSWR from "swr"
 interface ICarousel {
   className?: string,
   title: string,
-  relativeCat?: string
+  advanceCard: boolean
 }
 
-export const CarouselInro:React.FC<ICarousel> = ({className, title, relativeCat}) => {
+export const CarouselInro:React.FC<ICarousel> = ({className, title, advanceCard}) => {
   
   const { data, error, isLoading } = useSWR<IProduct[]>(`https://www.inro.com.ua/wp-json/wc/v3/products/?per_page=20&consumer_key=ck_7d0a0a541e4fc91baf8b23e22031cf8502c76b24
     &consumer_secret=cs_84669f4a9e954e566d4817d059786263b9a05ef7`, fetcher)
@@ -36,7 +36,7 @@ export const CarouselInro:React.FC<ICarousel> = ({className, title, relativeCat}
         <CarouselContent>
           {data?.map((obj, i) => (
             <CarouselItem key={i} className="basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <ProductCard  product={obj} advanceCard={true}  />
+              <ProductCard  product={obj} advanceCard={advanceCard}  />
             </CarouselItem>
           ))}
         </CarouselContent>
