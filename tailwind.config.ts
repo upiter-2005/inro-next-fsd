@@ -113,6 +113,9 @@ const config = {
         "exitToLeft": 'exitToLeft 250ms ease',
         "exitToRight": 'exitToRight 250ms ease',
       },
+      transitionProperty: {
+        'height': 'height',
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],

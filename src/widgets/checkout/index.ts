@@ -1,0 +1,1 @@
+export {Checkout} from "@/widgets/checkout/ui/checkout"

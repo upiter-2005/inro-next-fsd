@@ -5,6 +5,7 @@ import Image from "next/image"
 import cart from "@/shared/assets/images/cart.png"
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetTrigger
 } from "@/shared/ui/sheet"
@@ -25,8 +26,8 @@ export const Cart:React.FC<ICartFeaturesProps> = ({className}) => {
   return (
     <div className={cn(className, '')}>
    
-      <Sheet>
-        <SheetTrigger asChild>
+      <Sheet >
+        <SheetTrigger asChild >
           <div className="relative">
             <Button size="icon" className={cn("bg-transparent hover:bg-[#f6edcd]")}>
               <Image width={17} height={17} src={cart} alt='Inro'></Image>
@@ -40,13 +41,16 @@ export const Cart:React.FC<ICartFeaturesProps> = ({className}) => {
 
          <CartList />
 
-        {count > 0 && (<>
+        {count > 0 && (
+          <>
             <div className="flex justify-between items-center px-[10px] pt-[24px] pb-8">
-            <div className="text-sm" >Товари ({count})</div>
-            <div className="font-bold">₴ {total}</div>
-          </div>
-  
-          <Link href="#" className="w-full bg-[#111] text-center text-white block p-3 rounded-sm">Оформити замовлення</Link>
+              <div className="text-sm" >Товари ({count})</div>
+              <div className="font-bold">₴ {total}</div>
+            </div>
+            <SheetClose asChild>
+              <Link href="/checkout" className="w-full bg-[#111] text-center text-white block p-3 rounded-sm">Оформити замовлення</Link>
+            </SheetClose>
+            
           </>
            
         )}

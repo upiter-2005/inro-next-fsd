@@ -13,7 +13,7 @@ interface ICardProps {
   className?: string,
   actionSlot?: React.ReactNode,
   product: CardProduct,
-  advanceCard: boolean
+  advanceCard?: boolean
 }
 
 export const Card: React.FC<ICardProps> = ({ className, actionSlot, product, advanceCard }) => {

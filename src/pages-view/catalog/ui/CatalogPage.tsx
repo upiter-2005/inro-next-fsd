@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "Inro - Каталог",
 };
 
- export const dynamic = 'force-dynamic'
+//export const dynamic = 'force-dynamic'
 export async function CatalogPage({searchParams}: {searchParams: ISearchParamsTypes}) {
 
   const products = await findProduct(searchParams)
