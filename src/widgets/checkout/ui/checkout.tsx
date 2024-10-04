@@ -1,4 +1,5 @@
 import { CongratulationWords } from "@/features/formCheckout/ui/CongratulationWords"
+import { Delivery } from "@/features/formCheckout/ui/delivery"
 import { PersonData } from "@/features/formCheckout/ui/personData"
 import { RecipientData } from "@/features/formCheckout/ui/recipientData"
 import { cn } from "@/shared/helpers"
@@ -15,6 +16,7 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
           <PersonData />
           <RecipientData />
           <CongratulationWords />
+          <Delivery />
         </form>
     </div>
     
