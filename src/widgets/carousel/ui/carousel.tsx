@@ -12,6 +12,9 @@ import {
 import { fetcher } from "@/widgets/singleProduct/helpers/fetcher"
 import useSWR from "swr"
 
+/**
+ * advanceCard: (boolean) whether card has AddToCartButton & AddToFavourite
+ */
 interface ICarousel {
   className?: string,
   title: string,

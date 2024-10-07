@@ -4,15 +4,22 @@ import { Input } from "@/shared/ui/form/input"
 import { useState } from "react"
 import { Label } from "@/shared/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/shared/ui/radio-group"
+import { useFormContext } from "react-hook-form"
 
 
 interface IShowroom {
-  className?: string  
+  className?: string
 }
 
 
 
 export const Showroom:React.FC<IShowroom> = ({className}) => {
+  const {
+    register,
+    formState: { errors },
+    watch,
+    setValue,
+  } = useFormContext()
   return(
       <div className={cn("flex items-center gap-2 mb-8", className)}>
         <RadioGroup className='flex flex-col gap-4' defaultValue="Київ, Юрія Липи 6">

@@ -10,13 +10,14 @@ import {useCartStore} from "@/features/cart/model/cartSlice"
 interface IDeleteFromCart {
   className?: string
   productId: number
+  invert?: boolean
 }
 
-export const DeleteFromCart: React.FC<IDeleteFromCart> = ({ className, productId }) => {
+export const DeleteFromCart: React.FC<IDeleteFromCart> = ({ className, productId, invert }) => {
   const {removeItem} = useCartStore()
   return (
     <Button onClick={() => removeItem(productId)} size="default" className={cn('py-0 px-2', className)} variant="ghost">
-       <Image src={clear} width={22} height={22} className="relative -top-2" alt="delete icon Inro"/>
+      <Image src={clear} width={22} height={22} className={cn("relative -top-2", {'invert': invert})} alt="delete icon Inro"/>
     </Button>
   )
-} 
+}

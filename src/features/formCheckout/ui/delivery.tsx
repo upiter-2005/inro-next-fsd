@@ -17,7 +17,7 @@ import { Showroom } from './delivery/showroom'
 import { International } from './delivery/internation'
 
 interface IDelivery {
-  className?: string  
+  className?: string
 }
 
 const enum Methods {
@@ -27,12 +27,15 @@ const enum Methods {
 }
 
 export const Delivery:React.FC<IDelivery> = ({className}) => {
+
+
   const [delivery, setDelivery] = useState<string>(Methods.NP);
   return(
     <div className={cn('p-8 border-b border-b-solid border-b-[#E4E4E4]', className)}>
+
       <Subtitle text="Спосіб доставки"/>
       <div className="flex items-center gap-2 mb-8">
-        <RadioGroup 
+        <RadioGroup
           onValueChange={(val: string)=>setDelivery(val)}
           defaultValue={Methods.NP}
           className='flex'
@@ -43,7 +46,7 @@ export const Delivery:React.FC<IDelivery> = ({className}) => {
               <Image src={np} alt="Inro" />
             </Label>
           </div>
-          
+
            <div className="flex items-center ">
             <RadioGroupItem value="pickup" id="pickup" className='hidden w-auto'/>
             <Label htmlFor="pickup" className={`${delivery !== Methods.PICKUP && 'opacity-55'} cursor-pointer transition-all`}>
@@ -61,12 +64,14 @@ export const Delivery:React.FC<IDelivery> = ({className}) => {
 
       </div>
 
-      {delivery === Methods.NP && (<NovaPoshta />)}
-      {delivery === Methods.PICKUP && (<Showroom />)}
-      {delivery === Methods.INTERNATIONAL && (<International />)}
+      {/* <NovaPoshta /> */}
+      {delivery === "nova-poshta" ? (<NovaPoshta />) : ''}
+      {delivery === "pickup" ? (<Showroom />) : ''}
+      {delivery === "international" ? (<International />) : ''}
 
-      
-      
+
+
+
     </div>
   )
 }

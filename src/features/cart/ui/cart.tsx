@@ -20,12 +20,12 @@ interface ICartFeaturesProps {
 }
 
 export const Cart:React.FC<ICartFeaturesProps> = ({className}) => {
-  
-  const {cartItems, total} = useCartStore() 
+
+  const {cartItems, total} = useCartStore()
   const count = cartItems.length
   return (
     <div className={cn(className, '')}>
-   
+
       <Sheet >
         <SheetTrigger asChild >
           <div className="relative">
@@ -34,9 +34,9 @@ export const Cart:React.FC<ICartFeaturesProps> = ({className}) => {
             </Button>
             <span className="block text-center text-xs bg-[#111111] pt-[1px] text-white w-4 h-4 rounded-[50%] absolute top-0 right-0">{count}</span>
           </div>
-          
+
         </SheetTrigger>
-        <SheetContent  className='w-[412px] overflow-auto px-6 py-16 bg-[#fcf9ee]'> 
+        <SheetContent  className='w-[412px] overflow-auto px-6 py-16 bg-[#fcf9ee]'>
           <h3 className="text-[20px]">Кошик</h3>
 
          <CartList />
@@ -50,9 +50,9 @@ export const Cart:React.FC<ICartFeaturesProps> = ({className}) => {
             <SheetClose asChild>
               <Link href="/checkout" className="w-full bg-[#111] text-center text-white block p-3 rounded-sm">Оформити замовлення</Link>
             </SheetClose>
-            
+
           </>
-           
+
         )}
 
         
@@ -60,7 +60,7 @@ export const Cart:React.FC<ICartFeaturesProps> = ({className}) => {
       </Sheet>
     </div>
   )
-} 
+}
 
 
 
