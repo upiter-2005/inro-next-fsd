@@ -11,6 +11,8 @@ import { checkoutFieldsSchema, defaulFieldsSchema, TCheckoutFields, TDefauldFiel
 import { useEffect, useState } from "react"
 import {useForm, FormProvider} from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
+import { makeOrder } from "@/app/actions"
+import { useFormStatus } from "react-dom"
 
 export interface ICheckout {
   className?: string
@@ -20,23 +22,23 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
 
   const { cartItems } = useCartStore()
   const [empty, setEmpty] = useState<boolean>(false)
+  const { pending } = useFormStatus()
 
   const form = useForm<TCheckoutFields>({
+    mode: "onChange",
     resolver: zodResolver(checkoutFieldsSchema),
     defaultValues:{
       fist_name: '',
       last_name: '',
       tel: '',
       email: '',
-
-      rc_fist_name: '',
-      rc_last_name: '',
-      rc_tel: '',
-      congrats_text: '',
       delivery: 'NP',
+      type_np: 'У відділення',
       payment: 'Visa/Mastercard',
+      packing: [],
       message: ''
-    }
+    },
+    shouldUnregister: true
   })
 
 
@@ -47,21 +49,20 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
 
   const onSubmit = async(data: TCheckoutFields) => {
     console.log(data);
-    console.log('submit');
+    await makeOrder(data)
+
   }
 
   return (
     <div className={cn('flex max-w-[792px] w-full bg-[#fdfbf5] border border-solid border-[#E4E4E4] rounded-[8px]', className)}>
       <FormProvider {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} id="checkout-form" className={`w-max-[630px] w-full  ${!empty && 'pointer-events-none opacity-60'}` }>
+        <form onSubmit={form.handleSubmit(onSubmit)} id="checkout-form" className={`w-max-[630px] w-full  ${(!empty || pending) && 'pointer-events-none opacity-60'}` }>
           <PersonData />
           <CongratulationWords />
           <Payment />
           <Delivery />
-
-          {/*<Packing />*/}
+          <Packing />
           <Message />
-          <button type="submit">Submit</button>
         </form>
       </FormProvider>
     </div>

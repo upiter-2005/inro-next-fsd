@@ -8,6 +8,8 @@ interface IRecipientData {
 }
 
 export const RecipientData:React.FC<IRecipientData> = ({className}) => {
+
+
   return(
     <div className={cn('p-8 border-b border-b-solid border-b-[#E4E4E4]', className)}>
       <Subtitle text="Дані отримувача"/>
