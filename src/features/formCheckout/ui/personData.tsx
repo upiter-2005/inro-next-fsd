@@ -26,7 +26,7 @@ export const PersonData:React.FC<IPersonData> = ({className}) => {
   const handleCheck = (val:boolean): void => {
 
     if (!val){
-      unregister("rc_fist_name")
+      unregister("rc_first_name")
       unregister("rc_last_name")
       unregister("rc_tel")
     }
@@ -48,7 +48,7 @@ export const PersonData:React.FC<IPersonData> = ({className}) => {
         </div>
 
         <div className="flex items-center justify-between gap-6 max-w-[630px] w-full">
-          <Input type='text' name="fist_name" placeholder="Ім’я" />
+          <Input type='text' name="first_name" placeholder="Ім’я" />
           <Input type='text' name="last_name" placeholder="Прізвище" />
 
         </div>

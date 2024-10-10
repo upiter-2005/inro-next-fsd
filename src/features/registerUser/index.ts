@@ -1,0 +1,1 @@
+export {RegisterUser} from "@/features/registerUser/ui/registerUser"

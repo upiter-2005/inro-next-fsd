@@ -18,7 +18,7 @@ export enum CatalogType {
 }
 
 export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items, type }) => {
- 
+
   return (
     <>
     {CatalogType.CATALOG === type && (
@@ -26,18 +26,18 @@ export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items,
         <ProductFilters />
       </Suspense>
     )}
-      
+
       <div className={cn(className, 'flex flex-wrap max-w-[1200px] w-full my-0 mx-auto justify-center gap-4')}>
         {items.map((product) => (
-          <ProductCard 
-            key={product.id} 
-            product={product} 
-            actionSlot={<AddToCartButton product={product} />} 
+          <ProductCard
+            key={product.id}
+            product={product}
+            advanceCard={true}
           />
         ))}
       </div>
 
     </>
-    
+
   )
 }

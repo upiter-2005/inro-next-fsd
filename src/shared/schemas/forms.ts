@@ -4,8 +4,10 @@ const phoneRegex = new RegExp(
   /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
 );
 
+export const passwordSchema = z.string().min(4, { message: 'Занадто короткий пароль' })
+
 export const defaulFieldsSchema = z.object({
-  fist_name: z.string().min(3, {message: "Занадто коротке ім'я"}),
+  first_name: z.string().min(3, {message: "Занадто коротке ім'я"}),
   last_name: z.string().min(3, {message: "Занадто коротке прізвище"}),
   tel: z.string().regex(phoneRegex, 'Перевірте коректність телефону'),
   email: z.string().email({ message: 'Введите корректную почту' }),
@@ -15,7 +17,7 @@ export const defaulFieldsSchema = z.object({
 export const checkoutFieldsSchema = defaulFieldsSchema
   .merge(
     z.object({
-      rc_fist_name:  z.string().min(3, {message: "Занадто коротке ім'я"}).optional(),
+      rc_first_name:  z.string().min(3, {message: "Занадто коротке ім'я"}).optional(),
       rc_last_name:  z.string().min(3, {message: "Занадто коротке прізвище"}).optional(),
       rc_tel: z.string().regex(phoneRegex, 'Перевірте коректність телефону').optional(),
       congrats_text: z.string().min(3, {message: "Занадто короткий текст"}).optional(),
@@ -41,6 +43,20 @@ export const checkoutFieldsSchema = defaulFieldsSchema
   )
 
 
+  export const formRegisterSchema = defaulFieldsSchema
+  .merge(
+    z.object({
+      password: passwordSchema,
+      confirmPassword: passwordSchema,
+    }),
+  )
+  .refine((data) => data.password === data.confirmPassword, {
+    message: 'Пароли не совпадают',
+    path: ['confirmPassword'],
+  });
+
+
   export type TDefauldFields = z.infer<typeof defaulFieldsSchema>
   export type TCheckoutFields = z.infer<typeof checkoutFieldsSchema>
+  export type TFormRegisterSchema = z.infer<typeof formRegisterSchema>
 

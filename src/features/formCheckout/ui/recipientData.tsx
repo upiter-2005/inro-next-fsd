@@ -15,7 +15,7 @@ export const RecipientData:React.FC<IRecipientData> = ({className}) => {
       <Subtitle text="Дані отримувача"/>
 
       <div className="flex items-center justify-between gap-6 max-w-[630px] w-full">
-        <Input type='text' name="rc_fist_name" placeholder="Ім’я" />
+        <Input type='text' name="rc_first_name" placeholder="Ім’я" />
         <Input type='text' name="rc_last_name"placeholder="Прізвище" />
 
       </div>

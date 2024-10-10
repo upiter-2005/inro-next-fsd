@@ -5,6 +5,7 @@ import { Header } from "@/widgets/header";
 import { Navigation } from "@/widgets/navigation";
 import { cn } from "@/shared/helpers/cn";
 import { Footer } from "@/widgets/footer";
+import { Toaster } from 'react-hot-toast';
 const arimo = Arimo({ subsets: ["cyrillic"] });
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Toaster />
       </body>
     </html>
   );

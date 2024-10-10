@@ -4,7 +4,7 @@ import { mountStoreDevtool } from 'simple-zustand-devtools'
 import { ICartItem } from '@/entities/cartItem/model/types'
 
 interface CartState {
-  cartItems: ICartItem[] 
+  cartItems: ICartItem[]
   total: number
   addCartItem: (item: any) => void
   removeItem: (id: number) => void
@@ -16,23 +16,23 @@ export const useCartStore = create<CartState>()(
   persist(
     (set, get) => (
       {
-        cartItems: []  || localStorage.getItem('inroCart'),
+        cartItems: [] ,
         total: 0,
         addCartItem: (item) => {
           const existItem = get().cartItems.find((el:ICartItem) => el.id === item.id)
           if(existItem){
             existItem.quantity++
             set({
-              cartItems: [...get().cartItems], 
+              cartItems: [...get().cartItems],
               total: get().total + parseInt(item.price)
             })
             }else{
                 set({
                   cartItems: [ ...get().cartItems, {...item, quantity: 1} ],
-                  total: get().total + parseInt(item.price) 
+                  total: get().total + parseInt(item.price)
             })
           }
-          
+
         },
         removeItem: (id) => {
           const existItem = get().cartItems.filter((el:ICartItem) => el.id === id)
@@ -59,7 +59,7 @@ export const useCartStore = create<CartState>()(
               const updatedItems = get().cartItems.filter((el:ICartItem) => el.id !== id)
               const updateTotal = updatedItems.reduce((acc, current) => acc + (current.quantity * current.price), 0)
               set({
-                cartItems: updatedItems, 
+                cartItems: updatedItems,
                 total: updateTotal
               })
             }else{
@@ -79,10 +79,10 @@ export const useCartStore = create<CartState>()(
       version: 0.2,
       storage: createJSONStorage(()=> localStorage),
        partialize: (state) => ({cartItems: state.cartItems, total: state.total}),
-     
+
     }
   )
-    
+
 )
 
 mountStoreDevtool('Store1', useCartStore);

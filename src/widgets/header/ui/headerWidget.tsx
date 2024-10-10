@@ -9,10 +9,11 @@ import {Cart} from "@/features/cart"
 import mob_mnu_btn from '@/shared/assets/images/mnu_button.svg'
 import logo from '@/shared/assets/images/logo.png'
 import { NavMenu } from "./navMenu"
+import { CircleUserRound, User } from "lucide-react"
 
 interface IHeaderProps {
   className?: string
-} 
+}
 
 export const Header:React.FC<IHeaderProps> = ({className}) => {
   return (
@@ -20,6 +21,7 @@ export const Header:React.FC<IHeaderProps> = ({className}) => {
      <NavMenu />
       <div className="w-20"><Link href='/'><Image src={logo} alt="Inro" style={{width: '100%'}} quality={100}></Image></Link></div>
       <div className="flex justify-between gap-4 items-center">
+        <Link href="/register"><User /></Link>
         <Search />
         <Cart />
       </div>
