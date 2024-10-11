@@ -1,3 +1,4 @@
+import { LoginUser } from "@/features/loginUser"
 import {RegisterUser} from "@/features/registerUser"
 
 export interface IAuthWidget {
@@ -8,6 +9,9 @@ export interface IAuthWidget {
 export const AuthWidget: React.FC<IAuthWidget> = ({ className, type }) => {
 
   return (
-    <>{type === "register" && <RegisterUser />}</>
+    <>
+    {type === "register" && <RegisterUser />}
+    {type === "login" && <LoginUser />}
+    </>
   )
 }

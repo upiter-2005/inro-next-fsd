@@ -13,6 +13,11 @@ export const defaulFieldsSchema = z.object({
   email: z.string().email({ message: 'Введите корректную почту' }),
 
 })
+export const loginFieldsSchema = z.object({
+  login: z.string().min(3, {message: "Занадто коротке ім'я"}),
+  password: passwordSchema
+
+})
 
 export const checkoutFieldsSchema = defaulFieldsSchema
   .merge(
@@ -59,4 +64,5 @@ export const checkoutFieldsSchema = defaulFieldsSchema
   export type TDefauldFields = z.infer<typeof defaulFieldsSchema>
   export type TCheckoutFields = z.infer<typeof checkoutFieldsSchema>
   export type TFormRegisterSchema = z.infer<typeof formRegisterSchema>
+  export type TLoginFieldsSchema = z.infer<typeof loginFieldsSchema>
 

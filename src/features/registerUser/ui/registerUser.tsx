@@ -6,11 +6,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from "@/shared/ui/button"
 import Link from "next/link"
 import { registerUser } from "@/app/actions"
-import { useFormStatus } from 'react-dom'
 import toast from 'react-hot-toast';
 
 export const RegisterUser = () => {
-  const { pending } = useFormStatus()
 
 
   const form = useForm<TFormRegisterSchema>({
@@ -24,9 +22,6 @@ export const RegisterUser = () => {
   })
 
   const onSubmit = async(data: TFormRegisterSchema) => {
-    toast.success('Start', {
-      icon: '✅',
-    })
     const response = await registerUser(data);
     console.log(response);
     if(response !== undefined) {
@@ -53,7 +48,7 @@ export const RegisterUser = () => {
           <Input type='password' placeholder="Пароль" name="password" />
           <Input type='password' placeholder="Підтвердіть пароль" name="confirmPassword" />
           <Button type="submit" className="w-full bg-[#111] text-center text-white text-sm block p-3 rounded-sm hover:bg-[#111] hover:text-white transition-all hover:opacity-70 leading-4">Зареєструватися</Button>
-          <Link href="login" className=" block text-center mx-auto pt-5 text-sm font-semibold">Увійти</Link>
+          <Link href="/login" className=" block text-center mx-auto pt-5 text-sm font-semibold">Увійти</Link>
         </form>
       </FormProvider>
     </div>
