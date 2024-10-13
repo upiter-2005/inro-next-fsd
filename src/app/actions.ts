@@ -47,8 +47,24 @@ export async function authUser (body: any) {
     password: body.password
   }
 
+
+  try{
     const res:any = await axios.post( `${process.env.NEXT_API_HOST}/wp-json/jwt-auth/v1/token`, data )
     const session = await encrypt(res.data)
-    cookies().set("session", session, {maxAge: 2600, httpOnly: true})
+    cookies().set("session", session, {maxAge: 30, httpOnly: true})
+    const params = {headers: {Authorization: `Bearer ${res.data.token}`}}
+    const user = await axios.get( `${process.env.NEXT_API_HOST}/wp-json/wp/v2/users/me`, params)
+
+
+    return {
+      message: "Succses",
+      data: user.data
+    }
+  }catch (err: any)  {
+    return {
+      message: err.response.data
+    }
+  }
+
 
 }

@@ -14,9 +14,8 @@ import { redirect } from "next/navigation";
 export async function Login() {
 
   const encryptedSessionData = await getSession()
-
   {encryptedSessionData && redirect('/account')}
-  
+
   return (
     <main className="flex flex-col items-center justify-between">
       <div>
@@ -28,7 +27,7 @@ export async function Login() {
 
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>Register</BreadcrumbPage>
+              <BreadcrumbPage>Login</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>

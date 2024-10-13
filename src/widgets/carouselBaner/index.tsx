@@ -1,0 +1,1 @@
+export {CarouselBanerInro} from "@/widgets/carouselBaner/ui/carouselBaner"

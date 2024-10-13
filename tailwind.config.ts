@@ -115,7 +115,10 @@ const config = {
       },
       transitionProperty: {
         'height': 'height',
-      }
+      },
+      backgroundImage: {
+        'mramor': "url('../public/mramor.jpeg')",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

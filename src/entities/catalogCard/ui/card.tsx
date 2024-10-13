@@ -22,10 +22,13 @@ export const Card: React.FC<ICardProps> = ({ className, actionSlot, product, adv
     <div className={cn("w-[160px] sm:w-[260px] flex flex-col gap-4  mb-6", className)}>
 
       <ProductCardThumb image={product.images[0].src} alt={product.name} />
-      <ProductCardName name={product.name} productId={product.slug} />
-      <ProductCardPrice salePrice={product.sale_price} regularPrice={product.price} />
+      <div className="flex justify-between items-center ">
+        <ProductCardName name={product.name} productId={product.slug} />
+        <ProductCardPrice salePrice={product.sale_price} regularPrice={product.price} />
+      </div>
 
-      {actionSlot}   
+
+      {actionSlot}
 
       {advanceCard && (
         <div className="flex gap-2">
@@ -33,7 +36,7 @@ export const Card: React.FC<ICardProps> = ({ className, actionSlot, product, adv
           {<AddToFavourite productId={product.id} className="w-[55px]" />}
         </div>)
       }
-      
+
     </div>
   )
 

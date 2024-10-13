@@ -1,0 +1,1 @@
+export {Account as AccountPage } from './ui/account';

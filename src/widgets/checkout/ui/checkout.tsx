@@ -28,7 +28,7 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
     mode: "onChange",
     resolver: zodResolver(checkoutFieldsSchema),
     defaultValues:{
-      fist_name: '',
+      first_name: '',
       last_name: '',
       tel: '',
       email: '',

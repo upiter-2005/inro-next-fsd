@@ -22,7 +22,7 @@ interface ICarousel {
 }
 
 export const CarouselInro:React.FC<ICarousel> = ({className, title, advanceCard}) => {
-  
+
   const { data, error, isLoading } = useSWR<IProduct[]>(`https://www.inro.com.ua/wp-json/wc/v3/products/?per_page=20&consumer_key=ck_7d0a0a541e4fc91baf8b23e22031cf8502c76b24
     &consumer_secret=cs_84669f4a9e954e566d4817d059786263b9a05ef7`, fetcher)
   return(
@@ -34,7 +34,7 @@ export const CarouselInro:React.FC<ICarousel> = ({className, title, advanceCard}
             align: "start",
             loop: true,
           }}
-          className="w-full "
+          className="w-full"
         >
         <CarouselContent>
           {data?.map((obj, i) => (
@@ -45,7 +45,7 @@ export const CarouselInro:React.FC<ICarousel> = ({className, title, advanceCard}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
-      </Carousel> 
+      </Carousel>
       </div>
     </div>
   )
