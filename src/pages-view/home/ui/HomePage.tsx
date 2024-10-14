@@ -7,7 +7,7 @@ import { KeepLine } from '@/widgets/keepLine';
 export async function Home() {
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between pb-24">
+    <main className="flex min-h-screen flex-col items-center justify-between ">
      <CarouselBanerInro />
      <CarouselInro title="Акційні пропозиції" advanceCard={false} />
      <SaleBaner />

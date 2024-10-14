@@ -1,17 +1,38 @@
 'use client'
+import { IProduct } from "@/entities/product/model/types"
+import { useFavouriteStore } from "@/features/favourite/model/favouriteSlice"
 import { cn } from "@/shared/helpers"
 import { Bookmark } from "lucide-react"
-interface IAddToFavourite {
-  className?: string,
-  productId: number
+import { useEffect, useState } from "react"
+
+type ProductDataType = Pick<IProduct,'id' | 'name' | 'price' | 'images' >
+
+interface IAddToFavouriteProps {
+  className?: string
+  product: ProductDataType
 }
 
+export const AddToFavourite:React.FC<IAddToFavouriteProps> = ({className, product}) => {
+  const[active, setActive] = useState<boolean>(false)
+  const {favouritesItems, handleFavouriteItem} = useFavouriteStore()
 
-export const AddToFavourite:React.FC<IAddToFavourite> = ({className, productId}) => {
-  return <div 
-  className={cn(className, 'rounded border-[#111] border-[1px] flex items-center justify-center cursor-pointer')}
-  onClick={() => {console.log(productId)}}
+
+  useEffect(()=>{
+    if(favouritesItems)console.log(favouritesItems);
+    const isActive = favouritesItems.find(item => item.id === product.id)
+    if(isActive) {setActive(true)}else{setActive(false)}
+  }, [favouritesItems])
+
+
+  return <div
+  className={cn(className, 'rounded border-[#111] border-[1px] flex items-center justify-center cursor-pointer', {"bg-[#111]": active})}
+  onClick={() => handleFavouriteItem({
+    id: product.id,
+    name : product.name,
+    image: product.images[0].src,
+    price: Number(product.price)
+  })}
   >
-    <Bookmark width={24}/>
+    <Bookmark width={24} className={cn('', {"text-white": active})} />
   </div>
 }

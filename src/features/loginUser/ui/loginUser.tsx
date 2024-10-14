@@ -7,13 +7,14 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from "@/shared/ui/button"
 import Link from "next/link"
 import { authUser } from "@/app/actions"
-import toast from 'react-hot-toast';
-import { cn } from "@/shared/helpers"
+import toast from 'react-hot-toast'
 import { useTransition } from "react"
 
 import loader from "@/shared/assets/images/loader.svg"
+import { useUserStore } from "../model/actions"
 
 export const LoginUser:React.FC = () => {
+  const {setUser} = useUserStore()
   const [isPending, startTransition] = useTransition()
   const form = useForm<TLoginFieldsSchema>({
     resolver: zodResolver(loginFieldsSchema),
@@ -27,9 +28,21 @@ export const LoginUser:React.FC = () => {
   const onSubmit = async(data: TLoginFieldsSchema) => {
     startTransition(async()=>{
       const response = await authUser(data)
-
-      if(response.message === 'Succses'){
-        toast.success("Авторизація успішна", {icon: '✅'});
+      console.log(response)
+       if(response.message === 'Succses'){
+        setUser({
+          id: response.data.id,
+          name: response.data.name,
+          email: response.email,
+          acf: {
+            last_name: response.data.acf.last_name,
+            tel: response.data.acf.tel,
+            born_date: response.data.acf.born_date,
+            adress: response.data.acf.adress,
+            street: response.data.acf.street
+          }
+        })
+        toast.success("Авторизація успішна", {icon: '✅'})
       }else{
         toast.error("Перевірте коректність даних", {icon: '❌'})
       }
@@ -52,3 +65,4 @@ export const LoginUser:React.FC = () => {
     </div>
   )
 }
+

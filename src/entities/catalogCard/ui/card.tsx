@@ -33,7 +33,7 @@ export const Card: React.FC<ICardProps> = ({ className, actionSlot, product, adv
       {advanceCard && (
         <div className="flex gap-2">
           {<AddToCartButton product={product}  className="w-[225px]" />}
-          {<AddToFavourite productId={product.id} className="w-[55px]" />}
+          {<AddToFavourite product={product} className="w-[55px]" />}
         </div>)
       }
 

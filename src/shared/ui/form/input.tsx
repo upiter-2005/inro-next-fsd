@@ -17,7 +17,7 @@ export const Input:React.FC<InputType> = ({className, type, placeholder, name}) 
     watch,
     setValue,
   } = useFormContext()
-  
+
   let errotText: string = ''
   if(name) {errotText = errors?.[name]?.message as string}
 

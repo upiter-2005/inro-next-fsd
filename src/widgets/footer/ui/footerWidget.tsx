@@ -3,16 +3,15 @@ import Image from "next/image"
 import Link from "next/link"
 
 import logo from "@/shared/assets/images/footer-logo.svg"
-import insta from "@/shared/assets/images/insta.svg"
-import tg from "@/shared/assets/images/tg.svg"
-import fb from "@/shared/assets/images/fb.svg"
+
+import { Socials } from "@/shared/ui/socials"
 
 
 
 
 interface IFooterProps {
   className?: string
-} 
+}
 
 export const Footer:React.FC<IFooterProps> = ({className}) => {
   return (
@@ -21,11 +20,7 @@ export const Footer:React.FC<IFooterProps> = ({className}) => {
 
             <div className="">
               <Image src={logo} width={140} height={47} alt="Inro" className="mb-5" />
-              <div className="flex gap-2">
-                <Link href="/" target="blank" className="hover:opacity-70"><Image src={insta} width={48} height={48} alt="Inro" /></Link>
-                <Link href="/" target="blank" className="hover:opacity-70"><Image src={tg} width={48} height={48} alt="Inro" /></Link>
-                <Link href="/" target="blank" className="hover:opacity-70"><Image src={fb} width={48} height={48} alt="Inro" /></Link>
-              </div>
+              <Socials />
             </div>
 
             <div className="text-white">
@@ -65,9 +60,6 @@ export const Footer:React.FC<IFooterProps> = ({className}) => {
                 <li><Link href="#" className="text-sm mb-5 block font-semibold">Замовити дзвінок</Link></li>
               </ul>
             </div>
-
-
-            
 
         </div>
         <div className="max-w-[1200px] w-full mx-auto text-[#A3A3A3] text-sm">© 2024 INRO. All Rights Reserved</div>

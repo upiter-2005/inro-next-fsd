@@ -10,21 +10,23 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/shared/ui/button"
 import Link from "next/link"
 import loader from "@/shared/assets/images/loader.svg"
+import { User } from "@/features/loginUser/model/actions"
 
 interface IWidgetUserData {
-  className?: string
+  className?: string,
+  user: User
 }
-export const WidgetUserData:React.FC<IWidgetUserData> = ({className}) => {
+export const WidgetUserData:React.FC<IWidgetUserData> = ({className, user}) => {
 
   const [isPending, startTransition] = useTransition()
 
   const form = useForm<TDefauldFields>({
     resolver: zodResolver(defaulFieldsSchema),
     defaultValues:{
-      first_name: 'sdsd',
-      last_name: 'sdsdds',
-      tel: '',
-      email: '',
+      first_name: user.name,
+      last_name: user.acf.last_name,
+      tel: user.acf.tel,
+      email: user.email,
     }
   })
 
@@ -50,7 +52,7 @@ export const WidgetUserData:React.FC<IWidgetUserData> = ({className}) => {
 
               <div className="flex items-center justify-between gap-6 max-w-[630px] w-full">
                 <Input type='tel' name="tel" placeholder="38 073 1234567" />
-                <Input type='email' name="email" placeholder="E-mail" />
+                <Input type='email'  name="email" className="pointer-events-none" placeholder="E-mail" />
               </div>
 
               <Button type="submit" disabled={isPending} className="w-full flex justify-center bg-[#111] text-center text-white text-sm p-3 rounded-sm hover:bg-[#111] hover:text-white transition-all hover:opacity-70 leading-4">{isPending ? <Image src={loader} width={55} height={55} alt="loader" /> : "Зберегти зміни"}</Button>

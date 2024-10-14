@@ -13,7 +13,7 @@ export async function CheckoutPage() {
     <>
       <div className="flex items-start gap-6 max-w-[1200px] m-auto py-16">
         <Checkout />
-        <CheckoutCart className="max-w-[384px]" />
+        <CheckoutCart className="max-w-[384px] sticky top-0 " />
       </div>
       <CarouselInro title="Доповніть замовлення" advanceCard={true} />
     </>

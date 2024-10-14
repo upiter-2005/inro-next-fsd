@@ -4,7 +4,9 @@ import { revalidatePath } from 'next/cache'
 import {WP_API} from "@/shared/api/connectWpApi"
 import { cookies } from 'next/headers'
 import axios from "axios"
-import { encrypt } from '@/shared/helpers/auth'
+import { encrypt, logout } from '@/shared/helpers/auth'
+import { useUserStore } from '@/features/loginUser/model/actions'
+
 
 export async function makeOrder(data: TCheckoutFields){
 
@@ -47,24 +49,28 @@ export async function authUser (body: any) {
     password: body.password
   }
 
-
   try{
     const res:any = await axios.post( `${process.env.NEXT_API_HOST}/wp-json/jwt-auth/v1/token`, data )
     const session = await encrypt(res.data)
-    cookies().set("session", session, {maxAge: 30, httpOnly: true})
+    cookies().set("session", session, {maxAge: 1800, httpOnly: true})
     const params = {headers: {Authorization: `Bearer ${res.data.token}`}}
     const user = await axios.get( `${process.env.NEXT_API_HOST}/wp-json/wp/v2/users/me`, params)
 
-
     return {
       message: "Succses",
-      data: user.data
+      data: user.data,
+      email: body.login
     }
   }catch (err: any)  {
     return {
       message: err.response.data
     }
   }
+}
 
+export async function logOut (){
+ await logout()
+ revalidatePath('/account')
 
+ return {message: "success"}
 }

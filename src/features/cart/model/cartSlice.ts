@@ -85,4 +85,3 @@ export const useCartStore = create<CartState>()(
 
 )
 
-mountStoreDevtool('Store1', useCartStore);
