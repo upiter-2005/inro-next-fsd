@@ -19,6 +19,14 @@ export const loginFieldsSchema = z.object({
 
 })
 
+export const updateFieldsSchema = defaulFieldsSchema
+.merge(
+  z.object({
+    id: z.number(),
+    adress: z.string().min(3, {message: "Занадто коротко"}).optional(),
+    street: z.string().min(3, {message: "Занадто коротко"}).optional(),
+  })
+)
 export const checkoutFieldsSchema = defaulFieldsSchema
   .merge(
     z.object({
@@ -65,4 +73,5 @@ export const checkoutFieldsSchema = defaulFieldsSchema
   export type TCheckoutFields = z.infer<typeof checkoutFieldsSchema>
   export type TFormRegisterSchema = z.infer<typeof formRegisterSchema>
   export type TLoginFieldsSchema = z.infer<typeof loginFieldsSchema>
+  export type TUpdateFieldsSchema = z.infer<typeof updateFieldsSchema>
 

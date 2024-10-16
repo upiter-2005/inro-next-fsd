@@ -66,4 +66,10 @@
   body {
     @apply bg-background text-[#111];
   }
+  strong{
+    font-weight: bold;
+  }
+  p{
+    margin-bottom: 20px;
+  }
 }

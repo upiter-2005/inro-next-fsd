@@ -19,10 +19,10 @@ export const SingleProduct:React.FC<ISingleProduct> = ({product, className}) => 
           <ProductGallery images={product.images} alt={product.name} />
         </div>
         <div className="w-[486px] ">
-          <SingleProductData 
+          <SingleProductData
             product={product}
-            addCartAction={<AddToCartButton product={product}  className="w-[225px]" />}
-            addToFavouriteAction={<AddToFavourite productId={product.id} className="w-[55px]" />}
+            addCartAction={<AddToCartButton product={product}  className="w-[225px] flex-1" />}
+            addToFavouriteAction={<AddToFavourite product={product} className="w-[55px]" />}
           />
         </div>
       </div>
@@ -30,6 +30,6 @@ export const SingleProduct:React.FC<ISingleProduct> = ({product, className}) => 
         <CarouselInro title='Також може сподобатись' advanceCard={false}  />
     </> )
   }
-  
-  
+
+
 }

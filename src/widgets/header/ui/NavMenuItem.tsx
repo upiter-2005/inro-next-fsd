@@ -11,10 +11,11 @@ import Link from "next/link"
 
 interface INavMenuItem {
   className?: string
-  cat?: any
+  cat?: any,
+  closeMnu?: ()=>void
 }
 
-export const NavMenuItem:React.FC<INavMenuItem> = ({className, cat}) => {
+export const NavMenuItem:React.FC<INavMenuItem> = ({className, cat, closeMnu}) => {
 
     return (
          <div className={cn('', className)}>
@@ -23,8 +24,10 @@ export const NavMenuItem:React.FC<INavMenuItem> = ({className, cat}) => {
               <AccordionItem value={`cat-${cat.id}`} className="border-b-0 ">
                 <AccordionTrigger className="py-3">{cat.name}</AccordionTrigger>
                 <AccordionContent>
-                  
-                {cat.child?.map((subcat: any) => <div key={`${subcat.id}-${subcat.slug}`} className="pl-3 py-1"><Link  href={`/category/${subcat.slug}`}>{subcat.name}</Link></div>
+
+                {cat.child?.map((subcat: any) => <div key={`${subcat.id}-${subcat.slug}`} className="pl-3 py-1">
+                  <Link  href={`/category/${subcat.slug}`} onClick={closeMnu}>{subcat.name}</Link>
+                  </div>
               )}
 
                 </AccordionContent>
@@ -32,6 +35,6 @@ export const NavMenuItem:React.FC<INavMenuItem> = ({className, cat}) => {
             </Accordion>
 
          </div>
-        
+
      )
 }

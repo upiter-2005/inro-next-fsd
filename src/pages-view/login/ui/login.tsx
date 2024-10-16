@@ -22,12 +22,12 @@ export async function Login() {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              <BreadcrumbLink href="/">Головна</BreadcrumbLink>
             </BreadcrumbItem>
 
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>Login</BreadcrumbPage>
+              <BreadcrumbPage>Увійти в кабінет</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>

@@ -3,15 +3,16 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 
 
 export interface User {
-  id: number,
-  name: string,
-  email: string,
+  id?: number,
+  name?: string,
+  email?: string,
   acf: {
-    last_name: string,
-    tel: string,
-    born_date: string,
-    adress: string,
-    street: string
+    first_name?: string,
+    last_name?: string,
+    tel?: string,
+    born_date?: string,
+    adress?: string,
+    street?: string
   }
 }
 
@@ -30,6 +31,7 @@ export const useUserStore = create<UserState>()(
           name: '',
           email: '',
           acf: {
+            first_name: '',
             last_name: '',
             tel: '',
             born_date: '',
@@ -63,6 +65,7 @@ export const useUserStore = create<UserState>()(
             name: '',
             email: '',
             acf: {
+              first_name: '',
               last_name: '',
               tel: '',
               born_date: '',

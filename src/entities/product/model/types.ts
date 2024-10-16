@@ -11,10 +11,11 @@ export type ProductMetaDataType = {
 }
 
 export interface IProduct {
+  attributes: any[]
   id: number
   name: string
   categories: ICategories[]
-  images: ProductImagesType[]
+  images: ProductImagesType[] | any
   meta_data: ProductMetaDataType[]
   price: string
   regular_price: string

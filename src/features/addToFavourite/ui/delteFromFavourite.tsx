@@ -2,17 +2,19 @@
 import { IProduct } from "@/entities/product/model/types"
 import { useFavouriteStore } from "@/features/favourite/model/favouriteSlice"
 import { cn } from "@/shared/helpers"
-import { Bookmark } from "lucide-react"
+import Image from "next/image"
 import { useEffect, useState } from "react"
+
+import clear from "@/shared/assets/images/delete.svg"
 
 type ProductDataType = Pick<IProduct,'id' | 'name' | 'price' | 'images' >
 
-interface IAddToFavouriteProps {
+interface IDeleteFromFavourite {
   className?: string
   product: ProductDataType
 }
 
-export const AddToFavourite:React.FC<IAddToFavouriteProps> = ({className, product}) => {
+export const DeleteFromFavourite:React.FC<IDeleteFromFavourite> = ({className, product}) => {
   const[active, setActive] = useState<boolean>(false)
   const {favouritesItems, handleFavouriteItem} = useFavouriteStore()
 
@@ -24,7 +26,7 @@ export const AddToFavourite:React.FC<IAddToFavouriteProps> = ({className, produc
 
 
   return <div
-  className={cn(className, 'rounded border-[#111] border-[1px] flex items-center justify-center cursor-pointer', {"bg-[#111]": active})}
+  className={cn(className, 'cursor-pointer absolute top-0 right-0')}
   onClick={() => handleFavouriteItem({
     id: product.id,
     name : product.name,
@@ -32,6 +34,6 @@ export const AddToFavourite:React.FC<IAddToFavouriteProps> = ({className, produc
     price: Number(product.price)
   })}
   >
-    <Bookmark width={24} className={cn('', {"text-white": active})} />
+    <Image src={clear} width={20} height={20} alt="delete favourite" />
   </div>
 }

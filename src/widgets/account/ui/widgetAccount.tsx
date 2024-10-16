@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react"
 import { cn } from "@/shared/helpers"
-import { WidgetUserData } from "@/widgets/userData"
+import { WidgetFavouriteList, WidgetUserData } from "@/widgets/userData"
 import { logOut } from "@/app/actions"
 import { useUserStore } from "@/features/loginUser/model/actions"
 
@@ -35,6 +35,7 @@ export const WidgetAccount:React.FC<IWidgetAccount> = ({className}) => {
       <div className="flex-1 flex max-w-[792px] w-full bg-[#fdfbf5] border border-solid border-[#E4E4E4] rounded-[8px]">
 
         {activeTab === 'profile' && <WidgetUserData user={user} />}
+        {activeTab === 'favourite' && <WidgetFavouriteList  />}
       </div>
     </div>
   )

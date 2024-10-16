@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache'
 import {WP_API} from "@/shared/api/connectWpApi"
 import { cookies } from 'next/headers'
 import axios from "axios"
-import { encrypt, logout } from '@/shared/helpers/auth'
+import { encrypt, getSession, logout } from '@/shared/helpers/auth'
 import { useUserStore } from '@/features/loginUser/model/actions'
 
 
@@ -30,6 +30,7 @@ export async function registerUser (body: any) {
         roles: 'customer',
         password,
         acf: {
+          first_name: body.first_name,
           last_name: body.last_name,
           tel: body.tel
         }
@@ -73,4 +74,39 @@ export async function logOut (){
  revalidatePath('/account')
 
  return {message: "success"}
+}
+
+export async function updateUser(body: any){
+  console.log(body);
+
+  const data = {
+    acf: {
+      first_name: body.first_name,
+      last_name: body.last_name,
+      tel: body.tel,
+      adress: body.adress,
+      street: body.street
+    }
+  }
+
+
+  try {
+    const session = await getSession()
+     const token = session.token
+      const user = await axios.post(
+        `${process.env.NEXT_API_HOST}/wp-json/wp/v2/users/${body.id}`,
+        data,
+        {headers: {Authorization: `Bearer ${token}`}}
+      )
+      console.log(user)
+      return {
+        message: "Succses",
+        data: user.data,
+      }
+  } catch (error: any) {
+    return {
+      message: error.response.data
+    }
+  }
+
 }

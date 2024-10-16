@@ -15,15 +15,15 @@ export const AddToCart: React.FC<IAddToCartProps> = ({ className, product }) => 
   const {addCartItem} = useCartStore()
 
   return (
-    <Button 
+    <Button
       onClick={() => addCartItem({
         id: product.id,
         name : product.name,
-        image: product.images[0].src,
+        image: product.images[0].src || product.images,
         price: product.price,
-      })} 
-      size="default" 
+      })}
+      size="default"
       className={cn('text-[14px] bg-black rounded', className)}
     >В кошик</Button>
   )
-} 
+}

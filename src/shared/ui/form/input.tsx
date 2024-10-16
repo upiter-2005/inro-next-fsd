@@ -1,15 +1,18 @@
 import { cn } from "@/shared/helpers"
 import { useFormContext } from "react-hook-form"
 import { ErrorText } from "./errorText"
+import { Eye, EyeOff } from "lucide-react"
 
 interface InputType {
   className?: string
   placeholder: string
   type?: 'text' | string
   name?: string
+  eye?: boolean,
+  changeType?: () => void
 }
 
-export const Input:React.FC<InputType> = ({className, type, placeholder, name}) => {
+export const Input:React.FC<InputType> = ({className, type, placeholder, name, eye, changeType}) => {
 
   const {
     register,
@@ -28,6 +31,9 @@ export const Input:React.FC<InputType> = ({className, type, placeholder, name}) 
       ): (
         <input type={type} placeholder={placeholder} className={cn('text-sm w-full p-0 pb-3 mb-8 border border-solid border-transparent border-b-[#111]  bg-transparent placeholder:text-[#959595]', className)} />
       )}
+      {eye && <div className="absolute top-1 right-1 cursor-pointer" onClick={changeType}>
+        {type == "text" ?   <Eye width={18} /> : <EyeOff width={18} />}
+      </div>}
 
       {errotText && <ErrorText text={errotText} className="absolute bottom-[12px] text-xs" />}
     </div>
