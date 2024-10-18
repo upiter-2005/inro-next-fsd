@@ -41,11 +41,11 @@ export const Delivery:React.FC<IDelivery> = ({className}) => {
     <div className={cn('p-8 border-b border-b-solid border-b-[#E4E4E4]', className)}>
 
       <Subtitle text="Спосіб доставки"/>
-      <div className="flex items-center gap-2 mb-8">
+      <div className="flex  items-center gap-2 mb-8">
         <RadioGroup
           onValueChange={(val: string)=>handleDelivery(val)}
           defaultValue={Methods.NP}
-          className='flex'
+          className='flex flex-col md:flex-row'
         >
           <div className="flex items-center ">
             <RadioGroupItem value="nova-poshta" id="nova-poshta" className='hidden w-auto [&:checked+input+label]:bg-[#111]' {...register("delivery")} />

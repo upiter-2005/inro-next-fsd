@@ -28,7 +28,7 @@ export const SaleBaner:React.FC<ISaleBaner> = ({className}) => {
   }, [api, current])
 
   return(
-      <div className="w-full mt-20">
+      <div className="w-full md:mt-20">
         <Carousel
           setApi={setApi}
           opts={{

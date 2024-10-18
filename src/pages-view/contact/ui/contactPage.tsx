@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export async function ContactPage () {
   return (
     <>
-      <div className="max-w-[1200px] m-auto py-16">
+      <div className="max-w-[1200px] m-auto py-16 px-4">
         <div className="flex justify-between w-full mb-8">
           <h1 className="text-4xl">Контакти</h1>
           <Socials />

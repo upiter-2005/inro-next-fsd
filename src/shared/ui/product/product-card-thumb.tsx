@@ -6,9 +6,7 @@ interface IProductCardThumb {
 }
 
 export const ProductCardThumb:React.FC<IProductCardThumb> = ({image, alt}) => {
-
   return (
-
-    <Image src={image} width={450} height={380} style={{ width: '100%', height: '380px', borderRadius: '2px', objectFit: 'cover' }} alt={alt} />
+    <Image src={image} width={450} height={380} className="h-[165px] md:h-[300px] rounded-[2px] object-cover"  alt={alt} />
   )
 }

@@ -5,18 +5,21 @@ import {WP_API} from "@/shared/api/connectWpApi"
 import { cookies } from 'next/headers'
 import axios from "axios"
 import { encrypt, getSession, logout } from '@/shared/helpers/auth'
-import { useUserStore } from '@/features/loginUser/model/actions'
+import {api as WC_API} from "@/shared/api/connectWcApi"
 
 
-export async function makeOrder(data: TCheckoutFields){
-
+export async function makeOrder(data: any){
+  console.log(data);
   try {
-    // ...
+    const response = await WC_API.post("orders", data)
+    console.log(response);
+    revalidatePath('/checkout')
+    return { message: response.statusText}
   } catch (error) {
-    // ...
+   console.log(error);
   }
   return {message: data}
-  revalidatePath('/checkout')
+
 
 }
 
@@ -39,7 +42,6 @@ export async function registerUser (body: any) {
     revalidatePath('/register')
     //return{ response}
     } catch (error: any) {
-      console.log('Error [CREATE_USER]', error);
       return {message: error.message};
     }
 }
@@ -77,7 +79,6 @@ export async function logOut (){
 }
 
 export async function updateUser(body: any){
-  console.log(body);
 
   const data = {
     acf: {
@@ -89,7 +90,6 @@ export async function updateUser(body: any){
     }
   }
 
-
   try {
     const session = await getSession()
      const token = session.token
@@ -99,6 +99,7 @@ export async function updateUser(body: any){
         {headers: {Authorization: `Bearer ${token}`}}
       )
       console.log(user)
+      revalidatePath("/account")
       return {
         message: "Succses",
         data: user.data,
@@ -109,4 +110,41 @@ export async function updateUser(body: any){
     }
   }
 
+}
+
+export async function sendRecoveryMessage (body: any) {
+  const email = body.email
+  try {
+    const response = await axios.post(`${process.env.NEXT_API_HOST}/wp-json/bdpwr/v1/reset-password`, {email})
+    console.log(response)
+    return {
+      message: "Succses",
+      data: response.data,
+    }
+  } catch (error) {
+    return {
+      message: error
+    }
+  }
+}
+
+
+export async function resetPassword (body: any) {
+  const data = {
+    email: body.email,
+    password: body.password,
+    code: body.code
+  }
+  try {
+    const response = await axios.post(`${process.env.NEXT_API_HOST}/wp-json/bdpwr/v1/set-password`, data)
+    console.log(response)
+    return {
+      message: "Succses",
+      data: response.data,
+    }
+  } catch (error) {
+    return {
+      message: error
+    }
+  }
 }

@@ -4,6 +4,7 @@ import { ProductCard } from "@/entities/catalogCard"
 import { IProduct } from "@/entities/product/model/types";
 import { cn } from "@/shared/helpers/cn"
 import { Suspense } from "react";
+import { KeepLine } from "@/widgets/keepLine";
 
 
 export interface ICatalogWidgetProps {
@@ -36,7 +37,7 @@ export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items,
           />
         ))}
       </div>
-
+      <KeepLine />
     </>
 
   )

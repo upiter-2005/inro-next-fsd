@@ -13,11 +13,25 @@ export const defaulFieldsSchema = z.object({
   email: z.string().email({ message: 'Введите корректную почту' }),
 
 })
+
 export const loginFieldsSchema = z.object({
   login: z.string().min(3, {message: "Занадто коротке ім'я"}),
   password: passwordSchema
 
 })
+
+export const recoverySchema = z.object({
+  email: z.string().email({ message: 'Введите корректную почту' }),
+})
+
+export const confirmRecoverySchema = z.object({
+    code: z.string(),
+    password: passwordSchema,
+    confirmPassword: passwordSchema,
+}).refine((data) => data.password === data.confirmPassword, {
+  message: 'Паролі не співпадають',
+  path: ['confirmPassword'],
+});
 
 export const updateFieldsSchema = defaulFieldsSchema
 .merge(
@@ -74,4 +88,6 @@ export const checkoutFieldsSchema = defaulFieldsSchema
   export type TFormRegisterSchema = z.infer<typeof formRegisterSchema>
   export type TLoginFieldsSchema = z.infer<typeof loginFieldsSchema>
   export type TUpdateFieldsSchema = z.infer<typeof updateFieldsSchema>
+  export type TRecoverySchema = z.infer<typeof recoverySchema>
+  export type TConfirmRecoverySchema = z.infer<typeof confirmRecoverySchema>
 

@@ -14,11 +14,11 @@ export const SingleProduct:React.FC<ISingleProduct> = ({product, className}) => 
 
   if(product){
     return (<>
-      <div className={cn(className, 'flex justify-between gap-9 max-w-[1200px] mx-auto my-6')}>
-        <div className="w-[680px]">
+      <div className={cn(className, 'flex flex-col md:flex-row justify-between gap-9 max-w-[1200px] mx-auto my-6 px-5')}>
+        <div className="w-full md:w-[680px]">
           <ProductGallery images={product.images} alt={product.name} />
         </div>
-        <div className="w-[486px] ">
+        <div className="w-full md:w-[486px] ">
           <SingleProductData
             product={product}
             addCartAction={<AddToCartButton product={product}  className="w-[225px] flex-1" />}

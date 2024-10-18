@@ -42,6 +42,7 @@ export const WidgetUserData:React.FC<IWidgetUserData> = ({className, user}) => {
       console.log(response);
       if(response.message === 'Succses'){
         setUser({
+          id: response.data.id,
           email: response.data.email,
           acf: {
             first_name: response.data.acf.first_name,

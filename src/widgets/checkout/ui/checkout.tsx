@@ -13,6 +13,11 @@ import {useForm, FormProvider} from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { makeOrder } from "@/app/actions"
 import { useFormStatus } from "react-dom"
+import { useUserStore } from "@/features/loginUser/model/actions"
+import { ICartItem } from "@/entities/cartItem/model/types"
+import toast from "react-hot-toast"
+import { createMessage } from "../helpers/createMessage"
+import { checkoutProducts } from "../helpers/checkoutProducts"
 
 export interface ICheckout {
   className?: string
@@ -21,6 +26,7 @@ export interface ICheckout {
 export const Checkout: React.FC<ICheckout> = ({ className }) => {
 
   const { cartItems } = useCartStore()
+  const {user} = useUserStore()
   const [empty, setEmpty] = useState<boolean>(false)
   const { pending } = useFormStatus()
 
@@ -48,15 +54,68 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
   )
 
   const onSubmit = async(data: TCheckoutFields) => {
-    console.log(data);
-    await makeOrder(data)
+    const productsArr: any = checkoutProducts(cartItems)
+    let message = createMessage(data)
 
+    const dataOrder = {
+      payment_method: "usd",
+      payment_method_title: data.payment,
+      set_paid: true,
+      billing: {
+        first_name: data.first_name,
+        last_name: data.last_name,
+        address_1: "",
+        address_2: "",
+        city: "",
+        state: "",
+        postcode: "--------",
+        country: "",
+        email: data.email,
+        phone: data.tel,
+
+      },
+      customer_id: user.id || 0,
+      customer_note: message,
+      shipping: {
+          first_name: "",
+          last_name: "",
+          address_1: "",
+          address_2: "",
+          city: "",
+          state: "",
+          postcode: "",
+          country: "",
+      },
+      line_items: productsArr,
+      shipping_lines: [
+        {
+          method_id: "flat_rate",
+          method_title: "Flat Rate",
+          total: "0"
+        }
+      ],
+      // meta_data: [
+      //   {promo: promoVal}
+      // ],
+      // coupon_lines: [
+      //     {code: promoVal}
+      // ]
+
+  };
+
+
+    const response = await makeOrder(dataOrder)
+    if(response.message === "Created"){
+      toast.success("Ваше замовлення прийнято!", {icon: '✅'})
+    }else{
+      toast.error("Упс! Щось трапилось..... повторіть пізніше", {icon: '❌'})
+    }
   }
 
   return (
     <div className={cn('flex max-w-[792px] w-full bg-[#fdfbf5] border border-solid border-[#E4E4E4] rounded-[8px]', className)}>
       <FormProvider {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} id="checkout-form" className={`w-max-[630px] w-full  ${(!empty || pending) && 'pointer-events-none opacity-60'}` }>
+        <form onSubmit={form.handleSubmit(onSubmit)} id="checkout-form" className={`w-max-[630px] w-full ${(!empty || pending) && 'pointer-events-none opacity-60'}` }>
           <PersonData />
           <CongratulationWords />
           <Payment />

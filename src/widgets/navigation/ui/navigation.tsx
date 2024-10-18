@@ -11,7 +11,7 @@ interface INavigation {
 export const Navigation:React.FC<INavigation> = ({className}) => {
   return (
     <div className={cn('max-w-[1200px] w-full none hidden md:block', className)}>
-    <NavigationMenu.Root className="relative z-[1] flex w-screen justify-center py-2 items-center">
+    <NavigationMenu.Root className="relative z-[1] flex w-screen justify-center pt-2 items-center">
       <NavigationMenu.List className=" w-full m-0 flex items-center list-none gap-[50px]  border-t-[#E4E4E4] border-t-[1px] border-b-[#E4E4E4] border-b-[1px]">
       <NavigationMenu.Item >
           <NavigationMenu.Link

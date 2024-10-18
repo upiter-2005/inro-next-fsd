@@ -29,7 +29,7 @@ export const SingleProductData:React.FC<ISingleProductData> = ({className, produ
   const {items: categories} = useGetCategories(product.categories)
   return <div className={cn(className, 'flex flex-col gap-6 font-light')}>
 
-      <h1 className="font-light text-[36px] leading-9">{product.name}</h1>
+      <h1 className="font-light text-xl md:text-4xl md:leading-9">{product.name}</h1>
       <div className="flex gap-[10px]">
         <ProductCategoryTags categories={categories} />
       </div>

@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 export async function CheckoutPage() {
   return (
     <>
-      <div className="flex items-start gap-6 max-w-[1200px] m-auto py-16">
+      <div className="flex items-start flex-col md:flex-row gap-6 max-w-[1200px] m-auto py-16">
         <Checkout />
-        <CheckoutCart className="max-w-[384px] sticky top-0 " />
+        <CheckoutCart className="w-full md:max-w-[384px] sticky top-0 " />
       </div>
       <CarouselInro title="Доповніть замовлення" advanceCard={true} />
     </>

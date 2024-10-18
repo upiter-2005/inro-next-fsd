@@ -30,12 +30,12 @@ export const International:React.FC<IInternational> = ({className}) => {
   return(
     <div className={cn('', className)}>
 
-      <div className="flex items-center justify-between gap-6 max-w-[630px] w-full">
+      <div className="flex items-center justify-between flex-col md:flex-row gap-6 md:max-w-[630px] w-full">
         <Input type='text' placeholder="Країна" name="in_country"/>
         <Input type='text' placeholder="Населений пункт" name="in_city" />
       </div>
 
-      <div className="flex items-center justify-between gap-6 max-w-[630px] w-full">
+      <div className="flex items-center justify-between flex-col md:flex-row gap-6 md:max-w-[630px] w-full">
         <Input type='text' placeholder="Адреса" name="in_adress"/>
         <Input type='text' placeholder="ZIP-code" name="in_zip" />
       </div>

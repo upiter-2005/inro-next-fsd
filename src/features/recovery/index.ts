@@ -1,0 +1,1 @@
+export {RecoveryPassword} from "@/features/recovery/ui/recoveryPassword"

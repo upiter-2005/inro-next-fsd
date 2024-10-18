@@ -1,0 +1,1 @@
+export {Recover as RecoverPage } from './ui/recover';

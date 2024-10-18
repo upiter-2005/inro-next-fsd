@@ -15,8 +15,9 @@ export const KeepLine: React.FC<IKeepLine> = ({ className }) => {
 
 
   return (
-    <div className="max-w-[1200px] w-full flex justify-between m-auto rounded-[8px] overflow-hidden border border-black my-40">
-      <div className="w-1/2 pt-24 px-[106px]">
+    <div className="max-w-[1200px] w-full flex flex-col md:flex-row justify-between m-auto rounded-[8px] overflow-hidden border border-black md:my-40">
+
+      <div className="py-[60px] md:w-1/2 md:pt-24 px-6 md:px-[106px]">
         <p className="text-[34px] font-thin text-center">Залишайся на зв&apos;язку</p>
         <div className="text-sm py-4 text-center font-thin leading-[20px]">Приєднуйтеся до нашої спільноти та отримайте <span className="font-bold">-10%</span>  знижки на першу покупку</div>
         <form action="">
@@ -25,7 +26,7 @@ export const KeepLine: React.FC<IKeepLine> = ({ className }) => {
         </form>
       </div>
 
-      <div className="w-1/2 pt-24 pb-20 px-[106px] bg-mramor text-white text-center">
+      <div className="py-[60px] md:w-1/2 md:pt-24 md:pb-20 px-6 md:px-[106px] bg-mramor text-white text-center">
         <p className="text-[34px] font-thin text-center">Потрібна допомога</p>
           <div className="text-sm py-4 text-center font-thin leading-[20px]">Ми завжди поруч, щоб забезпечити вам найкращий сервіс і вирішити всі ваші потреби.</div>
           <Link href="tel:+38 099 200 00 11" className="text-sm py-4 text-center font-thin leading-[20px]">+38 099 200 00 11</Link>

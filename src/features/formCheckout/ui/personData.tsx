@@ -47,12 +47,12 @@ export const PersonData:React.FC<IPersonData> = ({className}) => {
         <label htmlFor="notMe" className="cursor-pointer text-sm">Отримувач не я</label>
         </div>
 
-        <div className="flex items-center justify-between gap-6 max-w-[630px] w-full">
+        <div className="flex items-center justify-between flex-col md:flex-row gap-6 md:max-w-[630px] w-full">
           <Input type='text' name="first_name" placeholder="Ім’я" />
           <Input type='text' name="last_name" placeholder="Прізвище" />
 
         </div>
-        <div className="flex items-center justify-between gap-6 max-w-[630px] w-full">
+        <div className="flex items-center justify-between flex-col md:flex-row gap-6 md:max-w-[630px] w-full">
           <Input type='tel' name="tel" placeholder="38 073 1234567" />
           <Input type='email' name="email" placeholder="E-mail" />
         </div>

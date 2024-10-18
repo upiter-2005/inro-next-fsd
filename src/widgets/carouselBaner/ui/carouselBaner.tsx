@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 import { cn } from "@/shared/helpers"
+import { useWindowDimensions } from "@/shared/hooks/useWindowDemensions"
 import {
   Carousel,
   CarouselContent,
@@ -17,6 +18,7 @@ interface ICarouselBanerInro {
 export const CarouselBanerInro:React.FC<ICarouselBanerInro> = ({className}) => {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState<number>(0)
+  const{isMobile} = useWindowDimensions()
   useEffect(() => {
 
     if (!api) {return}
@@ -44,8 +46,11 @@ export const CarouselBanerInro:React.FC<ICarouselBanerInro> = ({className}) => {
           <CarouselItem><img src="/baner.jpeg" className="h-[713px] w-full object-cover" alt="Inro"/></CarouselItem>
         </CarouselContent>
 
-        <CarouselPrevious className="right-2/4 top-2/4  -translate-x-[500px] border-white bg-transparent" />
-        <CarouselNext className="left-2/4 top-2/4  translate-x-[500px] border-white bg-transparent" />
+        {!isMobile && <>
+          <CarouselPrevious className="!right-2/4 top-2/4  -translate-x-[500px] border-white bg-transparent" />
+          <CarouselNext className="left-2/4 top-2/4  translate-x-[500px] border-white bg-transparent" />
+        </>}
+
 
         <div className="flex absolute w-full justify-center items-center bottom-11 gap-3">
         {Array.from({ length: 3 }).map((_, index) =>

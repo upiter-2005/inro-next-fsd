@@ -7,6 +7,6 @@ interface IProductCardName {
 
 export const ProductCardName:React.FC<IProductCardName> = ({name, productId}) => {
   return (
-    <Link href={`/product/${productId}`} className="leading-5 font-light flex-1 pr-5">{name}</Link>
+    <Link href={`/product/${productId}`} className="leading-5 font-light flex-1 md:pr-5 text-sm md:text-[16px]">{name}</Link>
   )
 }

@@ -9,9 +9,9 @@ interface IShopList {
 
 export const ShopList:React.FC<IShopList> = ({description}) => {
   return (
-    <div className="flex justify-between w-full">
+    <div className="flex flex-wrap justify-between w-full">
 
-    <div className="max-w-[384px] rounded-[8px] bg-white overflow-hidden">
+    <div className="md:max-w-[384px] rounded-[8px] bg-white overflow-hidden">
       <div className="w-full h-[269px] overflow-hidden">
         <Image src={img} className="object-cover" alt="Inro"/>
       </div>
@@ -24,7 +24,7 @@ export const ShopList:React.FC<IShopList> = ({description}) => {
       </div>
     </div>
 
-    <div className="max-w-[384px] rounded-[8px] bg-white overflow-hidden">
+    <div className="md:max-w-[384px] rounded-[8px] bg-white overflow-hidden">
       <div className="w-full h-[269px] overflow-hidden">
         <Image src={img} className="object-cover" alt="Inro"/>
       </div>
@@ -37,7 +37,7 @@ export const ShopList:React.FC<IShopList> = ({description}) => {
       </div>
     </div>
 
-    <div className="max-w-[384px] rounded-[8px] bg-white overflow-hidden">
+    <div className="md:max-w-[384px] rounded-[8px] bg-white overflow-hidden">
       <div className="w-full h-[269px] overflow-hidden">
         <Image src={img} className="object-cover" alt="Inro"/>
       </div>

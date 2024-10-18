@@ -51,7 +51,7 @@ export const NovaPoshta:React.FC<INovaPoshta> = ({className}) => {
         </RadioGroup>
       </div>
 
-       <div className="flex items-center justify-between gap-6 max-w-[630px] w-full">
+       <div className="flex items-center justify-between flex-col md:flex-row gap-6 md:max-w-[630px] w-full">
         <Input type='text' placeholder="Місто" name="np_city" />
         <Input type='text' placeholder="Відділення" name="np_department" />
       </div>

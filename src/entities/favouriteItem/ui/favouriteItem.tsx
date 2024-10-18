@@ -20,7 +20,7 @@ export const FavouriteItem:React.FC<IFavouriteItem> = ({className, id, name, ima
 
         <div>
           <p className="overflow-hidden relative whitespace-nowrap flex-1 after:content-[''] after:absolute after:block after:w-[45px] after:h-full
-          after:top-0 after:right-0 after:bg-gradient-to-r from-[#FCF9EE00] to-[#FCF9EE] ">{name}</p>
+          after:top-0 after:right-0 after:bg-gradient-to-r from-[#FCF9EE00] to-[#FCF9EE] mb-0">{name}</p>
           <div className="text-sm font-bold">₴ {price}</div>
         </div>
         {deleteFromFavourite}
