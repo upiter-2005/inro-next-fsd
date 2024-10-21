@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgb(252, 249, 238);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #111;
+        }
+        a{text-decoration: none;}
+        .header {
+            padding: 24px 16px;
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #131313;
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .content {
+             padding: 24px 16px;
+            margin-bottom: 30px;
+        }
+
+        .content p {
+            margin: 0 0 10px;
+            line-height: 1.5;
+        }
+        .myAccount{
+            padding: 18px 24px;
+            font-weight: bold;
+            color: #fff!important;
+            background-color: #131313;
+            display: block;
+            max-width: 210px;
+            border-radius: 6px;
+            margin: 24px auto;
+            text-align: center;
+        }
+        .footer {
+            padding: 24px 16px;
+            text-align: center;
+            background-color: #131313;
+        }
+
+        .footer p {
+            color: #fff;
+            font-size: 14px;
+            margin: 0;
+        }
+        .footer a{
+            color: #fff;
+            font-weight: bold;
+        }
+        .list{
+           list-style-type: none;
+           padding: 0;
+           margin: 24px auto;
+        }
+        .list a{display: block; text-decoration: underline; padding: 4px;}
+        .socials{
+            text-align: center;
+
+        }
+        .socials a{
+            display: inline-block;
+            margin: 0 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://www.inro.com.ua/wp-content/uploads/2020/11/footer-logo.png" width="180px" alt="Inro">
+            <h1>Привіт, {{username}}!</h1>
+        </div>
+
+
+        <div class="content">
+            <p>Дякуємо, що приєдналися до нашої спільноти на сайті INRO. </p>
+            <p>Відтепер ви маєте доступ до особистого кабінету, де можна:</p>
+            <ul>
+                <li>Переглядати та відстежувати свої замовлення;</li>
+                <li>Керувати особистими даними та налаштуваннями доступу;</li>
+                <li>Створювати нові замовлення та користуватися додатковими функціями.</li>
+            </ul>
+            <p>Раді вас бачити серед наших клієнтів! </p>
+            <a href="https://inro.com.ua/account" class="myAccount">Мій кабінет</a>
+        </div>
+
+
+        <div class="footer">
+            <p>Якщо у вас виникнуть питання, ми завжди поруч. </p>
+            <ul class="list">
+                <li><a href="https://inro.com.ua/contact">Контакти</a></li>
+                <li><a href="#">Обмін та повернення</a></li>
+                <li><a href="https://inro.com.ua/horeca">Для бізнесу </a></li>
+                <li><a href="https://inro.com.ua/account">Вхід в кабінет</a></li>
+            </ul>
+           <div class="socials">
+                <a href="https://www.facebook.com/inro.ua" target="_blank" >
+                    <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/facebook-app-round-white-icon.png" width="32px" alt="Inro facebook">
+                </a>
+                <a href="https://www.instagram.com/inro.ua/" target="_blank">
+                    <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/instagram-white-icon.png" width="32px" alt="Inro Instagram">
+                </a>
+                <a href="https://t.me/inro_ua" target="_blank">
+                    <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/telegram-white-icon.png" width="32px"  alt="Inro Telegram">
+                </a>
+           </div>
+        </div>
+
+
+    </div>
+</body>
+</html>
+
+

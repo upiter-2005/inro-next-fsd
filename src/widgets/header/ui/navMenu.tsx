@@ -14,6 +14,8 @@ import { categoriesObj } from "@/shared/constants/categories"
 import { NavMenuItem } from "./NavMenuItem"
 import Link from "next/link"
 import { useState } from "react"
+import { Socials } from "@/shared/ui/socials"
+import { SocialsMini } from "@/shared/ui/socialsMini"
 
 interface INavMenu {
   className?: string
@@ -31,9 +33,12 @@ export const NavMenu:React.FC<INavMenu> = ({className}) => {
         </SheetTrigger>
         <SheetContent side="left" className='w-[281px] overflow-auto px-6 py-16 bg-[#fcf9ee]'>
          {categoriesObj.map((el, i) => <NavMenuItem key={`${el.slug}${i}`} cat={el} closeMnu={()=>setIsOpen(false)} /> )}
-         <div className="py-1"><Link  href={`/about`} className="py-1" onClick={()=>setIsOpen(false)}>Про нас</Link></div>
-         <div className="py-1"><Link  href={`/contact`} className="py-1" onClick={()=>setIsOpen(false)}>Контакти</Link></div>
+         <div className="py-3 font-medium"><Link  href={`/about`} className="" onClick={()=>setIsOpen(false)}>Про бренд</Link></div>
+         <div className="py-3 font-medium"><Link  href={`/horeca`} className="" onClick={()=>setIsOpen(false)}>Horeca</Link></div>
+         <div className="py-3 font-medium"><Link  href={`/login`} className="" onClick={()=>setIsOpen(false)}>Вхід в кабінет</Link></div>
+         <div className="py-3 font-medium"><Link  href={`/contact`} className="" onClick={()=>setIsOpen(false)}>Контакти</Link></div>
 
+        <SocialsMini className="mt-10" />
         </SheetContent>
 
       </Sheet>

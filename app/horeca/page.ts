@@ -1,0 +1,1 @@
+export {HorecaPage as default} from "@/pages-view/horeca"

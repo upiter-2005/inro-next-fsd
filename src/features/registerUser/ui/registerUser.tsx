@@ -38,6 +38,11 @@ export const RegisterUser = () => {
     })
   }
 
+  const emailTest = () => {
+    console.log("Test email");
+    console.log('__dirname:', __dirname)
+  }
+
   return (
     <div className={`w-full md:w-auto md:min-w-[486px] bg-white px-6 py-14 md:px-14 border-1 border-solid border-[#E4E4E4] rounded-[8px] mt-[77px] mb-[120px]` }>
       <FormProvider {...form}>
@@ -50,8 +55,11 @@ export const RegisterUser = () => {
           <Input type='password' placeholder="Пароль" name="password" />
           <Input type='password' placeholder="Підтвердіть пароль" name="confirmPassword" />
           <Button type="submit" disabled={isPending} className="w-full flex justify-center bg-[#111] text-center text-white text-sm  p-3 rounded-sm hover:bg-[#111] hover:text-white transition-all hover:opacity-70 leading-4">{isPending ? <Image src={loader} width={55} height={55} alt="loader" /> : "Створити акаунт"}</Button>
+
           <Link href="/login" className=" block text-center mx-auto pt-5 text-sm font-semibold">Увійти</Link>
         </form>
+
+        <Button onClick={emailTest} disabled={isPending} className="w-full flex justify-center bg-[#111] text-center text-white text-sm  p-3 rounded-sm hover:bg-[#111] hover:text-white transition-all hover:opacity-70 leading-4">{isPending ? <Image src={loader} width={55} height={55} alt="loader" /> : "Test email"}</Button>
       </FormProvider>
     </div>
 

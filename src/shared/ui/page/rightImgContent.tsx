@@ -21,8 +21,8 @@ export const RightImgContent:React.FC<IRightImgContent> = ({className, img, titl
           <div className="flex flex-col gap-6">{children}</div>
         </div>
 
-        <div className="max-w-[588px] max-h-[588px] w-full overflow-hidden rounded-[8px]">
-          <Image src={img} style={imageStyle} alt="Inro"/>
+        <div className="relative md:w-[588px] md:h-[588px] w-full h-[335px]  overflow-hidden rounded-[8px] order-2 md:order-1">
+          <Image src={img} fill style={{objectFit: 'cover'}} alt="Inro"/>
         </div>
     </div>
   )

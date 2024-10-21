@@ -8,6 +8,10 @@ import { encrypt, getSession, logout } from '@/shared/helpers/auth'
 import {api as WC_API} from "@/shared/api/connectWcApi"
 
 
+import {transporter} from "@/shared/api/mailer/connect"
+import handlebars from 'handlebars'
+import fs from 'fs'
+
 export async function makeOrder(data: any){
   console.log(data);
   try {
@@ -40,6 +44,24 @@ export async function registerUser (body: any) {
     })
 
     revalidatePath('/register')
+
+  const source = fs.readFileSync('./public/afterRegister.html', 'utf-8').toString()
+  const template = handlebars.compile(source)
+  const replacements = {
+    username: body.first_name,
+  }
+
+  const htmlToSend = template(replacements)
+
+
+    const info = await transporter.sendMail({
+      from: 'Inro <inroaroma@gmail.com>',
+      to: body.email,
+      subject: 'Ваш особистий кабінет створено!',
+      html: htmlToSend
+    })
+
+
     //return{ response}
     } catch (error: any) {
       return {message: error.message};
@@ -74,12 +96,10 @@ export async function authUser (body: any) {
 export async function logOut (){
  await logout()
  revalidatePath('/account')
-
  return {message: "success"}
 }
 
 export async function updateUser(body: any){
-
   const data = {
     acf: {
       first_name: body.first_name,
@@ -109,7 +129,6 @@ export async function updateUser(body: any){
       message: error.response.data
     }
   }
-
 }
 
 export async function sendRecoveryMessage (body: any) {

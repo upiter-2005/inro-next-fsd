@@ -2,7 +2,7 @@ import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-const secretKey = "2w*edRf34N*7"
+const secretKey = "irI(7798jjE1N7AZ~"
 const key = new TextEncoder().encode(secretKey)
 
 export async function encrypt(payload: any) {
