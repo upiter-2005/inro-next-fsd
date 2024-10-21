@@ -16,6 +16,6 @@ export async function CatalogPage({searchParams}: {searchParams: ISearchParamsTy
   const products = await findProduct(searchParams)
 
   return <>
-    <CatalogWidget items={products} type='catalog'  />
+    <CatalogWidget items={products} type='catalog' catName="Каталог"  />
     </>;
 }

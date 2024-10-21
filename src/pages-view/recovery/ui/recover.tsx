@@ -7,32 +7,22 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/shared/ui/breadcrumb"
+import { BreadcrumbsInro } from "@/shared/ui/breadcrumbsInro";
 import { AuthWidget } from "@/widgets/auth";
 import { redirect } from "next/navigation";
 
 
 export async function Recover() {
 
-  const encryptedSessionData = await getSession()
-  {!encryptedSessionData && redirect('/login')}
+  // const encryptedSessionData = await getSession()
+  // {!encryptedSessionData && redirect('/login')}
 
   return (
     <main className="flex flex-col items-center justify-between">
-      <div>
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Головна</BreadcrumbLink>
-            </BreadcrumbItem>
-
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Змінити пароль</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-
-      </div>
+       <BreadcrumbsInro
+          pathsObject={{name:"Обліковий кабінет", link: "/account"}}
+          current="Змінити пароль"
+        />
 
      <AuthWidget type="recover" />
     </main>

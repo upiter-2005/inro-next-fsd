@@ -24,7 +24,7 @@ export const AddToFavourite:React.FC<IAddToFavouriteProps> = ({className, produc
 
 
   return <div
-  className={cn(className, 'rounded border-[#111] border-[1px] flex items-center justify-center cursor-pointer', {"bg-[#111]": active})}
+  className={cn( 'rounded border-[#111] border-[1px] flex items-center justify-center cursor-pointer', {"bg-[#111]": active}, className)}
   onClick={() => handleFavouriteItem({
     id: product.id,
     name : product.name,

@@ -9,6 +9,7 @@ import { LeftImgContent } from "@/shared/ui/page/leftImgContent"
 import { RightImgContent } from "@/shared/ui/page/rightImgContent"
 import { ShopList } from "@/shared/ui/page/shopList"
 import { Gem, Leaf, Shield, Sparkle } from "lucide-react"
+import { BreadcrumbsInro } from "@/shared/ui/breadcrumbsInro"
 
 export const metadata: Metadata = {
   title: "Inro - Контакти",
@@ -18,6 +19,10 @@ export const metadata: Metadata = {
 export async function AboutPage () {
   return (
     <>
+    <BreadcrumbsInro
+      current="Про бренд"
+    />
+
       <div className="max-w-[1200px] m-auto py-16 px-4">
         <RightImgContent
           title="INRO – маленька деталь, яка може розповісти багато про що…"

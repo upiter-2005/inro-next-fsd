@@ -1,12 +1,5 @@
 import { getSession } from "@/shared/helpers/auth";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/shared/ui/breadcrumb"
+import { BreadcrumbsInro } from "@/shared/ui/breadcrumbsInro";
 import { AuthWidget } from "@/widgets/auth";
 import { redirect } from "next/navigation";
 
@@ -18,21 +11,12 @@ export async function Login() {
 
   return (
     <main className="flex flex-col items-center justify-between">
-      <div>
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Головна</BreadcrumbLink>
-            </BreadcrumbItem>
 
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Увійти в кабінет</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+        <BreadcrumbsInro
+          current="Увійти в кабінет"
+        />
 
-      </div>
+
 
      <AuthWidget type="login" />
     </main>

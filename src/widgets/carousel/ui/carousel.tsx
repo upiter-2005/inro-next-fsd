@@ -39,7 +39,7 @@ export const CarouselInro:React.FC<ICarousel> = ({className, title, advanceCard}
         <CarouselContent>
           {data?.map((obj, i) => (
             <CarouselItem key={i} className="basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <ProductCard  product={obj} advanceCard={true} className="w-[186px]" />
+              <ProductCard  product={obj} advanceCard={true} className="" />
             </CarouselItem>
           ))}
         </CarouselContent>

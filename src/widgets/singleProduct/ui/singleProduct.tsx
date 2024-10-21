@@ -5,6 +5,7 @@ import { cn } from "@/shared/helpers"
 import { AddToCartButton } from "@/features/cart"
 import { AddToFavourite } from "@/features/addToFavourite"
 import { CarouselInro } from "@/widgets/carousel"
+import { BreadcrumbsInro } from "@/shared/ui/breadcrumbsInro"
 
 interface ISingleProduct {
   product: IProduct,
@@ -14,6 +15,10 @@ export const SingleProduct:React.FC<ISingleProduct> = ({product, className}) => 
 
   if(product){
     return (<>
+        <BreadcrumbsInro
+          pathsObject={{name:"Каталог", link: "/catalog"}}
+          current={product.name}
+        />
       <div className={cn(className, 'flex flex-col md:flex-row justify-between gap-9 max-w-[1200px] mx-auto my-6 px-5')}>
         <div className="w-full md:w-[680px]">
           <ProductGallery images={product.images} alt={product.name} />

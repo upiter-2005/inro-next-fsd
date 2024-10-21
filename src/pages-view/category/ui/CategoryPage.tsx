@@ -13,22 +13,23 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  
+
   return {
     title: `Inro - ${params.slug}`,
   }
 }
+
 export const dynamic = 'force-dynamic'
 export async function CategoryPage({params, searchParams}: {
   params: {slug: string},
   searchParams: ISearchParamsCategoryTypes
 }) {
 
-  const id = getCategoryId(params.slug) 
-  const products: IProduct[] =  await getProductsByCats(id, searchParams)
+  const {idCat, idName} = getCategoryId(params.slug)
+  const products: IProduct[] =  await getProductsByCats(idCat, searchParams)
 
   if(!products.length) return (<h2>Category is empty</h2>)
 
-  return <CatalogWidget items={products} type='category'  />;
-  
+  return <CatalogWidget items={products} type='category' catName={idName}  />;
+
 }

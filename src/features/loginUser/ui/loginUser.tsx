@@ -71,7 +71,11 @@ const toggleShowPassword = () => {
           />
 
           <Button type="submit" disabled={isPending} className="w-full flex justify-center bg-[#111] text-center text-white text-sm p-3 rounded-sm hover:bg-[#111] hover:text-white transition-all hover:opacity-70 leading-4">{isPending ? <Image src={loader} width={55} height={55} alt="loader" /> : "Увійти"}</Button>
-          <Link href="/register" className=" block text-center mx-auto pt-5 text-sm font-semibold">Зареєструватися</Link>
+          <div className="w-full flex justify-between">
+          <Link href="/register" className=" block text-center pt-5 text-sm font-semibold">Створити акаунт</Link>
+          <Link href="/recover" className=" block text-center  pt-5 text-sm font-semibold">Змінити пароль</Link>
+          </div>
+
         </form>
       </FormProvider>
     </div>

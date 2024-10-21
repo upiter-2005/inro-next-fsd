@@ -18,6 +18,7 @@ import { LeftImgContent } from "@/shared/ui/page/leftImgContent"
 import { RightImgContent } from "@/shared/ui/page/rightImgContent"
 import { ShopList } from "@/shared/ui/page/shopList"
 import { Gem, Leaf, Shield, Sparkle } from "lucide-react"
+import { BreadcrumbsInro } from "@/shared/ui/breadcrumbsInro"
 
 export const metadata: Metadata = {
   title: "Inro - Horeca",
@@ -27,6 +28,9 @@ export const metadata: Metadata = {
 export async function HorecaPage () {
   return (
     <>
+     <BreadcrumbsInro
+          current="Horeca"
+        />
       <div className="max-w-[1200px] m-auto py-16 px-4">
         <h1 className="text-4xl mb-20">Пропонуємо сервіс для вашого бізнесу</h1>
 

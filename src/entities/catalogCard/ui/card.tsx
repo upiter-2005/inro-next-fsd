@@ -13,13 +13,14 @@ interface ICardProps {
   className?: string,
   actionSlot?: React.ReactNode,
   product: CardProduct,
-  advanceCard?: boolean
+  advanceCard?: boolean,
+  mobileHideFvourite?: boolean | false
 }
 
-export const Card: React.FC<ICardProps> = ({ className, actionSlot, product, advanceCard }) => {
+export const Card: React.FC<ICardProps> = ({ className, actionSlot, product, advanceCard, mobileHideFvourite }) => {
 
   return (
-    <div className={cn("w-[160px] sm:w-[260px] flex flex-col gap-4  mb-6", className)}>
+    <div className={cn("w-[160px] sm:w-[280px] flex flex-col gap-4  mb-6", className)}>
 
       <ProductCardThumb image={product.images[0].src} alt={product.name} />
       <div className="flex flex-col md:flex-row justify-between md:items-center ">
@@ -30,8 +31,8 @@ export const Card: React.FC<ICardProps> = ({ className, actionSlot, product, adv
       {actionSlot}
       {advanceCard && (
         <div className="flex gap-2">
-          {<AddToCartButton product={product}  className="w-[150px] md:w-[225px]" />}
-          {<AddToFavourite product={product} className="w-[45px] md:w-[55px]" />}
+          {<AddToCartButton product={product}  className="w-full md:w-[225px]" />}
+          {<AddToFavourite product={product} className="w-[45px] md:w-[55px] hidden md:flex " />}
         </div>)
       }
 

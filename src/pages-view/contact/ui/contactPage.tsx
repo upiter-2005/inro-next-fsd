@@ -7,6 +7,7 @@ import img from "@/shared/assets/images/salon.jpeg"
 import { Mail, MapPin, Smartphone } from "lucide-react"
 import Link from "next/link"
 import { ShopList } from "@/shared/ui/page/shopList"
+import { BreadcrumbsInro } from "@/shared/ui/breadcrumbsInro"
 
 export const metadata: Metadata = {
   title: "Inro - Контакти",
@@ -16,6 +17,9 @@ export const metadata: Metadata = {
 export async function ContactPage () {
   return (
     <>
+      <BreadcrumbsInro
+        current="Контакти"
+      />
       <div className="max-w-[1200px] m-auto py-16 px-4">
         <div className="flex justify-between w-full mb-8">
           <h1 className="text-4xl">Контакти</h1>
