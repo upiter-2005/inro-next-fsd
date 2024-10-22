@@ -1,11 +1,3 @@
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/shared/ui/breadcrumb"
 import { BreadcrumbsInro } from "@/shared/ui/breadcrumbsInro";
 import { AuthWidget } from "@/widgets/auth";
 

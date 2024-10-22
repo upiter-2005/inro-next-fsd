@@ -17,7 +17,7 @@ export const getProductsByCats = async(categoryId: number, searchParams:ISearchP
 
       const response = await fetch(`${process.env.NEXT_API_HOST}/wp-json/wc/v3/products/${query}consumer_key=${process.env.NEXT_WC_CUSTOMER_KEY}&consumer_secret=${process.env.NEXT_WC_SECRET}`,
         //{cache: 'no-store'},
-        { next: { revalidate: 5 }}
+        { next: { revalidate: 60 }}
       ).then(res => res.json())
 
   return response

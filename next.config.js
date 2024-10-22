@@ -5,7 +5,7 @@ const nextConfig = {
     remotePatterns : [
       {
         protocol: 'https',
-        hostname: 'www.inro.com.ua'
+        hostname: 'www.api.inro.com.ua'
       },
       ] // <== Domain name
   }

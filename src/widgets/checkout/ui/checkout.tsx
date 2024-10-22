@@ -24,7 +24,7 @@ export interface ICheckout {
 }
 
 export const Checkout: React.FC<ICheckout> = ({ className }) => {
-
+  const [orderId, setOrderId] = useState<string>('')
   const { cartItems } = useCartStore()
   const {user} = useUserStore()
   const [empty, setEmpty] = useState<boolean>(false)
@@ -105,8 +105,10 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
 
 
     const response = await makeOrder(dataOrder)
+    console.log(response)
     if(response.message === "Created"){
       toast.success("Ваше замовлення прийнято!", {icon: '✅'})
+      setOrderId(response.orderId)
     }else{
       toast.error("Упс! Щось трапилось..... повторіть пізніше", {icon: '❌'})
     }
@@ -114,6 +116,7 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
 
   return (
     <div className={cn('flex max-w-[792px] w-full bg-[#fdfbf5] border border-solid border-[#E4E4E4] rounded-[8px]', className)}>
+      {orderId}
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} id="checkout-form" className={`w-max-[630px] w-full ${(!empty || pending) && 'pointer-events-none opacity-60'}` }>
           <PersonData />

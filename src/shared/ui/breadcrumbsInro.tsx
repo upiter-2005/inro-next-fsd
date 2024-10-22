@@ -18,7 +18,7 @@ interface IBreadcrumbsInro {
 }
 export const BreadcrumbsInro:React.FC<IBreadcrumbsInro> = ({pathsObject, current}) => {
   return(
-    <div className="w-full max-w-[1200px] m-auto text-left">
+    <div className="w-full max-w-[1200px] m-auto text-left px-4">
     <Breadcrumb className="py-8">
       <BreadcrumbList>
         <BreadcrumbItem>

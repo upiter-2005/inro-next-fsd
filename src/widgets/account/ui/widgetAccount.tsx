@@ -20,7 +20,7 @@ export const WidgetAccount:React.FC<IWidgetAccount> = ({className}) => {
     clearUser()
   }
 
-const { data, error, isLoading } = useSWR<any[]>(`https://www.inro.com.ua/wp-json/wc/v3/orders?customer=${user.id}&consumer_key=ck_7d0a0a541e4fc91baf8b23e22031cf8502c76b24
+const { data, error, isLoading } = useSWR<any[]>(`https://www.api.inro.com.ua/wp-json/wc/v3/orders?customer=${user.id}&consumer_key=ck_7d0a0a541e4fc91baf8b23e22031cf8502c76b24
   &consumer_secret=cs_84669f4a9e954e566d4817d059786263b9a05ef7`, fetcher)
   console.log(data);
   return (

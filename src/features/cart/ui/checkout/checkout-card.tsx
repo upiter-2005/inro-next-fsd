@@ -4,6 +4,7 @@ import { useCartStore } from "../../model/cartSlice"
 import Link from "next/link"
 import { CheckoutCartList } from "./checkout-cart-list"
 import { Button } from "@/shared/ui/button"
+import { LiqPayPay } from "@/shared/ui/form/liqpay"
 
 interface ICheckoutCart {
   className?: string
@@ -29,6 +30,15 @@ export const CheckoutCart: React.FC<ICheckoutCart> = ({ className }) => {
               <div className="font-bold text-white">₴ 57</div>
             </div>
             <Button type="submit" form="checkout-form" className="w-full bg-white text-center text-[#111] text-sm block p-3 rounded-sm hover:bg-white hover:text-[#111] transition-all hover:opacity-70">Оформити замовлення</Button>
+            <LiqPayPay
+              amount="37"
+              title="Inro payment"
+              description="Payment for product"
+              currency="UAH"
+              orderId={Math.floor(1 + Math.random() * 900000000)}
+              disabled={false}
+              className="text-white "
+            />
         </>
 
       )}

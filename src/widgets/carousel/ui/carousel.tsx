@@ -23,7 +23,7 @@ interface ICarousel {
 
 export const CarouselInro:React.FC<ICarousel> = ({className, title, advanceCard}) => {
 
-  const { data, error, isLoading } = useSWR<IProduct[]>(`https://www.inro.com.ua/wp-json/wc/v3/products/?per_page=20&consumer_key=ck_7d0a0a541e4fc91baf8b23e22031cf8502c76b24
+  const { data, error, isLoading } = useSWR<IProduct[]>(`https://www.api.inro.com.ua/wp-json/wc/v3/products/?per_page=20&consumer_key=ck_7d0a0a541e4fc91baf8b23e22031cf8502c76b24
     &consumer_secret=cs_84669f4a9e954e566d4817d059786263b9a05ef7`, fetcher)
   return(
     <div className={cn('w-full flex justify-center items-center flex-col gap-9 max-w-[1200px] mx-auto py-[80px] pl-6', className)}>

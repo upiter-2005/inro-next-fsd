@@ -38,7 +38,7 @@ export const FiltersCheckboxGroup:React.FC<IFiltersCheckboxGroup> = ({
   name,
   attrId
 }) => {
-  const { data, error, isLoading } = useSWR<TermType[]>(`https://www.inro.com.ua/wp-json/wc/v3/products/attributes/${attrId}/terms?consumer_key=ck_7d0a0a541e4fc91baf8b23e22031cf8502c76b24
+  const { data, error, isLoading } = useSWR<TermType[]>(`https://www.api.inro.com.ua/wp-json/wc/v3/products/attributes/${attrId}/terms?consumer_key=ck_7d0a0a541e4fc91baf8b23e22031cf8502c76b24
     &consumer_secret=cs_84669f4a9e954e566d4817d059786263b9a05ef7`, fetcher)
 
 
@@ -51,7 +51,7 @@ export const FiltersCheckboxGroup:React.FC<IFiltersCheckboxGroup> = ({
         <AccordionItem value={`item-${attrId}`} className="border-b-0 ">
           <AccordionTrigger className="py-3">{title}</AccordionTrigger>
           <AccordionContent>
-            
+
             {data?.map((item) => (
               <FiltersCheckbox
                 key={item.id}
