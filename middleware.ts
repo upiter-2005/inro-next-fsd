@@ -7,6 +7,7 @@ export const config = {
   matcher: ['/account']
 }
 export async function middleware(request: NextRequest) {
+  
   console.log('middleware')
   const session =  await updateSession(request)
   if (session) {

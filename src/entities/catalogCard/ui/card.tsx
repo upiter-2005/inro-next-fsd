@@ -22,7 +22,7 @@ export const Card: React.FC<ICardProps> = ({ className, actionSlot, product, adv
   return (
     <div className={cn("w-[160px] sm:w-[280px] flex flex-col gap-4  mb-6", className)}>
 
-      <ProductCardThumb image={product.images[0].src} alt={product.name} />
+      <ProductCardThumb image={product.images[0]?.src} alt={product.name} />
       <div className="flex flex-col md:flex-row justify-between md:items-center ">
         <ProductCardName name={product.name} productId={product.slug} />
         <ProductCardPrice salePrice={product.sale_price} regularPrice={product.price} />

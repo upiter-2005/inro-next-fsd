@@ -15,7 +15,7 @@ export const CheckoutCartItem:React.FC<ICartItem> = ({className, name, image, pr
           <div className="flex-1 max-w-[200px]">
             <p className="text-white overflow-hidden relative whitespace-nowrap flex-1 after:content-[''] after:absolute after:block after:w-[45px] after:h-full
             after:top-0 after:right-0 after:bg-gradient-to-r from-[#22222200] to-[#222222] mb-1" title={name}>{name}</p>
-            <div className="text-sm text-white font-bold">₴ {price}</div>
+            <div className="text-sm text-white font-bold">₴ {price} x {quantity}</div>
           </div>
 
           {actionSlot}

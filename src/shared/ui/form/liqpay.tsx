@@ -33,7 +33,7 @@ export const LiqPayPay:React.FC<ILiqPayPay> = ({
     currency: currency,
     description: description,
     order_id: orderId,
-    result_url: "https://google.com"
+    result_url: process.env.NEXT_PUBLIC_THANK_PAGE
   }
 
   const private_key = process.env.NEXT_PUBLIC_LIQPAY_PRIVATE_TEST

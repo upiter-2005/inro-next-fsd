@@ -10,6 +10,7 @@ interface CartState {
   removeItem: (id: number) => void
   increaseFromCart: (id: number) => void
   decreaseFromCart: (id: number) => void
+  clearCart: () => void
 }
 
 export const useCartStore = create<CartState>()(

@@ -11,12 +11,13 @@ import {transporter} from "@/shared/api/mailer/connect"
 import handlebars from 'handlebars'
 import fs from 'fs'
 
+
 export async function makeOrder(data: any){
   console.log(data);
   try {
     const response = await WC_API.post("orders", data)
     console.log(response.data.id);
-    revalidatePath('/checkout')
+    // revalidatePath('/checkout')
     return { message: response.statusText, orderId: response.data.id}
   } catch (error) {
    console.log(error);

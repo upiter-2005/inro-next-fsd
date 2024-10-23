@@ -12,6 +12,7 @@ import { useState, useTransition } from "react"
 
 import loader from "@/shared/assets/images/loader.svg"
 import { useUserStore } from "@/features/loginUser/model/actions"
+import { redirect } from "next/navigation"
 
 
 export const ConfirmPassword:React.FC = () => {
@@ -40,6 +41,7 @@ export const ConfirmPassword:React.FC = () => {
        if(response.message === 'Succses'){
         toast.success("Пароль успішно змінено", {icon: '✅'})
         await logOut()
+        redirect('/login')
       }else{
         toast.error("Спробуйте знову, щось пішло не так(", {icon: '❌'})
       }

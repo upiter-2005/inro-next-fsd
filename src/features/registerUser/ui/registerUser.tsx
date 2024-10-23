@@ -40,7 +40,6 @@ export const RegisterUser = () => {
 
   const emailTest = () => {
     console.log("Test email");
-    console.log('__dirname:', __dirname)
   }
 
   return (
@@ -59,7 +58,7 @@ export const RegisterUser = () => {
           <Link href="/login" className=" block text-center mx-auto pt-5 text-sm font-semibold">Увійти</Link>
         </form>
 
-        <Button onClick={emailTest} disabled={isPending} className="w-full flex justify-center bg-[#111] text-center text-white text-sm  p-3 rounded-sm hover:bg-[#111] hover:text-white transition-all hover:opacity-70 leading-4">{isPending ? <Image src={loader} width={55} height={55} alt="loader" /> : "Test email"}</Button>
+        {/* <Button onClick={emailTest} disabled={isPending} className="w-full flex justify-center bg-[#111] text-center text-white text-sm  p-3 rounded-sm hover:bg-[#111] hover:text-white transition-all hover:opacity-70 leading-4">{isPending ? <Image src={loader} width={55} height={55} alt="loader" /> : "Test email"}</Button> */}
       </FormProvider>
     </div>
 

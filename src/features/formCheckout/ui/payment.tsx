@@ -5,12 +5,14 @@ import { Subtitle } from "@/shared/ui/form/subtitle"
 import { RadioGroup, RadioGroupItem } from "@/shared/ui/radio-group"
 import { Label } from "@/shared/ui/label"
 import { useFormContext } from "react-hook-form"
+import { useCheckoutStore } from "../model/checkoutSlice"
 
 interface IPayment {
   className?: string
 }
 
 export const Payment:React.FC<IPayment> = ({className}) => {
+  const {setPayment} = useCheckoutStore()
   const {
     register,
     setValue,
@@ -18,6 +20,7 @@ export const Payment:React.FC<IPayment> = ({className}) => {
 
   const handlePayment = (val: string): void => {
     setValue("payment", val, { shouldValidate: true })
+    setPayment(val)
   }
   return(
     <div className={cn('p-8 border-b border-b-solid border-b-[#E4E4E4]', className)}>
@@ -25,10 +28,10 @@ export const Payment:React.FC<IPayment> = ({className}) => {
      <Subtitle text="Спосіб оплати"/>
 
      <div className={cn("flex items-center gap-2 mb-8", className)}>
-        <RadioGroup className='flex flex-col gap-4' defaultValue="Visa/Mastercard" onValueChange={(val)=>handlePayment(val)}>
+        <RadioGroup className='flex flex-col gap-4' defaultValue={"Оплата при отриманні"} onValueChange={(val)=>handlePayment(val)}>
           <div className="flex items-center space-x-2 ">
-            <RadioGroupItem value="Visa/Mastercard" id="pay1" {...register("payment")} />
-            <Label htmlFor="pay1" className="cursor-pointer">Visa/Mastercard</Label>
+            <RadioGroupItem value="Оплата при отриманні" id="pay1" {...register("payment")} />
+            <Label htmlFor="pay1" className="cursor-pointer">Оплата при отриманні</Label>
           </div>
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="LiqPay Моментальні платежі по всьому світу" id="pay2" {...register("payment")}   />

@@ -22,7 +22,7 @@ export const Header:React.FC<IHeaderProps> = ({className}) => {
      <NavMenu />
       <div className="w-20"><Link href='/'><Image src={logo} alt="Inro" style={{width: '100%'}} quality={100}></Image></Link></div>
       <div className="flex justify-between gap-4 items-center">
-        <HeaderLogin />
+        {/* <HeaderLogin /> */}
         <Search />
         <Cart />
       </div>

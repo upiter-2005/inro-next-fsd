@@ -2890,6 +2890,11 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.npmjs.org/lines-and-columns/-/lines-and-columns-1.2.4.tgz"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
+liqpay@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/liqpay/-/liqpay-0.0.1.tgz#30bd632ba4118d81aef290afe3c708d3cb4bb527"
+  integrity sha512-VYBCDXFJIS2FUJcha4OKfBPHzlKlBuOsuQowQrZ2RNAmDV6Jh8LWbWS/8o40005yONb2u5hFjqQEYO61avARfw==
+
 locate-path@^6.0.0:
   version "6.0.0"
   resolved "https://registry.npmjs.org/locate-path/-/locate-path-6.0.0.tgz"

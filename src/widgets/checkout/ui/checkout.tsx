@@ -18,17 +18,21 @@ import { ICartItem } from "@/entities/cartItem/model/types"
 import toast from "react-hot-toast"
 import { createMessage } from "../helpers/createMessage"
 import { checkoutProducts } from "../helpers/checkoutProducts"
+import { useCheckoutStore } from "@/features/formCheckout/model/checkoutSlice"
+import { LiqPayPay } from "@/shared/ui/form/liqpay"
+import { useRouter } from 'next/navigation'
 
 export interface ICheckout {
   className?: string
 }
 
 export const Checkout: React.FC<ICheckout> = ({ className }) => {
-  const [orderId, setOrderId] = useState<string>('')
-  const { cartItems } = useCartStore()
+  const {payment, orderIdNumber, setOrderIdNumber, setAmount, lqAmount} = useCheckoutStore()
+  const { cartItems, clearCart, total } = useCartStore()
   const {user} = useUserStore()
   const [empty, setEmpty] = useState<boolean>(false)
   const { pending } = useFormStatus()
+  const router = useRouter()
 
   const form = useForm<TCheckoutFields>({
     mode: "onChange",
@@ -40,23 +44,28 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
       email: '',
       delivery: 'NP',
       type_np: 'У відділення',
-      payment: 'Visa/Mastercard',
+      payment: 'Оплата при отриманні',
       packing: [],
       message: ''
     },
     shouldUnregister: true
   })
 
-
   useEffect(()=>{
     setEmpty(cartItems.length > 0)
   }, [cartItems]
+  )
+  useEffect(()=>{
+    if(total !== 0){
+      setAmount(total)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [total]
   )
 
   const onSubmit = async(data: TCheckoutFields) => {
     const productsArr: any = checkoutProducts(cartItems)
     let message = createMessage(data)
-
     const dataOrder = {
       payment_method: "usd",
       payment_method_title: data.payment,
@@ -103,32 +112,58 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
 
   };
 
-
-    const response = await makeOrder(dataOrder)
+  const response = await makeOrder(dataOrder)
     console.log(response)
     if(response.message === "Created"){
-      toast.success("Ваше замовлення прийнято!", {icon: '✅'})
-      setOrderId(response.orderId)
+      if(payment !== 'Оплата при отриманні'){
+        toast.success("Ваше замовлення прийнято в обробку! Тепер Ви можете сплатити за замовлення!", {icon: '✅', duration: 8000})
+        setOrderIdNumber(response.orderId)
+       clearCart()
+      }
+      if(payment === 'Оплата при отриманні' || payment === ''){
+        clearCart()
+        router.push('/thank')
+      }
     }else{
       toast.error("Упс! Щось трапилось..... повторіть пізніше", {icon: '❌'})
     }
   }
 
   return (
-    <div className={cn('flex max-w-[792px] w-full bg-[#fdfbf5] border border-solid border-[#E4E4E4] rounded-[8px]', className)}>
-      {orderId}
-      <FormProvider {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} id="checkout-form" className={`w-max-[630px] w-full ${(!empty || pending) && 'pointer-events-none opacity-60'}` }>
-          <PersonData />
-          <CongratulationWords />
-          <Payment />
-          <Delivery />
-          <Packing />
-          <Message />
-        </form>
-      </FormProvider>
-    </div>
+    <>
+    {(orderIdNumber && payment === 'LiqPay Моментальні платежі по всьому світу') ? (
 
+      <div className={cn('flex flex-col items-center px-6 py-14 max-w-[792px] w-full bg-[#fdfbf5] border border-solid border-[#E4E4E4] rounded-[8px]', className)}>
+        <h3 className="font-bold text-2xl text-center">Тепер Ви можете сплатити за замовлення онлайн! </h3>
+        <LiqPayPay
+          amount={lqAmount.toString()}
+          title="Inro Liqpay"
+          description="Онлайн оплата замовлення"
+          currency="UAH"
+          orderId={orderIdNumber}
+          disabled={false}
+          className="text-white"
+        />
+      </div>
+
+    ) : (
+        <div className={cn('flex max-w-[792px] w-full bg-[#fdfbf5] border border-solid border-[#E4E4E4] rounded-[8px]', className)}>
+            <FormProvider {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} id="checkout-form" className={
+                `w-max-[630px] w-full
+                ${(!empty || pending) && 'pointer-events-none opacity-60'}`
+                }>
+                <PersonData />
+                <CongratulationWords />
+                <Payment />
+                <Delivery />
+                <Packing />
+                <Message />
+              </form>
+            </FormProvider>
+          </div>
+    )}
+    </>
   )
 }
 

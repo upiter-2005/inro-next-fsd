@@ -1,3 +1,4 @@
+
 import { IProduct } from '@/entities/product/model/types';
 import { CatalogWidget } from '@/widgets/catalog';
 import { Metadata, ResolvingMetadata } from 'next';
@@ -20,6 +21,7 @@ export async function generateMetadata(
 }
 
 export const dynamic = 'force-dynamic'
+
 export async function CategoryPage({params, searchParams}: {
   params: {slug: string},
   searchParams: ISearchParamsCategoryTypes
@@ -30,6 +32,6 @@ export async function CategoryPage({params, searchParams}: {
 
   if(!products.length) return (<h2>Category is empty</h2>)
 
-  return <CatalogWidget items={products} type='category' catName={idName}  />;
+  return <CatalogWidget items={products} type='category' catName={idName} catId={idCat}  />;
 
 }

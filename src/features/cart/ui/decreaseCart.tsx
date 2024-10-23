@@ -12,9 +12,10 @@ interface IDeleteFromCart {
 
 export const DecreaseCart: React.FC<IDeleteFromCart> = ({ className, productId }) => {
   const {decreaseFromCart} = useCartStore()
+  
   return (
     <Button onClick={() => decreaseFromCart(productId)} size="default" className={cn('py-0 px-2 ', className)} variant="ghost">
        <Image src={minus} width={10} height={10} alt="minus icon"></Image>
     </Button>
   )
-} 
+}
