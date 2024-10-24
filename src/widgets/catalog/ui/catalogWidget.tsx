@@ -16,7 +16,7 @@ export interface ICatalogWidgetProps {
   items: IProduct[],
   type: string,
   catName: string,
-  catId: number
+  catId?: number
 }
 
 export enum CatalogType {
@@ -61,6 +61,7 @@ export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items,
     )}
 
       <div className={cn(className, 'flex flex-wrap max-w-[1200px] w-full my-0 mx-auto justify-start gap-4')}>
+        
         {/* {items.map((product) => (
           <ProductCard
             key={product.id}

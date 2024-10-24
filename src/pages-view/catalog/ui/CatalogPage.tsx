@@ -1,7 +1,8 @@
-import { CatalogWidget } from '@/widgets/catalog'
 import { Metadata } from 'next'
 
-import { findProduct, ISearchParamsTypes } from '@/features/filters/helpers/findProducts';
+import { findProduct, ISearchParamsTypes } from '@/features/filters/helpers/findProducts'
+
+import { CatalogFilteredWidget } from '@/widgets/catalog-filtered';
 
 // export const revalidate = 15
 
@@ -16,6 +17,6 @@ export async function CatalogPage({searchParams}: {searchParams: ISearchParamsTy
   const products = await findProduct(searchParams)
 
   return <>
-    <CatalogWidget items={products} type='catalog' catName="Каталог"  />
+    <CatalogFilteredWidget items={products} type='catalog' catName="Каталог"   />
     </>;
 }

@@ -65,7 +65,6 @@ export const Footer:React.FC<IFooterProps> = ({className}) => {
 
               <div className="text-white">
                 <ul className="font-light">
-                  <li><Link href="#" className="text-sm mb-5 block font-semibold">Підписатись на новини</Link></li>
                   <li><Link href="#" className="text-sm mb-5 block font-semibold">Замовити дзвінок</Link></li>
                 </ul>
               </div>
@@ -116,7 +115,6 @@ export const Footer:React.FC<IFooterProps> = ({className}) => {
                 </Accordion>
               </div>
               <div className="text-white">
-                <Link href="#" className="text-sm mb-5 block font-semibold">Підписатись на новини</Link>
                 <Link href="#" className="text-sm mb-5 block font-semibold">Замовити дзвінок</Link>
               </div>
             </>
