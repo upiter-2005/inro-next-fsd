@@ -1,0 +1,1 @@
+export {ConfirmRecoverPage as default} from '@/pages-view/confirm-recover'

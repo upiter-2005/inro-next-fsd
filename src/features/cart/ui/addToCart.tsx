@@ -12,16 +12,19 @@ interface IAddToCartProps {
 }
 
 export const AddToCart: React.FC<IAddToCartProps> = ({ className, product }) => {
-  const {addCartItem} = useCartStore()
-
+  const {addCartItem, setOpen} = useCartStore()
+  const addToCartHandler = () => {
+    addCartItem({
+      id: product.id,
+      name : product.name,
+      image: product.images[0].src || product.images,
+      price: product.price,
+    })
+    setOpen(true)
+  }
   return (
     <Button
-      onClick={() => addCartItem({
-        id: product.id,
-        name : product.name,
-        image: product.images[0].src || product.images,
-        price: product.price,
-      })}
+      onClick={addToCartHandler}
       size="default"
       className={cn('text-[14px] bg-black rounded', className)}
     >В кошик</Button>

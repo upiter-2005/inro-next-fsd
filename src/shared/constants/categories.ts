@@ -91,21 +91,21 @@ export const categoriesObj =[
         name: 'Сертифікати',
         slug: 'gift-certificates',
       },
-      {
-        id: 219,
-        name: 'Для чоловіка',
-        slug: 'dlya-cholovika',
-      },
-      {
-        id: 220,
-        name: 'Для жінки',
-        slug: 'dlya-zhinky',
-      },
-      {
-        id: 221,
-        name: 'Для батьків',
-        slug: 'dlya-batkiv',
-      },
+      // {
+      //   id: 219,
+      //   name: 'Для чоловіка',
+      //   slug: 'dlya-cholovika',
+      // },
+      // {
+      //   id: 220,
+      //   name: 'Для жінки',
+      //   slug: 'dlya-zhinky',
+      // },
+      // {
+      //   id: 221,
+      //   name: 'Для батьків',
+      //   slug: 'dlya-batkiv',
+      // },
      
     ]
   },

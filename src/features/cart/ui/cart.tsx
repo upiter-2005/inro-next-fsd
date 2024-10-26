@@ -14,19 +14,20 @@ import {
 import { CartList } from "./cartList"
 import { useCartStore } from "../model/cartSlice"
 import Link from "next/link"
+import { useState } from "react"
 
 interface ICartFeaturesProps {
   className?: string
 }
 
 export const Cart:React.FC<ICartFeaturesProps> = ({className}) => {
-
-  const {cartItems, total} = useCartStore()
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const {cartItems, total, openCart, setOpen} = useCartStore()
   const count = cartItems.length
   return (
     <div className={cn(className, '')}>
 
-      <Sheet >
+      <Sheet open={openCart} onOpenChange={()=>setOpen(!openCart)}>
         <SheetTrigger asChild >
           <div className="relative">
             <Button size="icon" className={cn("bg-transparent hover:bg-[#f6edcd]")}>

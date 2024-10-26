@@ -13,12 +13,9 @@ import { useState, useTransition } from "react"
 import loader from "@/shared/assets/images/loader.svg"
 import { useUserStore } from "@/features/loginUser/model/actions"
 import { ConfirmPassword } from "./confirmPassword"
-
+import { redirect } from "next/navigation"
 
 export const RecoveryPassword:React.FC = () => {
-  const [codeRecieve, setCodeRecieve] = useState<boolean>(false)
-
-
   const [isPending, startTransition] = useTransition()
 
   const form = useForm<TRecoverySchema>({
@@ -34,7 +31,8 @@ export const RecoveryPassword:React.FC = () => {
       console.log(response)
        if(response.message === 'Succses'){
         toast.success("Лист з повідомленням прийшов на пошту", {icon: '✅'})
-        setCodeRecieve(true)
+        // setCodeRecieve(true)
+        redirect('/confirm-recover')
       }else{
         toast.error("Такий email не зареєстрований", {icon: '❌'})
       }
@@ -44,9 +42,7 @@ export const RecoveryPassword:React.FC = () => {
   return (
     <div className={`w-full md:w-auto md:min-w-[486px] bg-white px-6 py-14 md:px-14 border-1 border-solid border-[#E4E4E4] rounded-[8px] mt-[77px] mb-[120px]` }>
 
-      { codeRecieve ? (
-        <ConfirmPassword />
-      ) : (
+      
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="w-full" >
           <h1 className="text-4xl mb-8">Змінити пароль</h1>
@@ -56,7 +52,7 @@ export const RecoveryPassword:React.FC = () => {
 
         </form>
       </FormProvider>
-      ) }
+     
 
     </div>
   )

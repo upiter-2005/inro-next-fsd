@@ -154,16 +154,16 @@ export async function resetPassword (body: any) {
     password: body.password,
     code: body.code
   }
+
   try {
     const response = await axios.post(`${process.env.NEXT_API_HOST}/wp-json/bdpwr/v1/set-password`, data)
-    console.log(response)
-    return {
-      message: "Succses",
-      data: response.data,
-    }
-  } catch (error) {
-    return {
-      message: error
-    }
+    console.log("meassages:" + response)
+    revalidatePath('/confirm-recover')
+    // return {
+    //   message: "Succses",
+    //   data: response,
+    // }
+  } catch (e: any) {
+    console.log(e.response.data)
   }
 }

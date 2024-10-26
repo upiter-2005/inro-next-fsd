@@ -1,0 +1,1 @@
+export {ConfirmRecover as ConfirmRecoverPage } from './ui/confirm-recover';

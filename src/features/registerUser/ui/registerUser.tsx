@@ -38,9 +38,7 @@ export const RegisterUser = () => {
     })
   }
 
-  const emailTest = () => {
-    console.log("Test email");
-  }
+
 
   return (
     <div className={`w-full md:w-auto md:min-w-[486px] bg-white px-6 py-14 md:px-14 border-1 border-solid border-[#E4E4E4] rounded-[8px] mt-[77px] mb-[120px]` }>

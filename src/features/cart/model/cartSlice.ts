@@ -6,6 +6,8 @@ import { ICartItem } from '@/entities/cartItem/model/types'
 interface CartState {
   cartItems: ICartItem[]
   total: number
+  openCart: boolean
+  setOpen: (val: boolean) => void 
   addCartItem: (item: any) => void
   removeItem: (id: number) => void
   increaseFromCart: (id: number) => void
@@ -19,6 +21,8 @@ export const useCartStore = create<CartState>()(
       {
         cartItems: [] ,
         total: 0,
+        openCart: false,
+        setOpen: (val) => {set({openCart: val})},
         addCartItem: (item) => {
           const existItem = get().cartItems.find((el:ICartItem) => el.id === item.id)
           if(existItem){

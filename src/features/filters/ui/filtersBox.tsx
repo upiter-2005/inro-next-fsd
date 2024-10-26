@@ -26,7 +26,7 @@ export const FilterBox:React.FC<IFilterBox> = ({className, }) => {
         <SheetTrigger><Filter /></SheetTrigger>
         <SheetContent className='w-[281px] overflow-auto px-6 py-16 bg-[#fcf9ee]'>
           <FiltersCheckboxGroup 
-            title="ML"
+            title="Об'єм"
             name="pa_ml"
             attrId={13}
             selected={filters.ml}

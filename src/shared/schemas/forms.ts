@@ -10,7 +10,7 @@ export const defaulFieldsSchema = z.object({
   first_name: z.string().min(3, {message: "Занадто коротке ім'я"}),
   last_name: z.string().min(3, {message: "Занадто коротке прізвище"}),
   tel: z.string().regex(phoneRegex, 'Перевірте коректність телефону'),
-  email: z.string().email({ message: 'Введите корректную почту' }),
+  email: z.string().email({ message: 'Введіть коректну пошту' }),
 
 })
 
@@ -21,13 +21,14 @@ export const loginFieldsSchema = z.object({
 })
 
 export const recoverySchema = z.object({
-  email: z.string().email({ message: 'Введите корректную почту' }),
+  email: z.string().email({ message: 'Введіть коректну пошту' }),
 })
 
 export const confirmRecoverySchema = z.object({
     code: z.string(),
     password: passwordSchema,
     confirmPassword: passwordSchema,
+    email: z.string().email({ message: 'Введіть коректну пошту' }),
 }).refine((data) => data.password === data.confirmPassword, {
   message: 'Паролі не співпадають',
   path: ['confirmPassword'],
@@ -78,7 +79,7 @@ export const checkoutFieldsSchema = defaulFieldsSchema
     }),
   )
   .refine((data) => data.password === data.confirmPassword, {
-    message: 'Пароли не совпадают',
+    message: 'Паролі не співпадають',
     path: ['confirmPassword'],
   });
 
