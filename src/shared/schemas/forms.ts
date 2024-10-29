@@ -20,6 +20,12 @@ export const loginFieldsSchema = z.object({
 
 })
 
+export const clallbackSchema = z.object({
+  name: z.string().min(3, {message: "Занадто коротке ім'я"}),
+  tel: z.string().regex(phoneRegex, 'Перевірте коректність телефону'),
+
+})
+
 export const recoverySchema = z.object({
   email: z.string().email({ message: 'Введіть коректну пошту' }),
 })
@@ -91,4 +97,7 @@ export const checkoutFieldsSchema = defaulFieldsSchema
   export type TUpdateFieldsSchema = z.infer<typeof updateFieldsSchema>
   export type TRecoverySchema = z.infer<typeof recoverySchema>
   export type TConfirmRecoverySchema = z.infer<typeof confirmRecoverySchema>
+  export type TClallbackSchema = z.infer<typeof clallbackSchema>
+
+  
 

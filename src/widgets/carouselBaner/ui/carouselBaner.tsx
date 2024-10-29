@@ -10,6 +10,7 @@ import {
   CarouselPrevious,
 } from "@/shared/ui/carousel"
 import { type CarouselApi } from "@/shared/ui/carousel"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 interface ICarouselBanerInro {
   className?: string
@@ -39,12 +40,37 @@ export const CarouselBanerInro:React.FC<ICarouselBanerInro> = ({className}) => {
           }}
           className="w-full"
         >
+        {!isMobile && 
+          <CarouselContent>
+          <CarouselItem>
+            <Link href="/">
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/10/b1111-scaled.jpg" className="h-[713px] w-full object-cover" alt="Inro"/>
+            </Link>
+          </CarouselItem>
+          <CarouselItem>
+            <Link href="/">
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/10/b2222-scaled.jpg" className="h-[713px] w-full object-cover" alt="Inro"/>
+            </Link>
+          </CarouselItem>
+          </CarouselContent>
+        }
 
-        <CarouselContent>
-          <CarouselItem><img src="/baner.jpeg" className="h-[713px] w-full object-cover" alt="Inro"/></CarouselItem>
-          <CarouselItem><img src="/baner.jpeg" className="h-[713px] w-full object-cover" alt="Inro"/></CarouselItem>
-          <CarouselItem><img src="/baner.jpeg" className="h-[713px] w-full object-cover" alt="Inro"/></CarouselItem>
-        </CarouselContent>
+        {isMobile && 
+          <CarouselContent>
+          <CarouselItem>
+            <Link href="/">
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/10/iPhone-16-4.jpg" className="h-[613px] w-full object-cover" alt="Inro"/>
+            </Link>
+          </CarouselItem>
+          <CarouselItem>
+            <Link href="/">
+             <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/10/iPhone-16-5.png" className="h-[613px] w-full object-cover" alt="Inro"/>
+            </Link>
+          </CarouselItem>
+          </CarouselContent>
+        }
+
+        
 
         {!isMobile && <>
           <CarouselPrevious className="!right-2/4 top-2/4  -translate-x-[500px] border-white bg-transparent" />

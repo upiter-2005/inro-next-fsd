@@ -1,21 +1,21 @@
 export const categoriesObj =[
-  {
-    id: 96,
-    name: 'Парфуми',
-    slug: 'parfumy',
-    child: [
-      {
-        id: 27,
-        name: 'Тестери ароматів',
-        slug: 'testeri-aromativ',
-      },
-      {
-        id: 212,
-        name: 'Сети',
-        slug: 'sety',
-      }
-    ]
-  },
+  // {
+  //   id: 96,
+  //   name: 'Парфуми',
+  //   slug: 'parfumy',
+  //   child: [
+  //     {
+  //       id: 27,
+  //       name: 'Тестери ароматів',
+  //       slug: 'testeri-aromativ',
+  //     },
+  //     {
+  //       id: 212,
+  //       name: 'Сети',
+  //       slug: 'sety',
+  //     }
+  //   ]
+  // },
   {
     id: 85,
     name: 'Для дому',
@@ -158,33 +158,33 @@ export const categoriesObj =[
      
     ]
   },
-  {
-    id: 55555,
-    name: 'Аксесуари ',
-    slug: 'accs',
-    child: [
+  // {
+  //   id: 55555,
+  //   name: 'Аксесуари ',
+  //   slug: 'accs',
+  //   child: [
       
-      {
-        id: 222,
-        name: 'Палички',
-        slug: 'palychky',
-      },
-      {
-        id: 223,
-        name: 'Бокси',
-        slug: 'boksy',
-      },
-      {
-        id: 224,
-        name: 'Пакет',
-        slug: 'paket',
-      },
-      {
-        id: 225,
-        name: 'Колба для свічки',
-        slug: 'kolba-dlya-svichky',
-      }      
+  //     {
+  //       id: 222,
+  //       name: 'Палички',
+  //       slug: 'palychky',
+  //     },
+  //     {
+  //       id: 223,
+  //       name: 'Бокси',
+  //       slug: 'boksy',
+  //     },
+  //     {
+  //       id: 224,
+  //       name: 'Пакет',
+  //       slug: 'paket',
+  //     },
+  //     {
+  //       id: 225,
+  //       name: 'Колба для свічки',
+  //       slug: 'kolba-dlya-svichky',
+  //     }      
      
-    ]
-  }
+  //   ]
+  // }
 ]

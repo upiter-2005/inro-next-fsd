@@ -13,10 +13,10 @@ interface IPacking {
 }
 
 const packages = [
-  {name: "Розмір S", price: "₴ 75" },
-  {name: "Розмір M", price: "₴ 85" },
-  {name: "Розмір L", price: "₴ 100" },
-  {name: "Розмір XL", price: "₴ 125" }
+  {name: "Круглий подарунковий бокс білий", price: "200", thumb: "https://www.api.inro.com.ua/wp-content/uploads/2021/04/Kruglyj-podarochnyj-boks-belyj-600x600.jpg" },
+  {name: "Великий подарунковий бокс білій", price: "300", thumb: "https://www.api.inro.com.ua/wp-content/uploads/2021/04/Bolshoj-podarochnyj-boks-belyj-600x600.jpg" },
+  {name: "Подарунковий бокс чорний INRO", price: " 700", thumb: "https://www.api.inro.com.ua/wp-content/uploads/2023/12/korobka3-600x774.jpg" },
+  // {name: "Розмір XL", price: " 125", thumb: "https://www.inro.com.ua/wp-content/uploads/2021/04/Kruglyj-podarochnyj-boks-belyj-600x600.jpg" }
 ]
 
 export const Packing:React.FC<IPacking> = ({className}) => {
@@ -52,11 +52,11 @@ export const Packing:React.FC<IPacking> = ({className}) => {
                 checked={set?.has(el.name.toString())}
               />
             <div className="flex items-center gap-3">
-              <label htmlFor={`pack${i}`}><Image src={packing} width={72} height={72} className="rounded-[2px]" alt="Inro" /></label>
+              <label htmlFor={`pack${i}`}><Image src={el.thumb} width={72} height={72} className="rounded-[2px] cursor-pointer" alt="Inro" /></label>
 
               <div>
                 <label htmlFor={`pack${i}`} className="cursor-pointer text-sm pb-2 text-[16px]">{el.name}</label>
-                <div className="text-sm font-semibold tracking-[1px]">{el.price}</div>
+                <div className="text-sm font-semibold tracking-[1px]">₴ {el.price}</div>
               </div>
             </div>
         </div>)

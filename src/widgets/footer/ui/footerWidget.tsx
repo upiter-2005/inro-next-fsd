@@ -12,7 +12,19 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/shared/ui/accordion"
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/shared/ui/dialog"
+
+
 import { useWindowDimensions } from "@/shared/hooks/useWindowDemensions"
+import { CallBackForm } from "@/features/callbackForm"
 
 
 
@@ -23,6 +35,8 @@ interface IFooterProps {
 export const Footer:React.FC<IFooterProps> = ({className}) => {
   const {isMobile} = useWindowDimensions()
   return (
+
+    <>
     <footer className={cn(className, "w-full px-4 pt-16 pb-6 md:pt-16 bg-gradient-to-b from-[#111111] to-[#292929]")}>
         <div className="max-w-[1200px] w-full mx-auto md:py-[80px] flex flex-col md:flex-row  gap-2 md:gap-12 justify-between">
 
@@ -65,7 +79,18 @@ export const Footer:React.FC<IFooterProps> = ({className}) => {
 
               <div className="text-white">
                 <ul className="font-light">
-                  <li><Link href="#" className="text-sm mb-5 block font-semibold">Замовити дзвінок</Link></li>
+                <Dialog>
+                  <DialogTrigger className="text-sm mb-5 block font-semibold">Замовити дзвінок</DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogDescription>
+                      <CallBackForm />
+                      </DialogDescription>
+                    </DialogHeader>
+                  </DialogContent>
+                </Dialog>
+                <a href="tel:+380992000011" className="text-white font-bold underline text-sm block mb-5">+38 099 200 00 11</a>
+                <a href="mailto:info@inro.com.ua" className="text-white font-bold underline text-sm block">info@inro.com.ua</a>
                 </ul>
               </div>
               </>
@@ -115,8 +140,22 @@ export const Footer:React.FC<IFooterProps> = ({className}) => {
                 </Accordion>
               </div>
               <div className="text-white">
-                <Link href="#" className="text-sm mb-5 block font-semibold">Замовити дзвінок</Link>
+
+              <Dialog>
+                <DialogTrigger className="text-sm mb-5 block font-semibold">Замовити дзвінок</DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogDescription>
+                    <CallBackForm />
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+              <a href="tel:+380992000011" className="text-white font-bold underline text-sm block mb-5">+38 099 200 00 11</a>
+              <a href="mailto:info@inro.com.ua" className="text-white font-bold underline text-sm block">info@inro.com.ua</a>
               </div>
+
+
             </>
 
           )}
@@ -125,5 +164,10 @@ export const Footer:React.FC<IFooterProps> = ({className}) => {
         </div>
         <div className="max-w-[1200px] w-full mx-auto text-[#A3A3A3] text-sm">© 2024 INRO. All Rights Reserved</div>
     </footer>
+
+ 
+
+    </>
+    
   )
 }

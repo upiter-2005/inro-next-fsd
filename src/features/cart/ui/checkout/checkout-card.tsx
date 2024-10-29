@@ -6,19 +6,35 @@ import { CheckoutCartList } from "./checkout-cart-list"
 import { Button } from "@/shared/ui/button"
 
 import { useCheckoutStore } from "@/features/formCheckout/model/checkoutSlice"
+import { Coupon } from "../coupon"
+import { useEffect, useState } from "react"
+import { minusPercent } from "@/shared/helpers/minus-percent"
 
 interface ICheckoutCart {
   className?: string
+  coupons: any[]
 }
 
-export const CheckoutCart: React.FC<ICheckoutCart> = ({ className }) => {
+export const CheckoutCart: React.FC<ICheckoutCart> = ({ className, coupons }) => {
+  const { cartItems, total, discountAmount, discountType } = useCartStore()
+  const [summaryTotal, setSummaryTotal] = useState<number>(total)
   const {payment, orderIdNumber} = useCheckoutStore()
-  const { cartItems, total } = useCartStore()
+ 
   const count = cartItems.length
 
-  const continuosShop = () => {
-
+useEffect(()=>{
+  if(discountType === 'percent'){
+    console.log('hhhhhhh')
+    setSummaryTotal(minusPercent(total, discountAmount))
   }
+  else if(discountType === 'fixed_cart'){
+    console.log('hhhhhhh')
+    setSummaryTotal(total - discountAmount)
+  }else{
+    setSummaryTotal(total)
+  }
+}, [discountAmount, discountType, total])
+
   return (
     <div className={cn('flex-1 bg-[#222] px-9 py-12 rounded-[8px]', className)}>
       <p className="text-white">Кошик</p>
@@ -29,13 +45,25 @@ export const CheckoutCart: React.FC<ICheckoutCart> = ({ className }) => {
               <div className="text-sm text-white" >Товари ({count})</div>
               <div className="font-bold text-white">₴ {total}</div>
             </div>
-            <div className="flex justify-between items-center px-[10px] pt-4 pb-4 border-b-[1px] border-[#444]">
+            {/* <div className="flex justify-between items-center px-[10px] pt-4 pb-4 border-b-[1px] border-[#444]">
               <div className="text-sm text-white" >Доставка </div>
               <div className="font-bold text-white">₴ 57</div>
+            </div> */}
+            <div className="flex justify-between items-center px-[10px] pt-4 pb-4 border-b-[1px] border-[#444]">
+              <div className="text-sm text-white" >Всього: </div>
+              <div className="font-bold text-white">₴ {summaryTotal}</div>
             </div>
 
+        
+              {discountType && (
+                <div className="text-white pt-6">-{discountAmount}
+                  {discountType === 'percent' ? '%' : ' UAH'}
+                </div>
+              )}
+            
+            <Coupon coupons={coupons} />
             {(payment !== 'Оплата при отриманні' && orderIdNumber) ?
-              (<Button className="w-full bg-white text-center text-[#111] text-sm block p-3 rounded-sm hover:bg-white hover:text-[#111] transition-all hover:opacity-70" onClick={continuosShop}>Продовжити покупки</Button>)
+              (<Button className="w-full bg-white text-center text-[#111] text-sm block p-3 rounded-sm hover:bg-white hover:text-[#111] transition-all hover:opacity-70" >Продовжити покупки</Button>)
               :
               ( <Button type="submit" form="checkout-form" className="w-full bg-white text-center text-[#111] text-sm block p-3 rounded-sm hover:bg-white hover:text-[#111] transition-all hover:opacity-70">Оформити замовлення</Button>)
             }

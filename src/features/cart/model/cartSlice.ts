@@ -5,7 +5,7 @@ import { ICartItem } from '@/entities/cartItem/model/types'
 
 interface CartState {
   cartItems: ICartItem[]
-  total: number
+  total: number,
   openCart: boolean
   setOpen: (val: boolean) => void 
   addCartItem: (item: any) => void
@@ -13,6 +13,10 @@ interface CartState {
   increaseFromCart: (id: number) => void
   decreaseFromCart: (id: number) => void
   clearCart: () => void
+  setDiscount: (val:string) => void
+  setDiscountType: (val:string) => void
+  discountAmount: number
+  discountType: string
 }
 
 export const useCartStore = create<CartState>()(
@@ -21,6 +25,8 @@ export const useCartStore = create<CartState>()(
       {
         cartItems: [] ,
         total: 0,
+        discountAmount: 0,
+        discountType: '',
         openCart: false,
         setOpen: (val) => {set({openCart: val})},
         addCartItem: (item) => {
@@ -76,14 +82,21 @@ export const useCartStore = create<CartState>()(
         },
         clearCart: () => {
           set({cartItems: [], total: 0})
-        }
+        },
+        setDiscount: (discountAmount) => {
+          set({discountAmount: Number(discountAmount)})
+        },
+        setDiscountType: (discountType) => {
+          set({discountType})
+        },
+        
       }
     ),
     {
       name: 'inroCart',
       version: 0.2,
       storage: createJSONStorage(()=> localStorage),
-       partialize: (state) => ({cartItems: state.cartItems, total: state.total}),
+       partialize: (state) => ({cartItems: state.cartItems, total: state.total, discountType: state.discountType}),
 
     }
   )
