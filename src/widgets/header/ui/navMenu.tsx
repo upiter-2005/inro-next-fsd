@@ -32,7 +32,9 @@ export const NavMenu:React.FC<INavMenu> = ({className}) => {
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className='w-[281px] overflow-auto px-6 py-16 bg-[#fcf9ee]'>
+          <div className="py-3 font-medium"><Link  href={`/category/novinki-uk`} className="" onClick={()=>setIsOpen(false)}>Новинки</Link></div>
          {categoriesObj.map((el, i) => <NavMenuItem key={`${el.slug}${i}`} cat={el} closeMnu={()=>setIsOpen(false)} /> )}
+         <div className="py-3 font-medium"><Link  href={`/category/aromati-dlya-avto`} className="" onClick={()=>setIsOpen(false)}>Аромати для авто</Link></div>
          <div className="py-3 font-medium"><Link  href={`/about`} className="" onClick={()=>setIsOpen(false)}>Про бренд</Link></div>
          <div className="py-3 font-medium"><Link  href={`/horeca`} className="" onClick={()=>setIsOpen(false)}>Horeca</Link></div>
          <div className="py-3 font-medium"><Link  href={`/login`} className="" onClick={()=>setIsOpen(false)}>Вхід в кабінет</Link></div>

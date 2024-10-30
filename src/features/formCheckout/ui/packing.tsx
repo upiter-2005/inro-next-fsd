@@ -61,8 +61,6 @@ export const Packing:React.FC<IPacking> = ({className}) => {
             </div>
         </div>)
         )}
-
-
       </div>
     </div>
   )

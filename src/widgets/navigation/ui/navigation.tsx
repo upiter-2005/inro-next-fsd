@@ -3,6 +3,7 @@ import { cn } from "@/shared/helpers/cn"
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import {categoriesObj} from "@/shared/constants/categories"
 import { ChevronUp } from "lucide-react";
+import Image from "next/image"
 
 interface INavigation {
   className?: string
@@ -22,21 +23,43 @@ export const Navigation:React.FC<INavigation> = ({className}) => {
           </NavigationMenu.Link>
         </NavigationMenu.Item>
 
+        <NavigationMenu.Item>
+          <NavigationMenu.Link
+            className="text-violet11   block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
+            href="/category/novinki-uk">
+            Новиники
+          </NavigationMenu.Link>
+        </NavigationMenu.Item>
+
         {categoriesObj.map((cat) =>
-
         <NavigationMenu.Item key={`category_${cat.id}`} >
-          <NavigationMenu.Trigger className=" hover:bg-violet3 focus:shadow-violet7 group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-2 py-4 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px] whitespace-nowrap">
-          {cat.name}
-          <ChevronUp className="w-3 relative rotate-180 transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-0" aria-hidden />
-          </NavigationMenu.Trigger>
-          <NavigationMenu.Content className="absolute top-0 left-0 w-full sm:w-auto ">
-            <div className="flex">
-                <ul className="m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[900px] sm:grid-flow-col sm:grid-rows-3 shadow-violet7">
-                  {cat.child?.map(el =>  ( <li key={el.id}><a href={`/category/${el.slug}`}>{el.name}</a></li>))}
-                </ul>
-            </div>
+          {cat.child.length ? (<>
+                <NavigationMenu.Trigger className=" hover:bg-violet3 focus:shadow-violet7 group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-2 py-4 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px] whitespace-nowrap">
+                {cat.name}
+                <ChevronUp className="w-3 relative rotate-180 transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-0" aria-hidden />
+                </NavigationMenu.Trigger>
+                <NavigationMenu.Content className="absolute top-0 left-0 w-full sm:w-auto p-4 flex bg-[#111]">
+                  <div className="w-[240px] h-[240px] overflow-hidden">
+                    {cat.image && <Image src={cat.image} alt={cat.name} width={240} height={240} className="w-full h-full rounded-xl" />}
+                    
+                  </div>
+                <div className="flex-1">
+                    <ul className="m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[600px] sm:grid-flow-col sm:grid-rows-3 shadow-violet7 ">
+                      {cat.child?.map(el =>  ( <li key={el.id}><a href={`/category/${el.slug}`} className="text-base text-[#fcf9ee]">{el.name}</a></li>))}
+                    </ul>
+                </div>
 
-          </NavigationMenu.Content>
+              </NavigationMenu.Content>
+            </>
+             
+          ) : (
+            <NavigationMenu.Link
+              className="text-violet11   block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
+              href={`/category/${cat.slug}`}>
+              {cat.name}
+          </NavigationMenu.Link>
+          )}
+          
         </NavigationMenu.Item>
         )}
 
@@ -44,8 +67,8 @@ export const Navigation:React.FC<INavigation> = ({className}) => {
         <NavigationMenu.Item>
           <NavigationMenu.Link
             className="text-violet11   block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
-            href="/aromati-dlya-avto">
-            Аромати в авто
+            href="/category/aromati-dlya-avto">
+            Аромати для авто
           </NavigationMenu.Link>
         </NavigationMenu.Item>
 

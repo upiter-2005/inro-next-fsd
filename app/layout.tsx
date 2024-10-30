@@ -6,6 +6,8 @@ import { Navigation } from "@/widgets/navigation";
 import { cn } from "@/shared/helpers/cn";
 import { Footer } from "@/widgets/footer";
 import { Toaster } from 'react-hot-toast';
+import { SearchBox } from "@/features/search/ui/serchBox";
+
 const arimo = Arimo({ subsets: ["cyrillic"] });
 
 export const metadata: Metadata = {
@@ -18,12 +20,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  
   return (
     <html lang="en">
       <body className={cn(arimo.className, 'bg-[#FCF9EE] color-[#111111] overflow-x-hidden')}>
         <main>
           <Header />
           <Navigation />
+          <SearchBox/>
           {children}
         </main>
         <Footer />

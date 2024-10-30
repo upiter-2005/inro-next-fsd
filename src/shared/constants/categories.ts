@@ -1,25 +1,28 @@
 export const categoriesObj =[
-  // {
-  //   id: 96,
-  //   name: 'Парфуми',
-  //   slug: 'parfumy',
-  //   child: [
-  //     {
-  //       id: 27,
-  //       name: 'Тестери ароматів',
-  //       slug: 'testeri-aromativ',
-  //     },
-  //     {
-  //       id: 212,
-  //       name: 'Сети',
-  //       slug: 'sety',
-  //     }
-  //   ]
-  // },
+
+  {
+    id: 96,
+    name: 'Парфуми',
+    slug: 'parfumy',
+    image: 'https://www.api.inro.com.ua/wp-content/uploads/2024/10/parfum.png',
+    child: [
+      {
+        id: 153,
+        name: 'Тестери ароматів',
+        slug: 'testeri-aromativ',
+      },
+      // {
+      //   id: 212,
+      //   name: 'Сети',
+      //   slug: 'sety',
+      // }
+    ]
+  },
   {
     id: 85,
     name: 'Для дому',
     slug: 'dly-domu',
+    image: 'https://www.api.inro.com.ua/wp-content/uploads/2024/10/accsesuary.png',
     child: [
       
       {
@@ -42,13 +45,19 @@ export const categoriesObj =[
         name: 'Парфумовані спреї',
         slug: 'parfumovani-spreyi',
       },
-     
+      {
+        id: 94,
+        name: 'Парфумовані свічки',
+        slug: 'parfumovani-svichky',
+      },
+      
     ]
   },
   {
     id: 10,
     name: 'Догляд',
     slug: 'doglyad',
+    image: 'https://www.api.inro.com.ua/wp-content/uploads/2024/10/doglad.png',
     child: [
       
       {
@@ -79,6 +88,7 @@ export const categoriesObj =[
     id: 1111,
     name: 'Подарунки',
     slug: 'podarunky',
+    image: 'https://www.api.inro.com.ua/wp-content/uploads/2024/10/podarunky.png',
     child: [
       
       {
@@ -91,28 +101,13 @@ export const categoriesObj =[
         name: 'Сертифікати',
         slug: 'gift-certificates',
       },
-      // {
-      //   id: 219,
-      //   name: 'Для чоловіка',
-      //   slug: 'dlya-cholovika',
-      // },
-      // {
-      //   id: 220,
-      //   name: 'Для жінки',
-      //   slug: 'dlya-zhinky',
-      // },
-      // {
-      //   id: 221,
-      //   name: 'Для батьків',
-      //   slug: 'dlya-batkiv',
-      // },
-     
     ]
   },
   {
     id: 222222,
     name: 'Аромати ',
     slug: 'aromaty',
+    image: 'https://www.api.inro.com.ua/wp-content/uploads/2024/10/aromaty.png',
     child: [
       
       {

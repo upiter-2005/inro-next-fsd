@@ -60,8 +60,8 @@ export const Footer:React.FC<IFooterProps> = ({className}) => {
               <div className="text-white">
                 <p className="font-semibold mb-5">Про бренд</p>
                 <ul className="font-light">
-                  <li><Link href="#" className="text-sm mb-5 block">Про бренд</Link></li>
-                  <li><Link href="#" className="text-sm mb-5 block">Для бізнес</Link></li>
+                  <li><Link href="/about" className="text-sm mb-5 block">Про бренд</Link></li>
+                  <li><Link href="/horeca" className="text-sm mb-5 block">Для бізнес</Link></li>
                   {/* <li><Link href="#" className="text-sm mb-5 block">Співпраця</Link></li> */}
                   <li><Link href="/contact" className="text-sm mb-5 block">Контакти</Link></li>
                 </ul>
@@ -71,8 +71,8 @@ export const Footer:React.FC<IFooterProps> = ({className}) => {
                 <p className="font-semibold mb-5">Покупцям</p>
                 <ul className="font-light">
                   <li><Link href="/login" className="text-sm mb-5 block">Вхід в кабінет</Link></li>
-                  <li><Link href="#" className="text-sm mb-5 block">Оплата та доставка</Link></li>
-                  <li><Link href="/obmin-ta-povernennya/" className="text-sm mb-5 block">Обмін та повернення</Link></li>
+                  <li><Link href="/oplata-i-dostavka" className="text-sm mb-5 block">Оплата та доставка</Link></li>
+                  <li><Link href="/obmin-ta-povernennya" className="text-sm mb-5 block">Обмін та повернення</Link></li>
                   <li><Link href="/publichna-oferta" className="text-sm mb-5 block">Публічна оферта</Link></li>
                 </ul>
               </div>
@@ -119,7 +119,7 @@ export const Footer:React.FC<IFooterProps> = ({className}) => {
                     <AccordionTrigger className="font-semibold mb-0 pt-0">Про бренд</AccordionTrigger>
                     <AccordionContent className="text-[#d8d8d8]">
                       <Link href="/about" className="text-sm mb-5 block">Про бренд</Link>
-                      <Link href="#" className="text-sm mb-5 block">Для бізнесу</Link>
+                      <Link href="/horeca" className="text-sm mb-5 block">Для бізнесу</Link>
                       {/* <Link href="#" className="text-sm mb-5 block">Співпраця</Link> */}
                       <Link href="/contact" className="text-sm mb-5 block">Контакти</Link>
                     </AccordionContent>
@@ -132,7 +132,7 @@ export const Footer:React.FC<IFooterProps> = ({className}) => {
                     <AccordionTrigger className="font-semibold mb-0 pt-0">Покупцям</AccordionTrigger>
                     <AccordionContent className="text-[#d8d8d8]">
                       <Link href="/login" className="text-sm mb-5 block">Вхід в кабінет</Link>
-                      <Link href="#" className="text-sm mb-5 block">Оплата та доставка</Link>
+                      <Link href="/oplata-i-dostavka" className="text-sm mb-5 block">Оплата та доставка</Link>
                       <Link href="/obmin-ta-povernennya" className="text-sm mb-5 block">Обмін та повернення</Link>
                       <Link href="/publichna-oferta" className="text-sm mb-5 block">Публічна оферта</Link>
                     </AccordionContent>

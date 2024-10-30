@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { ProductFilters } from "@/features/filters";
-import {AddToCartButton} from "@/features/cart"
+
 import { ProductCard } from "@/entities/catalogCard"
 import { IProduct } from "@/entities/product/model/types";
 import { cn } from "@/shared/helpers/cn"
@@ -25,7 +25,7 @@ export enum CatalogType {
 }
 
 export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items, type, catName, catId }) => {
-
+console.log(catName, catId)
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const PAGE_SIZE = 12;
   const {
@@ -37,11 +37,7 @@ export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items,
     isLoading
   } = useSWRInfinite(
     (index) =>
-      `https://www.api.inro.com.ua/wp-json/wc/v3/products?category=${catId}&per_page=${PAGE_SIZE}&page=${index+1}&consumer_key=${process.env.NEXT_PUBLIC_WC_CUSTOMER_KEY}&consumer_secret=${process.env.NEXT_PUBLIC_WC_SECRET}`
-
-      ,
-    fetcher
-  );
+      `https://www.api.inro.com.ua/wp-json/wc/v3/products?category=${catId}&per_page=${PAGE_SIZE}&page=${index+1}&consumer_key=${process.env.NEXT_PUBLIC_WC_CUSTOMER_KEY}&consumer_secret=${process.env.NEXT_PUBLIC_WC_SECRET}`,fetcher);
 
   const loadedProducts = data ? [].concat(...data) : []
   const isLoadingMore = isLoading || (size > 0 && data && typeof data[size - 1] === "undefined")

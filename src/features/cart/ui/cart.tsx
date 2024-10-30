@@ -27,7 +27,7 @@ export const Cart:React.FC<ICartFeaturesProps> = ({className}) => {
   return (
     <div className={cn(className, '')}>
 
-      <Sheet open={openCart} onOpenChange={()=>setOpen(!openCart)}>
+      <Sheet open={openCart} onOpenChange={()=>setOpen(!openCart)} >
         <SheetTrigger asChild >
           <div className="relative">
             <Button size="icon" className={cn("bg-transparent hover:bg-[#f6edcd]")}>
@@ -37,7 +37,7 @@ export const Cart:React.FC<ICartFeaturesProps> = ({className}) => {
           </div>
 
         </SheetTrigger>
-        <SheetContent  className='w-[412px] overflow-auto px-6 py-16 bg-[#fcf9ee]'>
+        <SheetContent  className='max-w-[412px] w-full overflow-auto px-6 py-16 bg-[#fcf9ee]'>
           <h3 className="text-[20px]">Кошик</h3>
 
          <CartList />
