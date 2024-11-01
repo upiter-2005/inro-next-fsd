@@ -1,6 +1,7 @@
 'use client'
 import { cn } from "@/shared/helpers"
-import { Filter } from 'lucide-react';
+import Image from "next/image"
+import filterIco from "@/shared/assets/images/filter.svg"
 import {
   Sheet,
   SheetContent,
@@ -23,7 +24,7 @@ export const FilterBox:React.FC<IFilterBox> = ({className, }) => {
     <div className={cn(className, 'flex flex-wrap max-w-[1200px] w-full my-0 mx-auto')}>
       
       <Sheet>
-        <SheetTrigger><Filter /></SheetTrigger>
+        <SheetTrigger><Image src={filterIco} width={24} height={24} alt="Inro filter" /></SheetTrigger>
         <SheetContent className='w-[281px] overflow-auto px-6 py-16 bg-[#fcf9ee]'>
           <FiltersCheckboxGroup 
             title="Об'єм"

@@ -1,5 +1,4 @@
 'use server'
-import { TCheckoutFields } from '@/shared/schemas/forms'
 import { revalidatePath } from 'next/cache'
 import {WP_API} from "@/shared/api/connectWpApi"
 import { cookies } from 'next/headers'
@@ -13,11 +12,29 @@ import fs from 'fs'
 
 
 export async function makeOrder(data: any){
+  const email = data.email
   console.log(data);
   try {
     const response = await WC_API.post("orders", data)
     console.log(response.data.id);
     // revalidatePath('/checkout')
+
+    const source = fs.readFileSync('./public/afterRegister.html', 'utf-8').toString()
+    const template = handlebars.compile(source)
+    const replacements = {
+      username: data.first_name,
+    }
+  
+    const htmlToSend = template(replacements)
+  
+      const info = await transporter.sendMail({
+        from: 'Inro <inroaroma@gmail.com>',
+        to: email,
+        subject: 'Inro - Нове замовлення',
+        html: htmlToSend
+      })
+
+
     return { message: response.statusText, orderId: response.data.id}
   } catch (error) {
    console.log(error);
@@ -53,14 +70,12 @@ export async function registerUser (body: any) {
 
   const htmlToSend = template(replacements)
 
-
     const info = await transporter.sendMail({
       from: 'Inro <inroaroma@gmail.com>',
       to: body.email,
       subject: 'Ваш особистий кабінет створено!',
       html: htmlToSend
     })
-
 
     //return{ response}
     } catch (error: any) {

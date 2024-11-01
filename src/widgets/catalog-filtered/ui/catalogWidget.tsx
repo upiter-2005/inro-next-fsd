@@ -26,17 +26,21 @@ export enum CatalogType {
 export const CatalogFilteredWidget: React.FC<ICatalogFilteredWidget> = ({ className, items, type, catName, catId }) => {
   return (
     <>
+    <div className='max-w-[1200px] w-full my-0 mx-auto flex justify-between'>
       <BreadcrumbsInro
-        current={catName}
-      />
-    {CatalogType.CATALOG === type && (
-       <Suspense fallback={<p>Loading...</p>}>
-        <ProductFilters />
-      </Suspense>
-    )}
+          current={catName}
+        />
+      <div className='flex justify-end pr-4'>
+        {CatalogType.CATALOG === type && (
+          <Suspense fallback={<p>Loading...</p>}>
+            <ProductFilters />
+          </Suspense>
+        )}
+      </div>
+      
+    </div>
 
-      <div className={cn(className, 'flex flex-wrap max-w-[1200px] w-full my-0 mx-auto justify-start gap-4')}>
-
+      <div className={cn(className, 'flex flex-wrap max-w-[1200px] w-full my-0 mx-auto justify-center gap-4')}>
         {items.map((product) => (
           <ProductCard
             key={product.id}
@@ -44,8 +48,6 @@ export const CatalogFilteredWidget: React.FC<ICatalogFilteredWidget> = ({ classN
             advanceCard={true}
           />
         ))}
-
-
       </div>
 
 
