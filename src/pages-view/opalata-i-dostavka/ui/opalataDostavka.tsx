@@ -3,15 +3,15 @@ import { Metadata } from "next"
 import { BreadcrumbsInro } from "@/shared/ui/breadcrumbsInro"
 
 export const metadata: Metadata = {
-  title: "Inro - Публічна оферта",
-  description: "Inro - Публічна оферта",
+  title: "Inro - Оплата та доставка",
+  description: "Inro - Оплата та доставка",
 }
 
 export async function OplataDostavka () {
   return (
     <>
       <BreadcrumbsInro
-        current="Публічна оферта"
+        current="Оплата та доставка"
       />
       <div className="max-w-[1200px] m-auto  md:py-16 px-4">
         

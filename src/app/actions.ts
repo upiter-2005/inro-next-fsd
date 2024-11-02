@@ -17,24 +17,9 @@ export async function makeOrder(data: any, emailProductsArr: any, total: any){
   try {
     const response = await WC_API.post("orders", data)
     console.log(response.data.id);
-    // revalidatePath('/checkout')
     let mailProducts: any;
-
-    //  emailProductsArr.forEach((obj: any) => 
-    //   mailProducts += `<li><div><img src=${obj.image} alt="Inro" /> <div> <p>${obj.name}</p> <span>₴ ${obj.price}</span> x ${obj.quantity}</div> </div></li>`
-    // )
-
-    // mailProducts = emailProductsArr.map((obj: any) => (
-    //  `<li><div><img src=${obj.image} alt="Inro" /> <div> <p>${obj.name}</p> <span>₴ ${obj.price}</span> x ${obj.quantity}</div> </div></li>`
-    // )
-      
-    // )
-
     const source = fs.readFileSync('./public/afterOrder.html', 'utf-8').toString()
-
     const template = handlebars.compile(source)
-
-   
 
     const replacements = {
       orderId: response.data.id,
@@ -98,6 +83,20 @@ export async function registerUser (body: any) {
     }
 }
 
+export async function callUser(body: any){
+  try{
+    const info = await transporter.sendMail({
+      from: 'Inro <inroaroma@gmail.com>',
+      to: 'pavel470245@gmail.com',
+      subject: 'Заявка на зворотный дзвінок!',
+      html: `Ім'я: ${body.name} <br> Телефон: ${body.tel} `
+    })
+    console.log(info)
+    
+  }catch(e){
+    console.log(e)
+  }
+}
 export async function authUser (body: any) {
   const data = {
     username: body.login,

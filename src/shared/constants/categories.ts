@@ -1,5 +1,12 @@
 export const categoriesObj =[
 
+  // {
+  //   id: 92,
+  //   name: 'Новинки',
+  //   slug: 'novinki-uk',
+  //   image: '',
+  //   child: []
+  // },
   {
     id: 96,
     name: 'Парфуми',

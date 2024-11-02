@@ -6,7 +6,7 @@ import {useForm, FormProvider} from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from "@/shared/ui/button"
 import Link from "next/link"
-import { authUser } from "@/app/actions"
+import { authUser, callUser } from "@/app/actions"
 import toast from 'react-hot-toast'
 import { useState, useTransition } from "react"
 
@@ -14,7 +14,7 @@ import loader from "@/shared/assets/images/loader.svg"
 
 
 export const CallBackForm:React.FC = () => {
-
+  const [formSend, setFormSend] = useState<boolean>(false)
 
   const [isPending, startTransition] = useTransition()
   const form = useForm<TClallbackSchema>({
@@ -28,7 +28,8 @@ export const CallBackForm:React.FC = () => {
 
   const onSubmit = async(data: TClallbackSchema) => {
     startTransition(async()=>{
-      //const response = await authUser(data)
+      const response = await callUser(data)
+      setFormSend(true)
     //   console.log(response)
     //    if(response.message === 'Succses'){
      
@@ -41,7 +42,13 @@ export const CallBackForm:React.FC = () => {
 
   return (
     <div className={`w-full md:w-auto md:min-w-[486px] bg-white px-6 py-2 md:px-14 border-1 border-solid border-[#E4E4E4] rounded-[8px] ` }>
-      <FormProvider {...form}>
+      {formSend ? (
+        <>
+          <h3 className="text-center text-2xl text-[#111]">Ваша заявка отримана!</h3>
+          <p className="text-center">Ми зв&apos;яжемось з Вами у найближчій час!</p>
+        </>
+      ) : (
+        <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="w-full" >
 
           <h1 className="text-4xl mb-8 text-[#111]">Замовити дзвінок</h1>
@@ -52,6 +59,10 @@ export const CallBackForm:React.FC = () => {
          
         </form>
       </FormProvider>
+      )}
+     
+
+      
     </div>
   )
 }

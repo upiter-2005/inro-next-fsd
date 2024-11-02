@@ -14,8 +14,25 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   
+  const response: IProduct[] =  await fetch(`${process.env.NEXT_API_HOST}/wp-json/wc/v3/products?slug=${params.id}&consumer_key=${process.env.NEXT_WC_CUSTOMER_KEY}&consumer_secret=${process.env.NEXT_WC_SECRET}`, 
+    // {cache: 'no-store'}
+    { next: { revalidate: 60 } }
+  ).then(res => res.json())
+  
   return {
-    title: `Product title seo - ${params.id}`,
+    title: `Inro - ${response[0].name}`,
+    description: `Inro - ${response[0].name}`,
+    openGraph: {
+      title: response[0].name,
+      description: response[0].name,
+      images: [
+        {
+          url: response[0].images[0].src,
+          width: 800,
+          height: 600,
+        },
+      ],
+    },
   }
 }
 

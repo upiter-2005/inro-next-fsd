@@ -7,6 +7,17 @@ import { BreadcrumbsInro } from "@/shared/ui/breadcrumbsInro";
 export const metadata: Metadata = {
   title: "Inro - Офоррмлення замовлення",
   description: "Inro - Офоррмлення замовлення",
+  openGraph: {
+    title: 'Inro - Офоррмлення замовлення',
+    description: 'INRO – Офоррмлення замовлення',
+    images: [
+      {
+        url: 'https://www.api.inro.com.ua/wp-content/uploads/2021/02/Nabir-CROFTON-22.jpg',
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
 };
 
 export async function CheckoutPage() {

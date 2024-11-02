@@ -49,11 +49,10 @@ export const Footer:React.FC<IFooterProps> = ({className}) => {
               <div className="text-white">
                 <p className="font-semibold mb-5">Каталог товарів</p>
                 <ul className="font-light">
-                  <li><Link href="#" className="text-sm mb-5 block">Новинки</Link></li>
-                  <li><Link href="#" className="text-sm mb-5 block">Парфуми</Link></li>
-                  <li><Link href="#" className="text-sm mb-5 block">Для дому</Link></li>
-                  {/* <li><Link href="#" className="text-sm mb-5 block">Бестселери</Link></li> */}
-                  <li><Link href="#" className="text-sm mb-5 block">Подарунки</Link></li>
+                  <li><Link href="/novinki-uk" className="text-sm mb-5 block">Новинки</Link></li>
+                  <li><Link href="/category/testeri-aromativ" className="text-sm mb-5 block">Парфуми</Link></li>
+                  <li><Link href="/category/aromadifuzory" className="text-sm mb-5 block">Для дому</Link></li>
+                  <li><Link href="/category/nabory" className="text-sm mb-5 block">Подарунки</Link></li>
                 </ul>
               </div>
 
@@ -104,11 +103,11 @@ export const Footer:React.FC<IFooterProps> = ({className}) => {
                   <AccordionItem value="mob_mnu" className="border-none">
                     <AccordionTrigger className="font-semibold mb-0 pt-3">Каталог товарів</AccordionTrigger>
                     <AccordionContent className="text-[#d8d8d8]">
-                      <Link href="#" className="text-sm mb-5 block">Новинки</Link>
-                      <Link href="#" className="text-sm mb-5 block">Парфуми</Link>
-                      <Link href="#" className="text-sm mb-5 block">Для дому</Link>
+                      <Link href="/novinki-uk" className="text-sm mb-5 block">Новинки</Link>
+                      <Link href="/category/testeri-aromativ" className="text-sm mb-5 block">Парфуми</Link>
+                      <Link href="/category/aromadifuzory" className="text-sm mb-5 block">Для дому</Link>
                       {/* <Link href="#" className="text-sm mb-5 block">Бестселери</Link> */}
-                      <Link href="#" className="text-sm mb-5 block">Подарунки</Link>
+                      <Link href="/category/nabory" className="text-sm mb-5 block">Подарунки</Link>
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>

@@ -25,7 +25,6 @@ export enum CatalogType {
 }
 
 export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items, type, catName, catId }) => {
-console.log(catName, catId)
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const PAGE_SIZE = 12;
   const {
@@ -57,14 +56,7 @@ console.log(catName, catId)
     )}
 
       <div className={cn(className, 'flex flex-wrap max-w-[1200px] w-full my-0 mx-auto justify-start gap-4')}>
-        
-        {/* {items.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            advanceCard={true}
-          />
-        ))} */}
+      
         {loadedProducts?.map((product: any) => (
           <ProductCard
             key={product.id}
