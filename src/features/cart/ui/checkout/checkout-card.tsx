@@ -1,14 +1,12 @@
 'use client'
 import { cn } from "@/shared/helpers/cn"
 import { useCartStore } from "../../model/cartSlice"
-import Link from "next/link"
 import { CheckoutCartList } from "./checkout-cart-list"
 import { Button } from "@/shared/ui/button"
 
 import { useCheckoutStore } from "@/features/formCheckout/model/checkoutSlice"
 import { Coupon } from "../coupon"
-import { useEffect, useState } from "react"
-import { minusPercent } from "@/shared/helpers/minus-percent"
+import { useCountDiscountPrice } from "../../hooks/useCountDiscountPrice"
 
 interface ICheckoutCart {
   className?: string
@@ -17,26 +15,15 @@ interface ICheckoutCart {
 
 export const CheckoutCart: React.FC<ICheckoutCart> = ({ className, coupons }) => {
   const { cartItems, total, discountAmount, discountType } = useCartStore()
-  const [summaryTotal, setSummaryTotal] = useState<number>(total)
   const {payment, orderIdNumber} = useCheckoutStore()
  
-  const count = cartItems.length
 
-useEffect(()=>{
-  if(discountType === 'percent'){
-    console.log('hhhhhhh')
-    setSummaryTotal(minusPercent(total, discountAmount))
-  }
-  else if(discountType === 'fixed_cart'){
-    console.log('hhhhhhh')
-    setSummaryTotal(total - discountAmount)
-  }else{
-    setSummaryTotal(total)
-  }
-}, [discountAmount, discountType, total])
+  const {summaryTotal} = useCountDiscountPrice()
+  const count = cartItems.length
 
   return (
     <div className={cn('flex-1 bg-[#222] px-9 py-12 rounded-[8px]', className)}>
+      {summaryTotal}
       <p className="text-white">Кошик</p>
       <CheckoutCartList  />
       {cartItems.length && (
@@ -45,10 +32,7 @@ useEffect(()=>{
               <div className="text-sm text-white" >Товари ({count})</div>
               <div className="font-bold text-white">₴ {total}</div>
             </div>
-            {/* <div className="flex justify-between items-center px-[10px] pt-4 pb-4 border-b-[1px] border-[#444]">
-              <div className="text-sm text-white" >Доставка </div>
-              <div className="font-bold text-white">₴ 57</div>
-            </div> */}
+            
             <div className="flex justify-between items-center px-[10px] pt-4 pb-4 border-b-[1px] border-[#444]">
               <div className="text-sm text-white" >Всього: </div>
               <div className="font-bold text-white">₴ {summaryTotal}</div>

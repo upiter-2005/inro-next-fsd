@@ -11,29 +11,44 @@ import handlebars from 'handlebars'
 import fs from 'fs'
 
 
-export async function makeOrder(data: any){
+export async function makeOrder(data: any, emailProductsArr: any, total: any){
   const email = data.email
-  console.log(data);
+  console.log(emailProductsArr)
   try {
     const response = await WC_API.post("orders", data)
     console.log(response.data.id);
     // revalidatePath('/checkout')
+    let mailProducts: any;
 
-    const source = fs.readFileSync('./public/afterRegister.html', 'utf-8').toString()
+    //  emailProductsArr.forEach((obj: any) => 
+    //   mailProducts += `<li><div><img src=${obj.image} alt="Inro" /> <div> <p>${obj.name}</p> <span>₴ ${obj.price}</span> x ${obj.quantity}</div> </div></li>`
+    // )
+
+    // mailProducts = emailProductsArr.map((obj: any) => (
+    //  `<li><div><img src=${obj.image} alt="Inro" /> <div> <p>${obj.name}</p> <span>₴ ${obj.price}</span> x ${obj.quantity}</div> </div></li>`
+    // )
+      
+    // )
+
+    const source = fs.readFileSync('./public/afterOrder.html', 'utf-8').toString()
+
     const template = handlebars.compile(source)
+
+   
+
     const replacements = {
-      username: data.first_name,
+      orderId: response.data.id,
+      total: total,
+      emailProductsArr
     }
-  
+
     const htmlToSend = template(replacements)
-  
       const info = await transporter.sendMail({
         from: 'Inro <inroaroma@gmail.com>',
-        to: email,
+        to: data.billing.email,
         subject: 'Inro - Нове замовлення',
         html: htmlToSend
       })
-
 
     return { message: response.statusText, orderId: response.data.id}
   } catch (error) {

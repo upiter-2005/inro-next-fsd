@@ -15,8 +15,10 @@ interface CartState {
   clearCart: () => void
   setDiscount: (val:string) => void
   setDiscountType: (val:string) => void
+  setCouponCode: (val: string)=> void
   discountAmount: number
   discountType: string
+  couponCode: string
 }
 
 export const useCartStore = create<CartState>()(
@@ -25,6 +27,7 @@ export const useCartStore = create<CartState>()(
       {
         cartItems: [] ,
         total: 0,
+        couponCode: '',
         discountAmount: 0,
         discountType: '',
         openCart: false,
@@ -89,14 +92,16 @@ export const useCartStore = create<CartState>()(
         setDiscountType: (discountType) => {
           set({discountType})
         },
-        
+        setCouponCode: (code) => {
+          set({couponCode: code})
+        },
       }
     ),
     {
       name: 'inroCart',
-      version: 0.2,
+      version: 0.3,
       storage: createJSONStorage(()=> localStorage),
-       partialize: (state) => ({cartItems: state.cartItems, total: state.total, discountType: state.discountType}),
+       partialize: (state) => ({cartItems: state.cartItems, total: state.total, discountType: state.discountType, couponCode: state.couponCode}),
 
     }
   )

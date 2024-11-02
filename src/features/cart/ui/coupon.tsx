@@ -10,7 +10,7 @@ interface ICoupon {
 }
 
 export const Coupon:React.FC<ICoupon> = ({coupons, className}) => {
-    const {setDiscount, setDiscountType, discountAmount, discountType} = useCartStore()
+    const {setDiscount, setDiscountType, setCouponCode, discountType} = useCartStore()
     const [error, setError] = useState<boolean>(false)
 
     const couponHandle = (e: any) => {
@@ -21,17 +21,22 @@ export const Coupon:React.FC<ICoupon> = ({coupons, className}) => {
                 setError(true)
                 setDiscount("")
                 setDiscountType("")
+                setCouponCode("")
                 return
             }
             else{
                 setError(false)
                 setDiscount(result.amount)
                 setDiscountType(result.discount_type)
+                setCouponCode(e.target.value)
                 return
             }
             
         }else {
-            return
+            setDiscount("")
+            setDiscountType("")
+            setCouponCode("")
+            setError(false)
         }
         
     }
