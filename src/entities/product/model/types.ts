@@ -23,4 +23,7 @@ export interface IProduct {
   short_description: string
   slug: string
   stock_status: string
+  related_ids: string[]
+  cross_sell_ids:string[]
+  upsell_ids: string[]
 }

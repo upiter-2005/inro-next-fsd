@@ -29,17 +29,14 @@ export const Showroom:React.FC<IShowroom> = ({className}) => {
           onValueChange={(val: string)=>handleShowroomType(val)}
           >
           <div className="flex items-center space-x-2 ">
-            <RadioGroupItem value="Київ, Юрія Липи 6" id="sh1" {...register("showroom_type")} />
-            <Label htmlFor="sh1" className="cursor-pointer">Київ, Юрія Липи 6</Label>
+            <RadioGroupItem value="м. Київ, шоурум INRO в ЖК Комфорт Таун, Юрія Липи, 6" id="sh1" {...register("showroom_type")} />
+            <Label htmlFor="sh1" className="cursor-pointer">м. Київ, шоурум INRO в ЖК Комфорт Таун, Юрія Липи, 6</Label>
           </div>
           <div className="flex items-center space-x-2">
-            <RadioGroupItem value="Київ, Героїв Дніпра" id="sh2" {...register("showroom_type")} />
-            <Label htmlFor="sh2" className="cursor-pointer">Київ, Героїв Дніпра</Label>
+            <RadioGroupItem value="м. Київ, шоурум INRO вул. Бастіонна, 5/13" id="sh2" {...register("showroom_type")} />
+            <Label htmlFor="sh2" className="cursor-pointer">м. Київ, шоурум INRO вул. Бастіонна, 5/13</Label>
           </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="Київ, Площа Українських Героїв" id="sh3" {...register("showroom_type")} />
-            <Label htmlFor="sh3" className="cursor-pointer">Київ, Площа Українських Героїв</Label>
-          </div>
+          
         </RadioGroup>
       </div>
   )

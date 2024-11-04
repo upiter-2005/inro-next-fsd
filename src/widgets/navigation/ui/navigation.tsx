@@ -25,17 +25,22 @@ export const Navigation:React.FC<INavigation> = ({className}) => {
 
         <NavigationMenu.Item>
           <NavigationMenu.Link
-            className="text-violet11   block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
+            className="text-violet11   block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none "
             href="/category/novinki-uk">
             Новиники
           </NavigationMenu.Link>
         </NavigationMenu.Item>
 
         {categoriesObj.map((cat) =>
+
         <NavigationMenu.Item key={`category_${cat.id}`} >
           {cat.child.length ? (<>
-                <NavigationMenu.Trigger className=" hover:bg-violet3 focus:shadow-violet7 group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-2 py-4 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px] whitespace-nowrap">
-                {cat.name}
+
+          <NavigationMenu.Trigger className=" hover:bg-violet3 focus:shadow-violet7 group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-2 py-4 text-[15px] font-medium leading-none outline-none  whitespace-nowrap">
+            <NavigationMenu.Link
+                className="text-violet11  block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none "
+                href={`/category/${cat.slug}`}>{cat.name}
+            </NavigationMenu.Link>
                 <ChevronUp className="w-3 relative rotate-180 transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-0" aria-hidden />
                 </NavigationMenu.Trigger>
                 <NavigationMenu.Content className="absolute top-0 left-0 w-full sm:w-auto p-4 flex bg-[#111]">
@@ -54,7 +59,7 @@ export const Navigation:React.FC<INavigation> = ({className}) => {
              
           ) : (
             <NavigationMenu.Link
-              className="text-violet11   block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
+              className="text-violet11   block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none "
               href={`/category/${cat.slug}`}>
               {cat.name}
           </NavigationMenu.Link>
@@ -66,7 +71,7 @@ export const Navigation:React.FC<INavigation> = ({className}) => {
 
         <NavigationMenu.Item>
           <NavigationMenu.Link
-            className="text-violet11   block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
+            className="text-violet11   block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none "
             href="/category/aromati-dlya-avto">
             Аромати для авто
           </NavigationMenu.Link>

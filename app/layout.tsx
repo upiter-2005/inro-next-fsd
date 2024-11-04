@@ -7,7 +7,8 @@ import { cn } from "@/shared/helpers/cn";
 import { Footer } from "@/widgets/footer";
 import { Toaster } from 'react-hot-toast';
 import { SearchBox } from "@/features/search/ui/serchBox";
-
+import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 const arimo = Arimo({ subsets: ["cyrillic"] });
 
 export const metadata: Metadata = {
@@ -24,6 +25,8 @@ export default function RootLayout({
   
   return (
     <html lang="en">
+      <GoogleAnalytics gaId="G-4XLP0P9SL3" />
+      <GoogleTagManager gtmId="GTM-MVW3D48G" />
       <body className={cn(arimo.className, 'bg-[#FCF9EE] color-[#111111] overflow-x-hidden')}>
         <main>
           <Header />

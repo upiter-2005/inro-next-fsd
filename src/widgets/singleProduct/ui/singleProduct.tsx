@@ -1,3 +1,4 @@
+'use client'
 import {ProductGallery} from "@/entities/productGallery"
 import { IProduct } from "@/entities/product/model/types"
 import { SingleProductData } from "@/entities/singleProductData"
@@ -12,7 +13,9 @@ interface ISingleProduct {
   className?: string
 }
 export const SingleProduct:React.FC<ISingleProduct> = ({product, className}) => {
-
+  console.log(product)
+  const related_products = product.upsell_ids.join(',')
+  const cross_sell_ids = product.cross_sell_ids.join(',')
   if(product){
     return (<>
         <BreadcrumbsInro
@@ -31,8 +34,8 @@ export const SingleProduct:React.FC<ISingleProduct> = ({product, className}) => 
           />
         </div>
       </div>
-        <CarouselInro title='Товари з цим ароматом' advanceCard={true} />
-        <CarouselInro title='Також може сподобатись' advanceCard={false}  />
+        <CarouselInro title='Товари з цим ароматом' advanceCard={true} includes={related_products}  />
+        <CarouselInro title='Також може сподобатись' advanceCard={false} includes={cross_sell_ids}  />
     </> )
   }
 

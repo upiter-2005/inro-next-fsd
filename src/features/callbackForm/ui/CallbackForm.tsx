@@ -51,7 +51,7 @@ export const CallBackForm:React.FC = () => {
         <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="w-full" >
 
-          <h1 className="text-4xl mb-8 text-[#111]">Замовити дзвінок</h1>
+          <h3 className="text-4xl mb-8 text-[#111]">Замовити дзвінок</h3>
           <Input type='text' placeholder="Ваше ім'я" name="name"/>
           <Input type='text' placeholder="Ваш телефон" name="tel"/>
 

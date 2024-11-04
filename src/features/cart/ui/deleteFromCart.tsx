@@ -15,7 +15,11 @@ interface IDeleteFromCart {
 
 export const DeleteFromCart: React.FC<IDeleteFromCart> = ({ className, productId, invert }) => {
   const {removeItem} = useCartStore()
-  return (
+
+  if(productId === 2217 || productId === 2215 || productId === 2213) return true
+
+    return (
+    
     <Button onClick={() => removeItem(productId)} size="default" className={cn('py-0 px-2', className)} variant="ghost">
       <Image src={clear} width={22} height={22} className={cn("relative -top-2", {'invert': invert})} alt="delete icon Inro"/>
     </Button>

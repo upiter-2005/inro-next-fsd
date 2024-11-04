@@ -11,6 +11,8 @@ import { BreadcrumbsInro } from "@/shared/ui/breadcrumbsInro"
 import useSWRInfinite from "swr/infinite"
 import loader from "@/shared/assets/images/loader.svg"
 
+
+
 export interface ICatalogWidgetProps {
   className?: string,
   items: IProduct[],
@@ -55,7 +57,7 @@ export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items,
       </Suspense>
     )}
 
-      <div className={cn(className, 'flex flex-wrap max-w-[1200px] w-full my-0 mx-auto justify-start gap-4')}>
+      <div className={cn(className, 'flex flex-wrap max-w-[1200px] w-full my-0 mx-auto justify-center gap-4')}>
       
         {loadedProducts?.map((product: any) => (
           <ProductCard

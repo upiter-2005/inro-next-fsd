@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between ">
+    <main className="flex md:min-h-screen flex-col items-center justify-between ">
       <ClearAfterOrder />
    </main>
   )

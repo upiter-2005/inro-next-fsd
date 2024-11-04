@@ -24,7 +24,7 @@ export async function CheckoutPage() {
 
   const coupons: any = await fetch(`${process.env.NEXT_API_HOST}/wp-json/wc/v3/coupons?per_page=100&consumer_key=${process.env.NEXT_WC_CUSTOMER_KEY}&consumer_secret=${process.env.NEXT_WC_SECRET}`).then(res => res.json())
 
-
+ 
   return (
     <>
       <BreadcrumbsInro current="Оформлення замовлення"/>
