@@ -78,8 +78,8 @@ export async function HorecaPage () {
           <div className="bg-white relative flex w-[156px] h-[83px] md:w-[282px] md:h-[148px] rounded-[8px] overflow-hidden ">
             <Image src={partner1} fill style={{objectFit: 'cover'}} alt="Inro partners"/>
           </div>
-          <div className="bg-white relative flex w-[156px] h-[83px] md:w-[282px] md:h-[148px] rounded-[8px] overflow-hidden "><Image src={partner2} fill style={{objectFit: 'cover'}} alt="Inro partners"/></div>
-          <div className="bg-white relative flex w-[156px] h-[83px] md:w-[282px] md:h-[148px] rounded-[8px] overflow-hidden "><Image src={partner3} fill style={{objectFit: 'cover'}} alt="Inro partners"/></div>
+          <div className="bg-white relative flex w-[156px] h-[83px] md:w-[282px] md:h-[148px] rounded-[8px] overflow-hidden"><Image src={partner2} fill style={{objectFit: 'cover'}} alt="Inro partners"/></div>
+          <div className="bg-white relative flex w-[156px] h-[83px] md:w-[282px] md:h-[148px] rounded-[8px] overflow-hidden"><Image src={partner3} fill style={{objectFit: 'cover'}} alt="Inro partners"/></div>
           <div className="bg-white relative flex w-[156px] h-[83px] md:w-[282px] md:h-[148px] rounded-[8px] overflow-hidden"><Image src={partner4} fill style={{objectFit: 'cover'}} alt="Inro partners"/></div>
           <div className="bg-white relative flex w-[156px] h-[83px] md:w-[282px] md:h-[148px] rounded-[8px] overflow-hidden"><Image src={partner5} fill style={{objectFit: 'cover'}} alt="Inro partners"/></div>
           <div className="bg-white relative flex w-[156px] h-[83px] md:w-[282px] md:h-[148px] rounded-[8px] overflow-hidden"><Image src={partner6} fill style={{objectFit: 'cover'}} alt="Inro partners"/></div>
@@ -88,7 +88,7 @@ export async function HorecaPage () {
         </div>
 
         <h3 className="text-4xl leading-9 mb-9">Контакти магазинів:</h3>
-
+        <ShopList  />
 
       </div>
 

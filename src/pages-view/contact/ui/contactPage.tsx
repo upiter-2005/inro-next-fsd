@@ -39,17 +39,38 @@ export async function ContactPage () {
 
         <ShopList  />
 
-        {/* <div className="w-full max-w-[690px] mt-40">
-          <h2 className="text-4xl mb-6">Контакти магазинів:</h2>
-          <p className="text-xl leading-6">Тут ви знайдете список шоурумів /  кав’ярень / магазинів / книгарень та інших місць, де можна придбати  товари Integralist у вашому місті в Україні. Ми завжди відкриті до нових партнерств, тому якщо ви хочете представляти продукти Integralist у  своєму закладі, напишіть нам щодо співпраці на пошту: hello@integralist.club.</p>
+        <div className="w-full max-w-[690px] mt-40">
+          <h2 className="text-4xl mb-6">STOCKLIST</h2>
+          <p className="text-xl leading-6">Асортимент INRO також можете знайти тут: </p>
 
           <div className="bg-white rounded-[8px] overflow-hidden py-10 px-8 mt-6">
-            <p className="text-xl leading-5 mb-8">Салон краси Сlips</p>
-            <Link href="#" className="flex items-center gap-3 text-[16px] mb-3"><MapPin width={16} /> Київ, ЖК Комфорт Таун, вул. Юрія Липи, 6</Link>
-            <Link href="#" className="flex items-center gap-3 text-[16px] mb-3"><Smartphone width={16} /> Київ, вул. Бастіонна, 3/5</Link>
-            <Link href="#" className="flex items-center gap-3 text-[16px] mb-3"><Mail width={16} /> Київ, вул. Хрещатик, 38, 5-й поверх</Link>
+            <p className="text-xl leading-5 mb-8">КИЇВ </p>
+            <Link href="#" className="flex items-start gap-3 text-[16px] mb-3"><MapPin width={16} /> магазин &quot;Етніка&quot; ТРЦ Respublika Park, <br />Кільцева дорога, 1</Link>
+            <Link href="#" className="flex items-start gap-3 text-[16px] mb-3"><MapPin width={16} /> магазин &quot;Етніка&quot; <br /> ТРЦ Gulliver, Спортивна площа, 1а, 2-ий поверх</Link>
+            <Link href="#" className="flex items-start gap-3 text-[16px] mb-3"><MapPin width={16} /> Tsarsky Beauty&SPA, <br />вул. Старонаводницька, 13 б</Link>
+            <Link href="#" className="flex items-start gap-3 text-[16px] mb-3"><MapPin width={16} /> SPA at Hilton, <br />б. Тараса Шевченка, 30</Link>
+            <Link href="#" className="flex items-start gap-3 text-[16px] mb-3"><MapPin width={16} /> мережа салонів краси Kukla <br />прос. Петра Григоренка, 22/20</Link>
+            <Link href="#" className="flex items-start gap-3 text-[16px] mb-3"><MapPin width={16} /> салон краси FETCHY <br />Дніпровська набережна, 16Д</Link>
+            <Link href="#" className="flex items-start gap-3 text-[16px] mb-3"><MapPin width={16} /> магазин одягу MORANDI <br />вул. Воздвиженська, 31а</Link>
+            <Link href="#" className="flex items-start gap-3 text-[16px] mb-3"><MapPin width={16} /> салон краси Clipse <br />вул. Цитадельна, 8/41</Link>
+            <Link href="#" className="flex items-start gap-3 text-[16px] mb-3"><MapPin width={16} /> Клінічна Академія Лазерної <br />Медицини CALM</Link>
+            <Link href="#" className="flex items-start gap-3 text-[16px] mb-3"><MapPin width={16} /> фітнес - студія Faktura <br />вул. Щекавицька, 30/39 </Link>
+            <Link href="#" className="flex items-start gap-3 text-[16px] mb-3"><MapPin width={16} /> магазин одягу ROAR <br />вул. Євгена Коновальця, 17</Link>
+            <Link href="#" className="flex items-start gap-3 text-[16px] mb-3"><MapPin width={16} /> салон краси Цирюльня Едо <br />вул. Василя Тютюнника, 22</Link>
           </div>
-        </div> */}
+
+          <div className="bg-white rounded-[8px] overflow-hidden py-10 px-8 mt-6">
+            <p className="text-xl leading-5 mb-8">ОДЕСА </p>
+            <Link href="#" className="flex items-start gap-3 text-[16px] mb-3"><MapPin width={16} /> шоурум YIYI <br />вул. Грецька, 26/28</Link>
+          </div>
+
+          <div className="bg-white rounded-[8px] overflow-hidden py-10 px-8 mt-6">
+            <p className="text-xl leading-5 mb-8">ЛЬВІВ </p>
+            <Link href="#" className="flex items-start gap-3 text-[16px] mb-3"><MapPin width={16} /> Edem Resort Medical & SPA <br />хутір Ріпище 1, Стрілки, Львівська область</Link>
+            <Link href="#" className="flex items-start gap-3 text-[16px] mb-3"><MapPin width={16} /> квітковий бутік The Flowers <br />вул. Костя Левицького, 56</Link>
+          </div>
+
+        </div>
 
       </div>
 

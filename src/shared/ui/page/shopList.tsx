@@ -1,8 +1,9 @@
 import Link from "next/link"
 import { CalendarCheck, Clock, Mail, MapPin, MapPinned, Smartphone } from "lucide-react"
 import Image from "next/image"
-import img from "@/shared/assets/images/salon.jpeg"
-
+import room1 from "@/shared/assets/images/room1.jpg"
+import room2 from "@/shared/assets/images/shop1.jpg"
+import room3 from "@/shared/assets/images/bastion.png"
 interface IShopList {
   description?: boolean
 }
@@ -13,7 +14,7 @@ export const ShopList:React.FC<IShopList> = ({description}) => {
 
     <div className="md:max-w-[384px] rounded-[8px] bg-white overflow-hidden">
       <div className="w-full h-[269px] overflow-hidden">
-        <Image src={img} className="object-cover" alt="Inro"/>
+        <Image src={room1} className="object-cover w-full h-full" alt="Inro"/>
       </div>
       <div className="p-9">
         <Link href="#" className="flex items-center gap-3 text-sm"><MapPin width={16} /> Комфорт Таун</Link>
@@ -26,7 +27,7 @@ export const ShopList:React.FC<IShopList> = ({description}) => {
 
     <div className="md:max-w-[384px] rounded-[8px] bg-white overflow-hidden">
       <div className="w-full h-[269px] overflow-hidden">
-        <Image src={img} className="object-cover" alt="Inro"/>
+        <Image src={room3} className="object-cover w-full h-full" alt="Inro"/>
       </div>
       <div className="p-9">
         <Link href="#" className="flex items-center gap-3 text-sm"><MapPin width={16} /> Бастіонна</Link>
@@ -39,7 +40,7 @@ export const ShopList:React.FC<IShopList> = ({description}) => {
 
     <div className="md:max-w-[384px] rounded-[8px] bg-white overflow-hidden">
       <div className="w-full h-[269px] overflow-hidden">
-        <Image src={img} className="object-cover" alt="Inro"/>
+        <Image src={room2} className="object-cover w-full h-full" alt="Inro"/>
       </div>
       <div className="p-9">
         <Link href="#" className="flex items-center gap-3 text-sm"><MapPin width={16} /> ЦУМ Київ</Link>

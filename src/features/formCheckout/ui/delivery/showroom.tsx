@@ -25,7 +25,7 @@ export const Showroom:React.FC<IShowroom> = ({className}) => {
       <div className={cn("flex items-center gap-2 mb-8", className)}>
         <RadioGroup
           className='flex flex-col gap-4'
-          defaultValue="Київ, Юрія Липи 6"
+          defaultValue="м. Київ, шоурум INRO в ЖК Комфорт Таун, Юрія Липи, 6"
           onValueChange={(val: string)=>handleShowroomType(val)}
           >
           <div className="flex items-center space-x-2 ">

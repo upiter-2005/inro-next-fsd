@@ -87,7 +87,7 @@ export async function callUser(body: any){
   try{
     const info = await transporter.sendMail({
       from: 'Inro <inroaroma@gmail.com>',
-      to: 'pavel470245@gmail.com',
+      to: 'inroaroma@gmail.com',
       subject: 'Заявка на зворотный дзвінок!',
       html: `Ім'я: ${body.name} <br> Телефон: ${body.tel} `
     })

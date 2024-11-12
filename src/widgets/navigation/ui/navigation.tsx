@@ -27,7 +27,7 @@ export const Navigation:React.FC<INavigation> = ({className}) => {
           <NavigationMenu.Link
             className="text-violet11   block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none "
             href="/category/novinki-uk">
-            Новиники
+            Новинки
           </NavigationMenu.Link>
         </NavigationMenu.Item>
 

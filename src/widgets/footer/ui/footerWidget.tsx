@@ -50,7 +50,7 @@ export const Footer:React.FC<IFooterProps> = ({className}) => {
                 <p className="font-semibold mb-5">Каталог товарів</p>
                 <ul className="font-light">
                   <li><Link href="/category/novinki-uk" className="text-sm mb-5 block">Новинки</Link></li>
-                  <li><Link href="/category/testeri-aromativ" className="text-sm mb-5 block">Парфуми</Link></li>
+                  <li><Link href="/category/parfumy" className="text-sm mb-5 block">Парфуми</Link></li>
                   <li><Link href="/category/aromadifuzory" className="text-sm mb-5 block">Для дому</Link></li>
                   <li><Link href="/category/nabory" className="text-sm mb-5 block">Подарунки</Link></li>
                 </ul>
@@ -104,7 +104,7 @@ export const Footer:React.FC<IFooterProps> = ({className}) => {
                     <AccordionTrigger className="font-semibold mb-0 pt-3">Каталог товарів</AccordionTrigger>
                     <AccordionContent className="text-[#d8d8d8]">
                       <Link href="/category/novinki-uk" className="text-sm mb-5 block">Новинки</Link>
-                      <Link href="/category/testeri-aromativ" className="text-sm mb-5 block">Парфуми</Link>
+                      <Link href="/category/parfumy" className="text-sm mb-5 block">Парфуми</Link>
                       <Link href="/category/aromadifuzory" className="text-sm mb-5 block">Для дому</Link>
                       {/* <Link href="#" className="text-sm mb-5 block">Бестселери</Link> */}
                       <Link href="/category/nabory" className="text-sm mb-5 block">Подарунки</Link>
