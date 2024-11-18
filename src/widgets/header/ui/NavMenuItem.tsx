@@ -22,7 +22,7 @@ export const NavMenuItem:React.FC<INavMenuItem> = ({className, cat, closeMnu}) =
 
             <Accordion  type="single" collapsible >
               <AccordionItem value={`cat-${cat.id}`} className="border-b-0 ">
-                <AccordionTrigger className="py-3">{cat.name}</AccordionTrigger>
+                <AccordionTrigger className="py-3"><Link  href={`/category/${cat.slug}`} onClick={closeMnu}>{cat.name}</Link></AccordionTrigger>
                 <AccordionContent>
 
                 {cat.child?.map((subcat: any) => <div key={`${subcat.id}-${subcat.slug}`} className="pl-3 py-1">

@@ -87,7 +87,11 @@ export const categoriesObj =[
         name: 'Тверде мило ',
         slug: 'tverde-mylo',
       },
-     
+      {
+        id: 87,
+        name: 'Рідке мило ',
+        slug: 'ridke-mylo',
+      },
     ]
   },
   

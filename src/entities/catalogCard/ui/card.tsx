@@ -6,6 +6,7 @@ import {ProductCardThumb} from "@/shared/ui/product/product-card-thumb"
 import {IProduct} from "@/entities/product/model/types"
 import { AddToCartButton } from "@/features/cart"
 import { AddToFavourite } from "@/features/addToFavourite"
+import Link from "next/link"
 
 type CardProduct = Pick<IProduct, 'id' | 'name' | 'images' | 'price' | 'sale_price' | 'slug'>
 
@@ -22,7 +23,8 @@ export const Card: React.FC<ICardProps> = ({ className, actionSlot, product, adv
   return (
     <div className={cn("w-[160px] sm:w-[280px] flex flex-col gap-4  mb-6", className)}>
 
-      <ProductCardThumb image={product.images[0]?.src} alt={product.name} />
+      <Link href={`/product/${product.slug}`} > <ProductCardThumb image={product.images[0]?.src} alt={product.name} /></Link>
+     
       <div className="flex flex-col md:flex-row justify-between md:items-center ">
         <ProductCardName name={product.name} productId={product.slug} />
         <ProductCardPrice salePrice={product.sale_price} regularPrice={product.price} />
@@ -33,7 +35,8 @@ export const Card: React.FC<ICardProps> = ({ className, actionSlot, product, adv
         <div className="flex gap-2">
           {<AddToCartButton product={product}  className="w-full md:w-[225px]" />}
           {<AddToFavourite product={product} className="w-[45px] md:w-[55px] hidden md:flex " />}
-        </div>)
+        </div>
+        )
       }
 
     </div>

@@ -24,10 +24,10 @@ export async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between ">
-     <CarouselBanerInro />
-     <CarouselInro title="Акційні пропозиції" advanceCard={false} />
-     <SaleBaner />
-     <KeepLine />
+      <CarouselBanerInro />
+      <CarouselInro title="Популярні товари" advanceCard={false} />
+      <SaleBaner />
+      <KeepLine />
     </main>
   );
 }

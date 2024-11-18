@@ -23,7 +23,7 @@ export const CheckoutCart: React.FC<ICheckoutCart> = ({ className, coupons }) =>
 
   return (
     <div className={cn('flex-1 bg-[#222] px-9 py-12 rounded-[8px]', className)}>
-      {summaryTotal}
+ 
       <p className="text-white">Кошик</p>
       <CheckoutCartList  />
       {cartItems.length && (

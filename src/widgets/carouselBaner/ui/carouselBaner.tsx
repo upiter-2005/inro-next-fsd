@@ -43,13 +43,13 @@ export const CarouselBanerInro:React.FC<ICarouselBanerInro> = ({className}) => {
         {!isMobile && 
           <CarouselContent>
           <CarouselItem>
-            <Link href="/">
-              <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/10/b1111-scaled.jpg" className="h-[713px] w-full object-cover" alt="Inro"/>
+            <Link href="/category/novinki-uk">
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/11/Frame-106.png" className="h-[813px] w-full object-cover" alt="Inro"/>
             </Link>
           </CarouselItem>
           <CarouselItem>
-            <Link href="/">
-              <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/10/b2222-scaled.jpg" className="h-[713px] w-full object-cover" alt="Inro"/>
+            <Link href="/category/dly-domu">
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/11/Frame-106-3.png" className="h-[813px] w-full object-cover" alt="Inro"/>
             </Link>
           </CarouselItem>
           </CarouselContent>
@@ -58,13 +58,13 @@ export const CarouselBanerInro:React.FC<ICarouselBanerInro> = ({className}) => {
         {isMobile && 
           <CarouselContent>
           <CarouselItem>
-            <Link href="/">
-              <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/10/iPhone-16-4.jpg" className="h-[613px] w-full object-cover" alt="Inro"/>
+            <Link href="/category/novinki-uk">
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/11/iPhone-16-6.png" className="h-[653px] w-full object-cover" alt="Inro"/>
             </Link>
           </CarouselItem>
           <CarouselItem>
-            <Link href="/">
-             <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/10/iPhone-16-5.png" className="h-[613px] w-full object-cover" alt="Inro"/>
+            <Link href="/category/dly-domu">
+             <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/11/iPhone-16-8.png" className="h-[653px] w-full object-cover" alt="Inro"/>
             </Link>
           </CarouselItem>
           </CarouselContent>
@@ -79,10 +79,10 @@ export const CarouselBanerInro:React.FC<ICarouselBanerInro> = ({className}) => {
 
 
         <div className="flex absolute w-full justify-center items-center bottom-11 gap-3">
-        {Array.from({ length: 3 }).map((_, index) =>
-          <span key={index} className={cn( "inline-block w-2 h-2 bg-[#C3C3C3] rounded-[50%] cursor-pointer transition-all", {"w-3 h-3 bg-white" : index === current - 1}) } onClick={()=> api?.scrollTo(index)}></span>
-         )
-        }
+          {Array.from({ length: 3 }).map((_, index) =>
+            <span key={index} className={cn( "inline-block w-2 h-2 bg-[#C3C3C3] rounded-[50%] cursor-pointer transition-all", {"w-3 h-3 bg-white" : index === current - 1}) } onClick={()=> api?.scrollTo(index)}></span>
+          )
+          }
         </div>
 
       </Carousel>
