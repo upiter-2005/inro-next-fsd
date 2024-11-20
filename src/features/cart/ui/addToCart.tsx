@@ -3,6 +3,7 @@ import { cn } from "@/shared/helpers"
 import { Button } from "@/shared/ui/button"
 import { useCartStore } from "@/features/cart/model/cartSlice"
 import { IProduct } from "@/entities/product/model/types"
+import { sendGAEvent, sendGTMEvent } from "@next/third-parties/google"
 
 type ProductDataType = Pick<IProduct,'id' | 'name' | 'price' | 'images' >
 
@@ -13,6 +14,18 @@ interface IAddToCartProps {
 
 export const AddToCart: React.FC<IAddToCartProps> = ({ className, product }) => {
   const {addCartItem, setOpen} = useCartStore()
+
+  const fbPixelAddToCart = async()=>{
+    const { default: ReactPixel } = await import('react-facebook-pixel');
+    ReactPixel.track('AddToCart', {
+      value: product.price,
+      currency: 'UAH',
+      content_ids: [product.id ],
+      content_type: 'product'
+      }
+    )
+  }
+
   const addToCartHandler = () => {
     addCartItem({
       id: product.id,
@@ -21,6 +34,30 @@ export const AddToCart: React.FC<IAddToCartProps> = ({ className, product }) => 
       price: product.price,
     })
     setOpen(true)
+    fbPixelAddToCart()
+    window.gtag('event', 'add_to_cart', { 
+      currency: "UAH",
+      value: product.price,
+      items: [
+        {
+          item_id: product.id,
+          item_name: product.name,
+          price: product.price,
+          quantity: 1
+        }
+      ]})
+
+      window.gtag('event', 'add_to_cart', {
+        'send_to': 'ads',
+        'value': product.price,
+        'items': [
+          {
+            'id': product.id,
+            'google_business_vertical': 'retail'
+          }
+        ]
+      });
+        
   }
   return (
     <Button

@@ -13,10 +13,8 @@ import fs from 'fs'
 
 export async function makeOrder(data: any, emailProductsArr: any, total: any){
   const email = data.email
-  console.log(emailProductsArr)
   try {
     const response = await WC_API.post("orders", data)
-    console.log(response.data.id);
     let mailProducts: any;
     const source = fs.readFileSync('./public/afterOrder.html', 'utf-8').toString()
     const template = handlebars.compile(source)
@@ -97,6 +95,7 @@ export async function callUser(body: any){
     console.log(e)
   }
 }
+
 export async function authUser (body: any) {
   const data = {
     username: body.login,
@@ -106,7 +105,7 @@ export async function authUser (body: any) {
   try{
     const res:any = await axios.post( `${process.env.NEXT_API_HOST}/wp-json/jwt-auth/v1/token`, data )
     const session = await encrypt(res.data)
-    cookies().set("session", session, {maxAge: 1800, httpOnly: true})
+    cookies().set("session", session, {maxAge: 3600, httpOnly: true})
     const params = {headers: {Authorization: `Bearer ${res.data.token}`}}
     const user = await axios.get( `${process.env.NEXT_API_HOST}/wp-json/wp/v2/users/me`, params)
 
@@ -175,7 +174,6 @@ export async function sendRecoveryMessage (body: any) {
     }
   }
 }
-
 
 export async function resetPassword (body: any) {
   const data = {

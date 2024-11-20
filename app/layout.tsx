@@ -9,6 +9,11 @@ import { Toaster } from 'react-hot-toast';
 import { SearchBox } from "@/features/search/ui/serchBox";
 import { GoogleTagManager } from '@next/third-parties/google'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { Suspense } from "react";
+import { FacebookPixelEvents } from "@/shared/helpers/pixel-events";
+
+import Analytics from "@/shared/helpers/Analitics"
+
 const arimo = Arimo({ subsets: ["cyrillic"] });
 
 export const metadata: Metadata = {
@@ -25,8 +30,10 @@ export default function RootLayout({
   
   return (
     <html lang="en">
-      <GoogleAnalytics gaId="G-4XLP0P9SL3" />
-      <GoogleTagManager gtmId="GTM-MVW3D48G" />
+       {/* <Suspense><GoogleAnalytics gaId="G-4XLP0P9SL3"  /></Suspense>
+      <Suspense><GoogleTagManager gtmId="GTM-MVW3D48G" /></Suspense> */}
+ 
+        
       <body className={cn(arimo.className, 'bg-[#FCF9EE] color-[#111111] overflow-x-hidden')}>
         <main>
           <Header />
@@ -34,8 +41,13 @@ export default function RootLayout({
           <SearchBox/>
           {children}
         </main>
+        
         <Footer />
         <Toaster />
+        <Suspense fallback={null}>
+          <FacebookPixelEvents />
+        </Suspense>
+        <Suspense><Analytics/></Suspense>
       </body>
     </html>
   );

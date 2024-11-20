@@ -5,11 +5,12 @@ import { ProductFilters } from "@/features/filters";
 import { ProductCard } from "@/entities/catalogCard"
 import { IProduct } from "@/entities/product/model/types";
 import { cn } from "@/shared/helpers/cn"
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { KeepLine } from "@/widgets/keepLine";
 import { BreadcrumbsInro } from "@/shared/ui/breadcrumbsInro"
 import useSWRInfinite from "swr/infinite"
 import loader from "@/shared/assets/images/loader.svg"
+import { sendGAEvent } from '@next/third-parties/google';
 
 
 
@@ -44,6 +45,36 @@ export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items,
   const isLoadingMore = isLoading || (size > 0 && data && typeof data[size - 1] === "undefined")
   const isEmpty = data?.[0]?.length === 0
   const isReachingEnd = isEmpty || (data && data[data.length - 1]?.length < PAGE_SIZE)
+
+
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag("event", "view_item_list", {
+        item_list_id: "related_products",
+        item_list_name: "Related products",
+        items: [
+          {
+            item_id: catId,
+            item_name: catName,
+            affiliation: "Google Merchandise Store",
+            quantity: 1
+          }
+        ]
+      });
+      window.gtag('event', 'view_item_list', {
+        'send_to': 'ads',
+        
+        'items': [
+          {
+            'id': catId,
+            'google_business_vertical': 'retail'
+          }
+        ]
+      });
+        
+      
+    }
+  }, [window.gtag])
 
 
   return (
