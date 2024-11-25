@@ -50,14 +50,15 @@ export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items,
   useEffect(() => {
     if (window.gtag) {
       window.gtag("event", "view_item_list", {
-        item_list_id: "related_products",
-        item_list_name: "Related products",
-        items: [
+        'send_to': 'ga',
+        'item_list_id': "related_products",
+        'item_list_name': "Related products",
+        'items': [
           {
-            item_id: catId,
-            item_name: catName,
-            affiliation: "Google Merchandise Store",
-            quantity: 1
+            'item_id': catId,
+            'item_name': catName,
+            'affiliation': "Google Merchandise Store",
+            'quantity': 1
           }
         ]
       });

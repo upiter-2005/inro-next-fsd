@@ -39,16 +39,17 @@ export const SingleProduct:React.FC<ISingleProduct> = ({product, className}) => 
   useEffect(() => {
     if (window.gtag) {
       window.gtag("event", "view_item", {
-        currency: "UAH",
-        value: product.price,
-        items: [
+        'send_to': 'ga',
+        'currency': "UAH",
+        'value': product.price,
+        'items': [
           {
-            item_id: product.id,
-            item_name: product.name,
-            affiliation: "Google Merchandise Store",
+            'item_id': product.id,
+            'item_name': product.name,
+            'affiliation': "Google Merchandise Store",
           
-            price: product.price,
-            quantity: 1
+            'price': product.price,
+            'quantity': 1
           }
         ]
       });
@@ -62,8 +63,6 @@ export const SingleProduct:React.FC<ISingleProduct> = ({product, className}) => 
           }
         ]
       });
-        
-      
     }
   }, [window.gtag])
 

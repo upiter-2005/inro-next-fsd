@@ -31,7 +31,7 @@ export const ShopList:React.FC<IShopList> = ({description}) => {
       </div>
       <div className="p-9">
         <Link href="#" className="flex items-center gap-3 text-sm"><MapPin width={16} /> Бастіонна</Link>
-        <Link href="#" className="flex items-center gap-3 text-sm"><MapPinned width={16} /> Київ, вул. Бастіонна, 3/5</Link>
+        <Link href="#" className="flex items-center gap-3 text-sm"><MapPinned width={16} /> Київ, вул. Бастіонна, 5/13</Link>
         <Link href="#" className="flex items-center gap-3 text-sm"><Clock width={16} /> Графік роботи: Вт-Сб з 11:00 до 20:00</Link>
         <Link href="https://www.google.com/maps/place/%D1%83%D0%BB.+%D0%91%D0%B0%D1%81%D1%82%D0%B8%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F,+3,+%D0%9A%D0%B8%D0%B5%D0%B2,+02000/@50.4190755,30.5490322,18.97z/data=!4m15!1m8!3m7!1s0x40d4cf6c21a8cb9b:0x112c857875e255b7!2z0YPQuy4g0JHQsNGB0YLQuNC-0L3QvdCw0Y8sIDMsINCa0LjQtdCyLCAwMjAwMA!3b1!8m2!3d50.419154!4d30.5496014!16s%2Fg%2F11hz2l9xhw!3m5!1s0x40d4cf6c21a8cb9b:0x112c857875e255b7!8m2!3d50.419154!4d30.5496014!16s%2Fg%2F11hz2l9xhw?entry=ttu&g_ep=EgoyMDI0MTAyNy4wIKXMDSoASAFQAw%3D%3D" className="w-full text-sm p-3 border border-[#111] rounded-[4px] block text-center hover:opacity-65 mt-6">Подивитись на мапі</Link>
 

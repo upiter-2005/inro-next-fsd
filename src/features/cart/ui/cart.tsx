@@ -14,6 +14,8 @@ import { sendGAEvent } from '@next/third-parties/google'
 import { CartList } from "./cartList"
 import { useCartStore } from "../model/cartSlice"
 import Link from "next/link"
+import { useEffect } from "react"
+import { checkoutProductsGtag } from "@/widgets/checkout/helpers/checkoutProductsGtag"
 
 interface ICartFeaturesProps {
   className?: string
@@ -22,6 +24,8 @@ interface ICartFeaturesProps {
 export const Cart:React.FC<ICartFeaturesProps> = ({className}) => {
   const {cartItems, total, openCart, setOpen} = useCartStore()
   const count = cartItems.length
+
+
   return (
     <div className={cn(className, '')}>
 

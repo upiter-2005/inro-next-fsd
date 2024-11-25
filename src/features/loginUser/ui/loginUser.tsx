@@ -45,6 +45,32 @@ export const LoginUser:React.FC = () => {
             street: response.data.acf.street
           }
         })
+
+        window.gtag('config', 'G-4XLP0P9SL3', {
+          'groups': 'ga',
+          'user_id': response.data.id
+        });
+        
+
+        window.gtag('set', 'user_data', {
+          "email": [response.email],
+          "phone_number": [response.data.acf.tel],
+          "address": [
+            {
+              first_name: response.data.acf.first_name,
+              last_name: response.data.acf.last_name,
+              street: response.data.acf.street,
+              city: response.data.acf.adress
+            }
+            
+          ]
+        });
+      
+        window.gtag("event", "login", {
+          method: "Google"
+        });
+        
+
         toast.success("Авторизація успішна", {icon: '✅'})
       }else{
         toast.error("Перевірте коректність даних", {icon: '❌'})

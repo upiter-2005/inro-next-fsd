@@ -36,14 +36,15 @@ export const AddToCart: React.FC<IAddToCartProps> = ({ className, product }) => 
     setOpen(true)
     fbPixelAddToCart()
     window.gtag('event', 'add_to_cart', { 
-      currency: "UAH",
-      value: product.price,
-      items: [
+      'send_to': 'ga',
+      'currency': "UAH",
+      'value': product.price,
+      'items': [
         {
-          item_id: product.id,
-          item_name: product.name,
-          price: product.price,
-          quantity: 1
+          'item_id': product.id,
+          'item_name': product.name,
+          'price': product.price,
+          'quantity': 1
         }
       ]})
 
@@ -58,6 +59,9 @@ export const AddToCart: React.FC<IAddToCartProps> = ({ className, product }) => 
         ]
       });
         
+
+
+
   }
   return (
     <Button

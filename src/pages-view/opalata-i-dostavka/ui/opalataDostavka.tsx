@@ -43,7 +43,7 @@ export async function OplataDostavka () {
               <div>Графік роботи: Пн-Нд: 9:00 — 20:00</div>
             </li>
             <li className="mb-5">
-              <p className="mb-0"><strong>вул. Бастіонна 3/5</strong> </p>
+              <p className="mb-0"><strong>вул. Бастіонна 5/13</strong> </p>
               <div>Графік роботи: Вт-Сб: 11:00 — 20:00</div>
             </li>
           </ul>

@@ -10,4 +10,3 @@ export async function generateStaticParams() {
 }
 export const dynamic = 'force-dynamic'
 export {productPage as default} from '@/pages-view/product'
-

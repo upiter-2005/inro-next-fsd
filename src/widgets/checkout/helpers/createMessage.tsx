@@ -26,5 +26,23 @@ export const createMessage = (data: any) => {
     if(data.packing) message += `Пакування: ${data.packing.join(", ")} \n`
 
     if(data.message) message += `Додаткова інформація: ${data.message} \n`
+
+
+    window.gtag('set', 'user_data', {
+      "email": [data.email],
+      "phone_number": [data.tel],
+      "address": [
+        {
+          first_name: data.first_name,
+          last_name: data.last_name,
+          street: data.in_adress || data.showroom_type,
+          city: data.in_city || data.np_city,
+          region: data.in_country,
+          postal_code: data.in_zip || data.np_department
+        }
+      ]
+    });
+
+    
     return message
 }

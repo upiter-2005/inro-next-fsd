@@ -24,6 +24,9 @@ import { LiqPayPay } from "@/shared/ui/form/liqpay"
 import { useRouter } from 'next/navigation'
 import { useCountDiscountPrice } from "@/features/cart/hooks/useCountDiscountPrice"
 import { useLiqpayDiscount } from "@/features/cart/hooks/useLiqpayDiscount"
+import { checkoutProductsGtag } from "../helpers/checkoutProductsGtag"
+import { checkoutProductsAds } from "../helpers/checkoutProductAds"
+import { googlePurchaseApi } from "@/shared/helpers/googleApi"
 
 export interface ICheckout {
   className?: string
@@ -56,11 +59,28 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
     },
     shouldUnregister: true
   })
-
+  const fbPixelInitiateCheckout = async()=>{
+    const { default: ReactPixel } = await import('react-facebook-pixel');
+    ReactPixel.track('InitiateCheckout')
+  }
   useEffect(()=>{
     setEmpty(cartItems.length > 0)
   }, [cartItems]
   )
+
+  useEffect(()=>{
+    // if (window.gtag) {
+    //   const items = checkoutProductsGtag(cartItems)
+    //   window.gtag("event", "begin_checkout", {
+    //     currency: "UAH",
+    //     value: total,
+    //     items
+    //   });
+    // }
+  
+    fbPixelInitiateCheckout()
+  }, [ cartItems, total])
+
   useEffect(()=>{
     if(total !== 0){
       setAmount(total)
@@ -68,10 +88,23 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [total]
   )
-
+  const fbPixelPurchase = async()=>{
+    const { default: ReactPixel } = await import('react-facebook-pixel');
+    ReactPixel.track('Purchase', {
+      value: total,
+      currency: 'UAH',
+      content_ids: cartItems.map(item => item.id),
+      content_type: 'product'
+      }
+    )
+  }
   const onSubmit = async(data: TCheckoutFields) => {
     startTransition( async () => {
       const productsArr: any = checkoutProducts(cartItems)
+      const productsArrGTAG: any = checkoutProductsGtag(cartItems)
+      const ProductsAds: any = checkoutProductsAds(cartItems)
+      
+      
       const emailProductsArr: any = emailProducts(cartItems)
       
       let message = createMessage(data)
@@ -124,15 +157,53 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
     const response = await makeOrder(dataOrder, emailProductsArr, summaryTotal)
       console.log(response)
       if(response.message === "Created"){
+
         if(payment !== 'Оплата при отриманні'){
           toast.success("Ваше замовлення прийнято в обробку! Тепер Ви можете сплатити за замовлення!", {icon: '✅', duration: 8000})
           setOrderIdNumber(response.orderId)
-         clearCart()
+
+          window.gtag("event", "purchase", {
+            transaction_id: response.orderId,
+            value: total,
+            currency: "UAH",
+            coupon: couponCode,
+            items: productsArrGTAG
+        });
+
+        window.gtag('event', 'purchase', {
+          'send_to': 'ads',
+          'value': total,
+          'items': ProductsAds
+        });
+
+          
+          await fbPixelPurchase()
+          await googlePurchaseApi(response.orderId, total, ProductsAds)
+          clearCart()
         }
+
         if(payment === 'Оплата при отриманні' || payment === ''){
+          if(payment === 'Оплата при отриманні') {
+              window.gtag("event", "purchase", {
+                transaction_id: response.orderId,
+                value: total,
+                currency: "UAH",
+                coupon: couponCode,
+                items: productsArrGTAG
+            });
+            window.gtag('event', 'purchase', {
+              'send_to': 'ads',
+              'value': total,
+              'items': ProductsAds
+            });
+
+            await fbPixelPurchase()
+          }
+          await googlePurchaseApi(response.orderId, total, ProductsAds)
           clearCart()
           router.push('/thank')
         }
+
       }else{
         toast.error("Упс! Щось трапилось..... повторіть пізніше", {icon: '❌'})
       }

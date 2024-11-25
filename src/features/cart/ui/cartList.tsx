@@ -4,14 +4,26 @@ import { DeleteFromCart } from "./deleteFromCart"
 import {useCartStore} from "@/features/cart/model/cartSlice"
 import { IncreaseCart } from "./increaseCart"
 import { DecreaseCart } from "./decreaseCart"
+import { useEffect } from "react"
+import { checkoutProductsGtag } from "@/widgets/checkout/helpers/checkoutProductsGtag"
 
 interface ICartList {
   className?: string
 }
 
 export const CartList:React.FC<ICartList> = ({className}) => {
-  const {cartItems} = useCartStore()
+  const {cartItems, total} = useCartStore()
 
+  useEffect(()=>{
+    const items = checkoutProductsGtag(cartItems)
+    window.gtag("event", "view_cart", {
+      currency: "UAH",
+      value: total,
+      items
+    });
+    
+  }, [window.gtag, cartItems])
+  
   if(!cartItems.length){return (<p>Ваш кошик порожній</p>)}
 
   return (

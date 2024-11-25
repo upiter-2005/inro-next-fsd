@@ -38,14 +38,15 @@ export const AddToFavourite:React.FC<IAddToFavouriteProps> = ({className, produc
   })
   fbPixelAddToWishlist()
   window.gtag('event', 'add_to_wishlist', { 
-    currency: "UAH",
-    value: product.price,
-    items: [
+    'send_to': 'ga',
+    'currency': "UAH",
+    'value': product.price,
+    'items': [
       {
-        item_id: product.id,
-        item_name: product.name,
-        price: product.price,
-        quantity: 1
+        'item_id': product.id,
+        'item_name': product.name,
+        'price': product.price,
+        'quantity': 1
       }
     ]})
 }
