@@ -24,7 +24,7 @@ export const CheckoutCartList:React.FC<ICartList> = ({className}) => {
             price={item.price}
             quantity={item.quantity}
             image={item.image}
-            actionSlot={<DeleteFromCart productId={item.id} invert={true} />}
+            actionSlot={<DeleteFromCart productId={item.id} invert={true} name={item.name} price={item.price} />}
           />
         ) )}
     </div>

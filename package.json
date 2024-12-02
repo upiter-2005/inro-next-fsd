@@ -59,6 +59,7 @@
     "@types/qs": "^6.9.15",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/rss": "^0.0.32",
     "babel-core": "7.0.0-bridge.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",

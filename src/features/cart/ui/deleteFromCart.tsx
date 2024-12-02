@@ -11,23 +11,25 @@ interface IDeleteFromCart {
   className?: string
   productId: number
   invert?: boolean
+  price?: number
+  name?: string
 }
 
-export const DeleteFromCart: React.FC<IDeleteFromCart> = ({ className, productId, invert }) => {
+export const DeleteFromCart: React.FC<IDeleteFromCart> = ({ className, productId, invert, price, name }) => {
   const {removeItem} = useCartStore()
 
   const removeHandler = () => {
     removeItem(productId)
     window.gtag("event", "remove_from_cart", {
       currency: "UAH",
-      // value: 30.03,
+      value: price,
       items: [
         {
           item_id: productId,
+          item_name: name,
           affiliation: "Google Merchandise Store",
-         
-          // price: 10.01,
-          // quantity: 1
+          price: price,
+          quantity: 1
         }
       ]
     });

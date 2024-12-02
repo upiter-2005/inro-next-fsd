@@ -1,6 +1,6 @@
 const nextConfig = {
   //output: 'export',
-  reactStrictMode: true,
+  reactStrictMode: false,
   images : {
     remotePatterns : [
       {

@@ -36,7 +36,7 @@ export const CartList:React.FC<ICartList> = ({className}) => {
             price={item.price}
             quantity={item.quantity} 
             image={item.image}
-            actionSlot={<DeleteFromCart productId={item.id}/>}
+            actionSlot={<DeleteFromCart productId={item.id} name={item.name} price={item.price}/>}
             increaseSlot={<IncreaseCart productId={item.id}/>}
             decreaseSlot={<DecreaseCart productId={item.id}/>}
           />

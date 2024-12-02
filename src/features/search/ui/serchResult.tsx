@@ -27,18 +27,43 @@ export const SearchResult:React.FC<ISearchResult> = ({className}) => {
         setOpenSearch(false)
       })
 
-    const [, cancel] = useDebounce(
-        () => {
+    // const [, cancel] = useDebounce(
+    //     () => {
+    //         if (value.length > 2 ){
+    //             const newArray = searchResult.filter(product => product.name.toLowerCase().includes(value.toLowerCase()))
+    //             setDebouncedValue(newArray)
+    //             return
+    //         } 
+    //         return
+    //     },
+    //     1000,
+    //     [value]
+    // );
+
+    const serchGA = () => {
+        window.gtag("event", "search", {
+            search_term: value
+        });
+    }
+    const searchEnterHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
             if (value.length > 2 ){
                 const newArray = searchResult.filter(product => product.name.toLowerCase().includes(value.toLowerCase()))
                 setDebouncedValue(newArray)
+                serchGA()
                 return
             } 
+          }
+    }
+
+    const searchHandler = () => {
+        if (value.length > 2 ){
+            const newArray = searchResult.filter(product => product.name.toLowerCase().includes(value.toLowerCase()))
+            setDebouncedValue(newArray)
+            serchGA()
             return
-        },
-        1000,
-        [value]
-    );
+        } 
+    }
 
 
     const { data: array1, error: error1, isLoading: isLoading1 } = useSWR<any[] | undefined>(`${process.env.NEXT_PUBLIC_API_HOST}/wp-json/wc/v3/products?per_page=99&page=1&consumer_key=${process.env.NEXT_PUBLIC_WC_CUSTOMER_KEY}&consumer_secret=${process.env.NEXT_PUBLIC_WC_SECRET}`, fetcher)
@@ -53,7 +78,7 @@ export const SearchResult:React.FC<ISearchResult> = ({className}) => {
             console.log(searchResult)
     }, [array1, array2, array3])
 
-    console.log(debouncedValue)
+
 
     return (
     
@@ -61,10 +86,15 @@ export const SearchResult:React.FC<ISearchResult> = ({className}) => {
             <div className="w-full relative">
                 {value && <div className='text-[#828282] text-xs mb-2'>Пошук по запиту: <span className='font-bold underline'>{value}</span> (Знайдено {debouncedValue.length} товарів)</div>}
                 
-                <input type="text" value={value} onChange={(e)=>setValue(e.target.value)} placeholder='Введіть пошуковий запит' className="w-full pb-3 bg-transparent focus-within:outline-none autofill:bg-transparent border-b border-b-[#111] mb-8" />
+                <input type="text" value={value}
+                 onChange={(e)=>setValue(e.target.value)} 
+                 onKeyDown={searchEnterHandler} 
+                 placeholder='Введіть пошуковий запит' 
+                 className="w-full pb-3 bg-transparent focus-within:outline-none autofill:bg-transparent border-b border-b-[#111] mb-8 " />
+                <button className='bg-black text-white rounded-[4px] py-2 px-5 absolute -top-2 right-0' onClick={searchHandler}>Пошук</button>
                 <button 
                     onClick={()=>{setOpenSearch(false)}}
-                    className="absolute top-0 right-0"
+                    className="absolute top-1 right-28"
                 >
                     <Image src={close} width={14} height={14} alt="" />
                 </button>

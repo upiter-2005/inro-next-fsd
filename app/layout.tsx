@@ -30,9 +30,9 @@ export default function RootLayout({
   
   return (
     <html lang="en">
-       {/* <Suspense><GoogleAnalytics gaId="G-4XLP0P9SL3"  /></Suspense>
-      <Suspense><GoogleTagManager gtmId="GTM-MVW3D48G" /></Suspense> */}
- 
+       <Suspense><GoogleAnalytics gaId="G-4XLP0P9SL3"  /></Suspense>
+      <Suspense><GoogleTagManager gtmId="GTM-MVW3D48G" /></Suspense>
+      
         
       <body className={cn(arimo.className, 'bg-[#FCF9EE] color-[#111111] overflow-x-hidden')}>
         <main>
@@ -47,7 +47,7 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <FacebookPixelEvents />
         </Suspense>
-        <Suspense><Analytics/></Suspense>
+        {/* <Suspense><Analytics/></Suspense> */}
       </body>
     </html>
   );

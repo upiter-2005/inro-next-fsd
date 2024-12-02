@@ -13,6 +13,7 @@ export default function Analytics() {
   useEffect(() => {
     if (pathname) {
       pageview(pathname)
+      console.log('pageview')
     }
   }, [pathname, searchParams])
 
