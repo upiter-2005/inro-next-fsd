@@ -35,29 +35,32 @@ export const AddToCart: React.FC<IAddToCartProps> = ({ className, product }) => 
     })
     setOpen(true)
     fbPixelAddToCart()
-    window.gtag('event', 'add_to_cart', { 
-      'send_to': 'ga',
-      'currency': "UAH",
-      'value': product.price,
-      'items': [
-        {
-          'item_id': product.id,
-          'item_name': product.name,
-          'price': product.price,
-          'quantity': 1
-        }
-      ]})
-
-      window.gtag('event', 'add_to_cart', {
-        'send_to': 'ads',
+    if (typeof window !== 'undefined') {
+      window.gtag('event', 'add_to_cart', { 
+        'send_to': 'ga',
+        'currency': "UAH",
         'value': product.price,
         'items': [
           {
-            'id': product.id,
-            'google_business_vertical': 'retail'
+            'item_id': product.id,
+            'item_name': product.name,
+            'price': product.price,
+            'quantity': 1
           }
-        ]
-      });
+        ]})
+  
+        window.gtag('event', 'add_to_cart', {
+          'send_to': 'ads',
+          'value': product.price,
+          'items': [
+            {
+              'id': product.id,
+              'google_business_vertical': 'retail'
+            }
+          ]
+        });
+  }
+   
         
 
 

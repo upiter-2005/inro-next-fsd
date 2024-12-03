@@ -9,13 +9,10 @@ import {
   SheetContent,
   SheetTrigger
 } from "@/shared/ui/sheet"
-import { sendGAEvent } from '@next/third-parties/google'
 
 import { CartList } from "./cartList"
 import { useCartStore } from "../model/cartSlice"
 import Link from "next/link"
-import { useEffect } from "react"
-import { checkoutProductsGtag } from "@/widgets/checkout/helpers/checkoutProductsGtag"
 
 interface ICartFeaturesProps {
   className?: string

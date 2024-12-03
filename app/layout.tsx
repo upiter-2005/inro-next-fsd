@@ -30,6 +30,7 @@ export default function RootLayout({
   
   return (
     <html lang="en">
+      <meta name="google-site-verification" content="WWObvI45hqAlB7FWzAptdEcFx8_37_4draelu4VSSlY" />
        <Suspense><GoogleAnalytics gaId="G-4XLP0P9SL3"  /></Suspense>
       <Suspense><GoogleTagManager gtmId="GTM-MVW3D48G" /></Suspense>
       

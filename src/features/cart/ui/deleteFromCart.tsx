@@ -1,5 +1,4 @@
 'use client'
-import { addToCart } from "@/features/cart/model/actions"
 import { cn } from "@/shared/helpers"
 import Image from "next/image"
 import { Button } from "@/shared/ui/button"
@@ -20,19 +19,22 @@ export const DeleteFromCart: React.FC<IDeleteFromCart> = ({ className, productId
 
   const removeHandler = () => {
     removeItem(productId)
-    window.gtag("event", "remove_from_cart", {
-      currency: "UAH",
-      value: price,
-      items: [
-        {
-          item_id: productId,
-          item_name: name,
-          affiliation: "Google Merchandise Store",
-          price: price,
-          quantity: 1
-        }
-      ]
-    });
+    if (typeof window !== 'undefined') {
+      window.gtag("event", "remove_from_cart", {
+        currency: "UAH",
+        value: price,
+        items: [
+          {
+            item_id: productId,
+            item_name: name,
+            affiliation: "Google Merchandise Store",
+            price: price,
+            quantity: 1
+          }
+        ]
+      });
+    }
+    
     
   }
 

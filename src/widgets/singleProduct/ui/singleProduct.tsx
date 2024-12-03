@@ -37,33 +37,36 @@ export const SingleProduct:React.FC<ISingleProduct> = ({product, className}) => 
   }, [])
 
   useEffect(() => {
-    if (window.gtag) {
-      window.gtag("event", "view_item", {
-        'send_to': 'ga',
-        'currency': "UAH",
-        'value': product.price,
-        'items': [
-          {
-            'item_id': product.id,
-            'item_name': product.name,
-            'affiliation': "Google Merchandise Store",
-          
-            'price': product.price,
-            'quantity': 1
-          }
-        ]
-      });
-      window.gtag('event', 'view_item', {
-        'send_to': 'ads',
-        'value': product.price,
-        'items': [
-          {
-            'id': product.id,
-            'google_business_vertical': 'retail'
-          }
-        ]
-      });
+    if (typeof window !== 'undefined') {
+      if (window.gtag) {
+        window.gtag("event", "view_item", {
+          'send_to': 'ga',
+          'currency': "UAH",
+          'value': product.price,
+          'items': [
+            {
+              'item_id': product.id,
+              'item_name': product.name,
+              'affiliation': "Google Merchandise Store",
+            
+              'price': product.price,
+              'quantity': 1
+            }
+          ]
+        });
+        window.gtag('event', 'view_item', {
+          'send_to': 'ads',
+          'value': product.price,
+          'items': [
+            {
+              'id': product.id,
+              'google_business_vertical': 'retail'
+            }
+          ]
+        });
+      }
     }
+    
   }, [window.gtag])
 
 
