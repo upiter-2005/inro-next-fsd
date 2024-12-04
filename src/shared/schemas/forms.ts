@@ -48,6 +48,17 @@ export const updateFieldsSchema = defaulFieldsSchema
     street: z.string().min(3, {message: "Занадто коротко"}).optional(),
   })
 )
+
+
+
+export const horecaFieldsSchema = z.object({
+  name: z.string().min(3, {message: "Занадто коротке ім'я"}),
+  tel: z.string().regex(phoneRegex, 'Перевірте коректність телефону'),
+  email: z.string().email({ message: 'Введіть коректну пошту' }),
+  message: z.string().min(3, {message: "Занадто короткий текст повідомлення"}).optional(),
+
+})
+
 export const checkoutFieldsSchema = defaulFieldsSchema
   .merge(
     z.object({
@@ -98,6 +109,7 @@ export const checkoutFieldsSchema = defaulFieldsSchema
   export type TRecoverySchema = z.infer<typeof recoverySchema>
   export type TConfirmRecoverySchema = z.infer<typeof confirmRecoverySchema>
   export type TClallbackSchema = z.infer<typeof clallbackSchema>
-
+  export type THorecaFieldsSchema = z.infer<typeof horecaFieldsSchema>
+  
   
 

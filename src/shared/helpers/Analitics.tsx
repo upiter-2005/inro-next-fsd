@@ -23,7 +23,7 @@ export default function Analytics() {
 
   return (
     <>
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-4XLP0P9SL3" />
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-4XLP0P9SL3" />
       <noscript>
         <iframe
           src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}

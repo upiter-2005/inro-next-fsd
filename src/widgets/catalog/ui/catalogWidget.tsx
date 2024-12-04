@@ -48,34 +48,37 @@ export const CatalogWidget: React.FC<ICatalogWidgetProps> = ({ className, items,
 
 
   useEffect(() => {
-    if (window.gtag) {
-      window.gtag("event", "view_item_list", {
-        'send_to': 'ga',
-        'item_list_id': "related_products",
-        'item_list_name': "Related products",
-        'items': [
-          {
-            'item_id': catId,
-            'item_name': catName,
-            'affiliation': "Google Merchandise Store",
-            'quantity': 1
-          }
-        ]
-      });
-      window.gtag('event', 'view_item_list', {
-        'send_to': 'ads',
+    if (typeof window !== 'undefined') {
+      if (window.gtag) {
+        window.gtag("event", "view_item_list", {
+          'send_to': 'ga',
+          'item_list_id': "related_products",
+          'item_list_name': "Related products",
+          'items': [
+            {
+              'item_id': catId,
+              'item_name': catName,
+              'affiliation': "Google Merchandise Store",
+              'quantity': 1
+            }
+          ]
+        });
+        window.gtag('event', 'view_item_list', {
+          'send_to': 'ads',
+          
+          'items': [
+            {
+              'id': catId,
+              'google_business_vertical': 'retail'
+            }
+          ]
+        });
+          
         
-        'items': [
-          {
-            'id': catId,
-            'google_business_vertical': 'retail'
-          }
-        ]
-      });
-        
-      
+      }
     }
-  }, [window.gtag])
+  
+  }, [])
 
 
   return (

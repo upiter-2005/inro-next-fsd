@@ -96,6 +96,21 @@ export async function callUser(body: any){
   }
 }
 
+export async function horecaRequest(body: any){
+  try{
+    const info = await transporter.sendMail({
+      from: 'Inro <inroaroma@gmail.com>',
+      to: 'inroaroma@gmail.com',
+      subject: 'Заявка зі стоінки Horeca!',
+      html: `Ім'я: ${body.name} <br> Телефон: ${body.tel} <br> Пошта: ${body.tel} <br> Повідомлення: ${body.message}`
+    })
+    console.log(info)
+    
+  }catch(e){
+    console.log(e)
+  }
+}
+
 export async function authUser (body: any) {
   const data = {
     username: body.login,

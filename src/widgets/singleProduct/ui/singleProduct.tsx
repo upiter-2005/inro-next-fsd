@@ -67,7 +67,7 @@ export const SingleProduct:React.FC<ISingleProduct> = ({product, className}) => 
       }
     }
     
-  }, [window.gtag])
+  }, [product.id, product.price, product.name])
 
 
   const related_products = product.upsell_ids.join(',')

@@ -1,0 +1,1 @@
+export {HrcForm} from "@/features/hrcForm/ui/hrcForm"

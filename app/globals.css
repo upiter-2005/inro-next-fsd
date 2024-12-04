@@ -93,6 +93,9 @@
   p{
     margin-bottom: 20px;
   }
+  .text-fill-white{
+    -webkit-text-fill-color: #fff!important;
+  }
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 

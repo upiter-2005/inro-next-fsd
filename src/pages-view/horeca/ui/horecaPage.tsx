@@ -19,6 +19,7 @@ import { RightImgContent } from "@/shared/ui/page/rightImgContent"
 import { ShopList } from "@/shared/ui/page/shopList"
 import { Gem, Leaf, Shield, Sparkle } from "lucide-react"
 import { BreadcrumbsInro } from "@/shared/ui/breadcrumbsInro"
+import { HorecaForm } from "@/widgets/horecaForm"
 
 export const metadata: Metadata = {
   title: "Inro - Horeca",
@@ -89,7 +90,7 @@ export async function HorecaPage () {
 
         <h3 className="text-4xl leading-9 mb-9">Контакти магазинів:</h3>
         <ShopList  />
-
+        <HorecaForm />
       </div>
 
     </>
