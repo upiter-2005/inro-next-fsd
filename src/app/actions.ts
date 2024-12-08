@@ -102,9 +102,32 @@ export async function horecaRequest(body: any){
       from: 'Inro <inroaroma@gmail.com>',
       to: 'inroaroma@gmail.com',
       subject: 'Заявка зі стоінки Horeca!',
-      html: `Ім'я: ${body.name} <br> Телефон: ${body.tel} <br> Пошта: ${body.tel} <br> Повідомлення: ${body.message}`
+      html: `Ім'я: ${body.name} <br> Телефон: ${body.tel} <br> Пошта: ${body.email} <br> Повідомлення: ${body.message}`
     })
     console.log(info)
+    
+  }catch(e){
+    console.log(e)
+  }
+}
+
+export async function subscribeEmail(body: any){
+  try{
+    const options = {
+      method: 'POST',
+      headers: {
+        accept: 'application/json; charset=UTF-8',
+        'content-type': 'application/json',
+        authorization: 'Basic aW5yb2Fyb21hQGdtYWlsLmNvbTpJbnJvYXJvbWEyMDIz'
+      },
+      body: JSON.stringify({channels: [{value: body.email, type: 'email'}]})
+    };
+    
+    fetch('https://esputnik.com/api/v1/contact', options)
+      .then(res => res.json())
+      .then(res => {return res.id})
+      .catch(err => console.error(err));
+    
     
   }catch(e){
     console.log(e)

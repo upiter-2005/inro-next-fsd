@@ -1,0 +1,1 @@
+export {SubscribeForm} from "@/features/subscribeForm/ui/SubscribeForm"

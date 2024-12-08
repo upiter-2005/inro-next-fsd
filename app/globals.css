@@ -111,3 +111,7 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px transparent inset;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+.image-gallery-thumbnail.active, .image-gallery-thumbnail:focus {
+  border: 3px solid #111!important;
+}

@@ -27,3 +27,4 @@ export interface IProduct {
   cross_sell_ids:string[]
   upsell_ids: string[]
 }
+
