@@ -125,9 +125,19 @@ export async function subscribeEmail(body: any){
     
     fetch('https://esputnik.com/api/v1/contact', options)
       .then(res => res.json())
-      .then(res => {return res.id})
+      .then(res => {res.id})
       .catch(err => console.error(err));
     
+
+      const source = fs.readFileSync('./public/afterSubscribe.html', 'utf-8').toString()
+    
+  
+        const info = await transporter.sendMail({
+          from: 'Inro <inroaroma@gmail.com>',
+          to: body.email,
+          subject: 'Inro - Раді вас бачити серед наших клієнтів!',
+          html: source
+        })
     
   }catch(e){
     console.log(e)

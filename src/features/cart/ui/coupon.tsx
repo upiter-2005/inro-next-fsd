@@ -14,9 +14,10 @@ export const Coupon:React.FC<ICoupon> = ({coupons, className}) => {
     const [error, setError] = useState<boolean>(false)
 
     const couponHandle = (e: any) => {
+        console.log(coupons)
         if(e.target.value.length > 3){
             const result: any = coupons.find(el => el.code === e.target.value)
-     
+            
             if(result === undefined){
                 setError(true)
                 setDiscount("")
