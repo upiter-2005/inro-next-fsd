@@ -60,12 +60,10 @@ export const AddToCart: React.FC<IAddToCartProps> = ({ className, product }) => 
           ]
         });
   }
-   
-        
+
+}
 
 
-
-  }
   return (
     <Button
       onClick={addToCartHandler}

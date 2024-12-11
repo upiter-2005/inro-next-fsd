@@ -6,13 +6,19 @@ import { Subtitle } from "@/shared/ui/form/subtitle"
 import { useEffect, useState } from "react"
 import { RecipientData } from "./recipientData"
 import { useFormContext } from "react-hook-form"
+import { useCartStore } from "@/features/cart/model/cartSlice"
+import { checkoutProductsGtag } from "@/widgets/checkout/helpers/checkoutProductsGtag"
 
 interface IPersonData {
   className?: string
 }
 
 export const PersonData:React.FC<IPersonData> = ({className}) => {
+  const {total, cartItems} = useCartStore()
   const [check, setCheck] = useState<boolean>(false)
+
+  const productsArrGTAG: any = checkoutProductsGtag(cartItems)
+  
   const {
     register,
     unregister,
@@ -33,6 +39,26 @@ export const PersonData:React.FC<IPersonData> = ({className}) => {
     setCheck(val)
   }
 
+  const fbPixelInitCheckout = async()=>{
+    const { default: ReactPixel } = await import('react-facebook-pixel');
+    ReactPixel.fbq('track', 'InitiateCheckout')
+  }
+
+  useEffect(()=>{
+    if (typeof window !== 'undefined' && cartItems.length > 0) {
+      window.gtag('event', 'begin_checkout', { 
+        'currency': "UAH",
+        'value': total,
+        'items': productsArrGTAG
+      })
+  
+  }
+
+  }, [cartItems])
+
+  useEffect(()=>{
+    fbPixelInitCheckout()
+  }, [])
   return(
     <>
       <div className={cn('p-8 border-b border-b-solid border-b-[#E4E4E4]', className)}>

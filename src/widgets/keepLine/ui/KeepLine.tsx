@@ -22,8 +22,6 @@ interface IKeepLine {
 
 export const KeepLine: React.FC<IKeepLine> = ({ className }) => {
 
-
-
   return (
     <div className="max-w-[1200px] w-full flex flex-col md:flex-row justify-between m-auto rounded-[8px] overflow-hidden border border-black md:my-40">
 
