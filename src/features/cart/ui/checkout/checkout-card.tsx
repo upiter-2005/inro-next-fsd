@@ -3,10 +3,11 @@ import { cn } from "@/shared/helpers/cn"
 import { useCartStore } from "../../model/cartSlice"
 import { CheckoutCartList } from "./checkout-cart-list"
 import { Button } from "@/shared/ui/button"
-
+import Image from 'next/image'
 import { useCheckoutStore } from "@/features/formCheckout/model/checkoutSlice"
 import { Coupon } from "../coupon"
 import { useCountDiscountPrice } from "../../hooks/useCountDiscountPrice"
+import loader from "@/shared/assets/images/loader.svg"
 
 interface ICheckoutCart {
   className?: string
@@ -15,7 +16,8 @@ interface ICheckoutCart {
 
 export const CheckoutCart: React.FC<ICheckoutCart> = ({ className, coupons }) => {
   const { cartItems, total, discountAmount, discountType } = useCartStore()
-  const {payment, orderIdNumber} = useCheckoutStore()
+  const {payment, orderIdNumber, offerSubmit, setOfferSubmit} = useCheckoutStore()
+  
  
 
   const {summaryTotal} = useCountDiscountPrice()
@@ -49,7 +51,10 @@ export const CheckoutCart: React.FC<ICheckoutCart> = ({ className, coupons }) =>
             {(payment !== 'Оплата при отриманні' && orderIdNumber) ?
               (<Button className="w-full bg-white text-center text-[#111] text-sm block p-3 rounded-sm hover:bg-white hover:text-[#111] transition-all hover:opacity-70" >Продовжити покупки</Button>)
               :
-              ( <Button type="submit" form="checkout-form" className="w-full bg-white text-center text-[#111] text-sm block p-3 rounded-sm hover:bg-white hover:text-[#111] transition-all hover:opacity-70">Оформити замовлення</Button>)
+              ( <Button type="submit" disabled={offerSubmit} form="checkout-form" className={`w-full ${offerSubmit ? 'bg-[#666]' : 'bg-white'}  text-center text-[#111] text-sm block p-3 rounded-sm hover:bg-white hover:text-[#111] transition-all hover:opacity-70`}>
+                {offerSubmit ?  <div className="w-full text-center flex justify-center relative -top-4"><Image src={loader} width={50} height={50} alt="loader" /> </div> : 'Оформити замовлення'}
+                
+                </Button>)
             }
         </>
 

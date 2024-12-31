@@ -35,7 +35,7 @@ export interface ICheckout {
 export const Checkout: React.FC<ICheckout> = ({ className }) => {
   const {summaryTotal} = useCountDiscountPrice()
   const {lqSummaryTotal} = useLiqpayDiscount()
-  const {payment, orderIdNumber, setOrderIdNumber, setAmount, lqAmount} = useCheckoutStore()
+  const {payment, orderIdNumber, setOrderIdNumber, setAmount, lqAmount, setOfferSubmit} = useCheckoutStore()
   const { cartItems, clearCart, total, couponCode } = useCartStore()
   const {user} = useUserStore()
   const [empty, setEmpty] = useState<boolean>(false)
@@ -59,27 +59,13 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
     },
     shouldUnregister: true
   })
-  const fbPixelInitiateCheckout = async()=>{
-    const { default: ReactPixel } = await import('react-facebook-pixel');
-    ReactPixel.track('InitiateCheckout')
-  }
+ 
   useEffect(()=>{
     setEmpty(cartItems.length > 0)
   }, [cartItems]
   )
 
-  useEffect(()=>{
-    // if (window.gtag) {
-    //   const items = checkoutProductsGtag(cartItems)
-    //   window.gtag("event", "begin_checkout", {
-    //     currency: "UAH",
-    //     value: total,
-    //     items
-    //   });
-    // }
-  
-    fbPixelInitiateCheckout()
-  }, [ cartItems, total])
+
 
   useEffect(()=>{
     if(total !== 0){
@@ -100,6 +86,7 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
   }
   const onSubmit = async(data: TCheckoutFields) => {
     startTransition( async () => {
+      setOfferSubmit(true)
       const productsArr: any = checkoutProducts(cartItems)
       const productsArrGTAG: any = checkoutProductsGtag(cartItems)
       const ProductsAds: any = checkoutProductsAds(cartItems)

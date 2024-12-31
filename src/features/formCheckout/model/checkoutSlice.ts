@@ -8,6 +8,8 @@ export interface ICheckoutData {
   setAmount: (value: number) => void
   orderIdNumber: number
   lqAmount: number
+  offerSubmit: boolean
+  setOfferSubmit: (val: boolean) => void
 }
 
 export const useCheckoutStore = create<ICheckoutData>()(
@@ -17,6 +19,7 @@ export const useCheckoutStore = create<ICheckoutData>()(
         lqAmount: 0,
         payment: '',
         orderIdNumber: 0,
+        offerSubmit: false,
         setPayment: (value) => {
           set({payment: value})
         },
@@ -26,7 +29,7 @@ export const useCheckoutStore = create<ICheckoutData>()(
         setAmount: (value) => {
           set({lqAmount: value})
         },
-
+        setOfferSubmit: (val) => {set({offerSubmit: val})},
       }
     ),
     {

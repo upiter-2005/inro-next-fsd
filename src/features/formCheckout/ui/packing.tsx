@@ -14,9 +14,10 @@ interface IPacking {
 }
 
 const packages = [
-  {id: 2217, name: "Круглий подарунковий бокс білий", price: "200", thumb: "https://www.api.inro.com.ua/wp-content/uploads/2021/04/Kruglyj-podarochnyj-boks-belyj-600x600.jpg" },
+  // {id: 2217, name: "Круглий подарунковий бокс білий", price: "200", thumb: "https://www.api.inro.com.ua/wp-content/uploads/2021/04/Kruglyj-podarochnyj-boks-belyj-600x600.jpg" },
+  {id: 8165, name: "Подарунковий бокс чорний INRO", price: "700", thumb: "https://www.api.inro.com.ua/wp-content/uploads/2023/12/Podarunkova-sumochka-1-scaled.jpg" },
   {id: 2215, name: "Великий подарунковий бокс білій", price: "300", thumb: "https://www.api.inro.com.ua/wp-content/uploads/2021/04/Bolshoj-podarochnyj-boks-belyj-600x600.jpg" },
-  {id: 2213, name: "Подарунковий бокс чорний INRO", price: "700", thumb: "https://www.api.inro.com.ua/wp-content/uploads/2023/12/korobka3-600x774.jpg" },
+ 
   // {name: "Розмір XL", price: " 125", thumb: "https://www.inro.com.ua/wp-content/uploads/2021/04/Kruglyj-podarochnyj-boks-belyj-600x600.jpg" }
 ]
 

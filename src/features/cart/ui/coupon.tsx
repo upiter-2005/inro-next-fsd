@@ -16,7 +16,7 @@ export const Coupon:React.FC<ICoupon> = ({coupons, className}) => {
     const couponHandle = (e: any) => {
         console.log(coupons)
         if(e.target.value.length > 3){
-            const result: any = coupons.find(el => el.code === e.target.value)
+            const result: any = coupons.find(el => el.code.toLowerCase() === e.target.value.toLowerCase())
             
             if(result === undefined){
                 setError(true)

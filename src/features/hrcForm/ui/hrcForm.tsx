@@ -30,7 +30,16 @@ export const HrcForm:React.FC = () => {
       const response = await horecaRequest(data)
       setFormSend(true)
       console.log(data)
-    
+
+      const { default: ReactPixel } = await import('react-facebook-pixel');
+        ReactPixel.track('Lead', {})
+
+
+       if (window.gtag) {
+          window.gtag("event", "lead", {
+            'send_to':"ga"
+          });
+        }
     })
   }
 
@@ -39,7 +48,7 @@ export const HrcForm:React.FC = () => {
       {formSend ? (
         <>
           <h3 className="text-center text-2xl text-[#fff]">Ваша заявка отримана!</h3>
-          <p className="text-center">Ми зв&apos;яжемось з Вами у найближчій час!</p>
+          <p className="text-center">Ми зв&apos;яжемось з Вами у найближчий час!</p>
         </>
       ) : (
         <FormProvider {...form}>

@@ -19,6 +19,7 @@ interface CartState {
   discountAmount: number
   discountType: string
   couponCode: string
+ 
 }
 
 export const useCartStore = create<CartState>()(
@@ -29,9 +30,11 @@ export const useCartStore = create<CartState>()(
         total: 0,
         couponCode: '',
         discountAmount: 0,
+        
         discountType: '',
         openCart: false,
         setOpen: (val) => {set({openCart: val})},
+       
         addCartItem: (item) => {
           const existItem = get().cartItems.find((el:ICartItem) => el.id === item.id)
           if(existItem){

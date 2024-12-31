@@ -19,7 +19,7 @@ export const HorecaForm: React.FC<IHorecaForm> = ({ className }) => {
 
       <div className="flex-1  md:px-6">
         <p className="text-3xl md:text-4xl font-thin text-left leading-8 md:leading-9 mb-6 ">Залишились питання або <br /> потрібна консультація?</p>
-        <div className="text-xl  text-left font-thin leading-6 max-w-[399px]">Зв’яжіться з нами за номером <br />  <a href="tel+380930109455" className="font-bold">093 010 94 55</a> або напишіть нам <br /> на електрону пошту: <a href="mailto:inrohoreca@ukr.net" className="font-bold">inrohoreca@ukr.net</a> 
+        <div className="text-xl  text-left font-thin leading-6 max-w-[399px]">Зв’яжіться з нами за номером <br />  <a href="tel:+380930109455" className="font-bold">093 010 94 55</a> або напишіть нам <br /> на електрону пошту: <a href="mailto:inrohoreca@ukr.net" className="font-bold">inrohoreca@ukr.net</a> 
         </div>
       </div>
 

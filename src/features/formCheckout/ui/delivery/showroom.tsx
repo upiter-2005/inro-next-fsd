@@ -32,10 +32,10 @@ export const Showroom:React.FC<IShowroom> = ({className}) => {
             <RadioGroupItem value="м. Київ, шоурум INRO в ЖК Комфорт Таун, Юрія Липи, 6" id="sh1" {...register("showroom_type")} />
             <Label htmlFor="sh1" className="cursor-pointer">м. Київ, шоурум INRO в ЖК Комфорт Таун, Юрія Липи, 6</Label>
           </div>
-          <div className="flex items-center space-x-2">
+          {/* <div className="flex items-center space-x-2">
             <RadioGroupItem value="м. Київ, шоурум INRO вул. Бастіонна, 5/13" id="sh2" {...register("showroom_type")} />
             <Label htmlFor="sh2" className="cursor-pointer">м. Київ, шоурум INRO вул. Бастіонна, 5/13</Label>
-          </div>
+          </div> */}
           
         </RadioGroup>
       </div>

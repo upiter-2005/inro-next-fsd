@@ -42,7 +42,11 @@ export const CarouselBanerInro:React.FC<ICarouselBanerInro> = ({className}) => {
         >
         {!isMobile && 
           <CarouselContent>
-           
+            <CarouselItem>
+            <Link href="/category/novinki-uk">
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/12/Frame-131-2.png" className="h-[813px] w-full object-cover" alt="Inro"/>
+            </Link>
+          </CarouselItem>
           <CarouselItem>
             <Link href="/category/novinki-uk">
               <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/11/Frame-106.png" className="h-[813px] w-full object-cover" alt="Inro"/>
@@ -59,7 +63,11 @@ export const CarouselBanerInro:React.FC<ICarouselBanerInro> = ({className}) => {
 
         {isMobile && 
           <CarouselContent>
-            
+            <CarouselItem>
+            <Link href="/category/novinki-uk">
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/12/iPhone-16-15.png" className="h-[653px] w-full object-cover" alt="Inro"/>
+            </Link>
+          </CarouselItem>
           <CarouselItem>
             <Link href="/category/novinki-uk">
               <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/11/iPhone-16-6.png" className="h-[653px] w-full object-cover" alt="Inro"/>

@@ -3,7 +3,7 @@ import { cn } from "@/shared/helpers"
 import { Checkbox } from "@/shared/ui/checkbox"
 import { Input } from "@/shared/ui/form/input"
 import { Subtitle } from "@/shared/ui/form/subtitle"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { RecipientData } from "./recipientData"
 import { useFormContext } from "react-hook-form"
 import { useCartStore } from "@/features/cart/model/cartSlice"
@@ -14,6 +14,7 @@ interface IPersonData {
 }
 
 export const PersonData:React.FC<IPersonData> = ({className}) => {
+  const isClicked = useRef<boolean>(false)
   const {total, cartItems} = useCartStore()
   const [check, setCheck] = useState<boolean>(false)
 
@@ -44,24 +45,27 @@ export const PersonData:React.FC<IPersonData> = ({className}) => {
     ReactPixel.fbq('track', 'InitiateCheckout')
   }
 
+  const trigerFb = () => {
+    if(isClicked.current) return
+    isClicked.current = true
+    fbPixelInitCheckout()
+  }
+
   useEffect(()=>{
     if (typeof window !== 'undefined' && cartItems.length > 0) {
       window.gtag('event', 'begin_checkout', { 
         'currency': "UAH",
         'value': total,
-        'items': productsArrGTAG
+        'items': productsArrGTAG,
+        'send_to':"ga"
       })
-  
   }
-
   }, [cartItems])
 
-  useEffect(()=>{
-    fbPixelInitCheckout()
-  }, [])
+
   return(
     <>
-      <div className={cn('p-8 border-b border-b-solid border-b-[#E4E4E4]', className)}>
+      <div className={cn('p-8 border-b border-b-solid border-b-[#E4E4E4]', className)} onClick={trigerFb}>
         <Subtitle text="Особисті дані"/>
         <div className="flex items-center gap-2 mb-8">
         <Checkbox
