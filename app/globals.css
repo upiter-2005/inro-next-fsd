@@ -115,3 +115,71 @@ select:-webkit-autofill:focus {
 .image-gallery-thumbnail.active, .image-gallery-thumbnail:focus {
   border: 3px solid #111!important;
 }
+
+
+
+
+
+.selectBox{
+    max-width: 630px;
+    width: 100%;
+    position: relative;
+    padding-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    font-size: 14px;
+    .cefSelect{
+        width: 100%;
+        
+        input{
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #1e1e1e;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        .selectItems{
+            background-color: transparent;
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 100%;
+            border: 1px solid #EAEAEA;
+            padding: 0;
+            margin-bottom: 26px;
+            max-height: 164px;
+            overflow: auto;
+            z-index: 50;
+            .selectItems_el{
+                line-height: 25px;
+                padding: 5px 13px;
+                &:hover{
+                    background-color: transparent;
+                    cursor: pointer;
+                }
+            }
+            
+        }
+    }
+}
+.np-department-select{
+    width: 50%;
+    margin-top: 26px;
+    .react-select__control{
+        border: none;
+        border-bottom: 1px solid #1e1e1e;
+        border-radius: 0;
+        background-color: transparent;
+    }
+}
+@media(max-width: 992px){
+  .selectBox{
+    flex-direction: column;
+  }
+  .np-department-select{
+    width: 100%;
+  }
+
+}

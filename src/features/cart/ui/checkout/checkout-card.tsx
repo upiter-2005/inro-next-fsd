@@ -17,7 +17,7 @@ interface ICheckoutCart {
 export const CheckoutCart: React.FC<ICheckoutCart> = ({ className, coupons }) => {
   const { cartItems, total, discountAmount, discountType } = useCartStore()
   const {payment, orderIdNumber, offerSubmit, setOfferSubmit} = useCheckoutStore()
-  
+              
  
 
   const {summaryTotal} = useCountDiscountPrice()

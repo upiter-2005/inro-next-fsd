@@ -34,8 +34,8 @@ export const Input:React.FC<InputType> = ({className, type, placeholder, name, e
       {eye && <div className="absolute top-1 right-1 cursor-pointer" onClick={changeType}>
         {type == "text" ?   <Eye width={18} /> : <EyeOff width={18} />}
       </div>}
-
-      {errotText && <ErrorText text={errotText} className="absolute bottom-[12px] text-xs" />}
+      
+      {errotText && <ErrorText text={type === 'hidden' ? 'Оберіть місто та відділення' : errotText} className={`absolute  text-xs ${type === 'hidden' ? '-bottom-[100px]' : 'bottom-[12px]'}  `} />}
     </div>
   )
 }

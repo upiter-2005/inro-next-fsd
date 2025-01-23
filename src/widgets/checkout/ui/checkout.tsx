@@ -85,6 +85,7 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
     )
   }
   const onSubmit = async(data: TCheckoutFields) => {
+    console.log(data)
     startTransition( async () => {
       setOfferSubmit(true)
       const productsArr: any = checkoutProducts(cartItems)
@@ -154,6 +155,7 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
             value: total,
             currency: "UAH",
             coupon: couponCode,
+            send_to: 'ga',
             items: productsArrGTAG
         });
 
@@ -165,7 +167,7 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
 
           
           await fbPixelPurchase()
-          await googlePurchaseApi(response.orderId, total, ProductsAds)
+         await googlePurchaseApi(response.orderId, total, ProductsAds)
           clearCart()
         }
 
@@ -176,6 +178,7 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
                 value: total,
                 currency: "UAH",
                 coupon: couponCode,
+                send_to: 'ga',
                 items: productsArrGTAG
             });
             window.gtag('event', 'purchase', {
