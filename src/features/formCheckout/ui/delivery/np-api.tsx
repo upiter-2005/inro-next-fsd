@@ -6,7 +6,7 @@ import Select from 'react-select';
 
 
 type NovaPoshtaTypesa = {
-    apiKey: string,
+    apiKey: string | undefined,
     calledMethod: string,
     modelName: string,
     methodProperties: any
@@ -34,13 +34,15 @@ const NpApi:React.FC<INpApi> = ({setNpApiCity, setNpApiDepartment, apiCity, apiD
 
   
 
-    const getCities = async() => {
+    const getCities = async(query = '') => {
         const param: NovaPoshtaTypesa = {
-            apiKey: "d78f7880553af3f08072ac2354cd902f",
-            calledMethod: "getCities",
-            modelName: "Address",
+            apiKey: process.env.NEXT_PUBLICK_NP_KEY,
+          "modelName": "AddressGeneral",
+            "calledMethod": "getCities",
             methodProperties: {
-                //FindByString: 'Бровари'
+                "FindByString" : query,
+                "Page" : "1",
+                "Limit" : "90"
             }
         }
         try {
@@ -62,7 +64,7 @@ const NpApi:React.FC<INpApi> = ({setNpApiCity, setNpApiDepartment, apiCity, apiD
 
     const getWarehouses = async(query: string) => {
         const param: NovaPoshtaTypesa = {
-            apiKey: "ee8c3d42f9f5dfe39a3ad4c2636f747a",
+            apiKey: process.env.NEXT_PUBLICK_NP_KEY,
             calledMethod: "getWarehouses",
             modelName: "Address",
             methodProperties: {
@@ -87,23 +89,20 @@ const NpApi:React.FC<INpApi> = ({setNpApiCity, setNpApiDepartment, apiCity, apiD
     }
 
 
-    useEffect(()=>{
-        getCities()
        
-    }, [])
-
-    
     const setNPDepartment = (query: any) => {
-        console.log(query);
-        setDepartment(query.value)
         setNpApiDepartment(query.value)
     }
 
 
+    const inputDinamicDepartments = (value: any) => {
+        getCities(value)
+        setCities(value)
+    }
+
  
-    const dinamicDepartments = (value: any) => {
-        console.log(value);
-        setCityVal(value.value);getWarehouses(value.value);
+    const changeDinamicDepartments = (value: any) => {
+        getWarehouses(value.value)
         setNpApiCity(value.value)
     }
 
@@ -113,7 +112,8 @@ return (
     <div className="selectBox">
        
         <Select options={citiesNP}
-            onChange={dinamicDepartments}
+             onInputChange={inputDinamicDepartments}
+             onChange={changeDinamicDepartments}
             className="np-department-select"
             placeholder={apiCity || `Оберіть місто`} 
             
@@ -133,6 +133,7 @@ return (
             
           }}
             classNamePrefix="react-select" />
+
         <Select  options={departmentsNP}
             onChange={setNPDepartment}
             className="np-department-select"

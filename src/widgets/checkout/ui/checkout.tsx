@@ -7,7 +7,7 @@ import { Packing } from "@/features/formCheckout/ui/packing"
 import { Payment } from "@/features/formCheckout/ui/payment"
 import { PersonData } from "@/features/formCheckout/ui/personData"
 import { cn } from "@/shared/helpers"
-import { checkoutFieldsSchema, defaulFieldsSchema, TCheckoutFields, TDefauldFields } from "@/shared/schemas/forms"
+import { checkoutFieldsSchema, TCheckoutFields } from "@/shared/schemas/forms"
 import { useEffect, useState, useTransition } from "react"
 import {useForm, FormProvider} from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -27,6 +27,7 @@ import { useLiqpayDiscount } from "@/features/cart/hooks/useLiqpayDiscount"
 import { checkoutProductsGtag } from "../helpers/checkoutProductsGtag"
 import { checkoutProductsAds } from "../helpers/checkoutProductAds"
 import { googlePurchaseApi } from "@/shared/helpers/googleApi"
+import { getClientId } from "@/shared/helpers/getClientId"
 
 export interface ICheckout {
   className?: string
@@ -53,7 +54,7 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
       email: '',
       delivery: 'NP',
       type_np: 'У відділення',
-      payment: 'Оплата при отриманні',
+      payment: 'LiqPay Моментальні платежі по всьому світу',
       packing: [],
       message: ''
     },
@@ -86,6 +87,8 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
   }
   const onSubmit = async(data: TCheckoutFields) => {
     console.log(data)
+    const clientId =  getClientId()
+    console.log(clientId)
     startTransition( async () => {
       setOfferSubmit(true)
       const productsArr: any = checkoutProducts(cartItems)
@@ -144,6 +147,7 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
   
     const response = await makeOrder(dataOrder, emailProductsArr, summaryTotal)
       console.log(response)
+          
       if(response.message === "Created"){
 
         if(payment !== 'Оплата при отриманні'){
@@ -167,7 +171,7 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
 
           
           await fbPixelPurchase()
-         await googlePurchaseApi(response.orderId, total, ProductsAds)
+         await googlePurchaseApi(response.orderId, total, ProductsAds, clientId)
           clearCart()
         }
 
@@ -189,7 +193,8 @@ export const Checkout: React.FC<ICheckout> = ({ className }) => {
 
             await fbPixelPurchase()
           }
-          await googlePurchaseApi(response.orderId, total, ProductsAds)
+          
+          await googlePurchaseApi(response.orderId, total, ProductsAds, clientId)
           clearCart()
           router.push('/thank')
         }

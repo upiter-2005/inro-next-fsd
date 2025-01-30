@@ -10,7 +10,7 @@ interface IShopList {
 
 export const ShopList:React.FC<IShopList> = ({description}) => {
   return (
-    <div className="flex flex-wrap justify-between w-full">
+    <div className="flex flex-wrap justify-between md:justify-start md:gap-4 w-full px-1">
 
     <div className="md:max-w-[384px] w-full rounded-[8px] bg-white overflow-hidden mb-2">
       <div className="w-full h-[269px] overflow-hidden">
@@ -24,7 +24,7 @@ export const ShopList:React.FC<IShopList> = ({description}) => {
 
       </div>
     </div>
-
+{/* 
     <div className="md:max-w-[384px] w-full rounded-[8px] bg-white overflow-hidden mb-2">
       <div className="w-full h-[269px] overflow-hidden">
         <Image src={room3} className="object-cover w-full h-full" alt="Inro"/>
@@ -36,7 +36,7 @@ export const ShopList:React.FC<IShopList> = ({description}) => {
         <Link href="https://www.google.com/maps/place/%D1%83%D0%BB.+%D0%91%D0%B0%D1%81%D1%82%D0%B8%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F,+3,+%D0%9A%D0%B8%D0%B5%D0%B2,+02000/@50.4190755,30.5490322,18.97z/data=!4m15!1m8!3m7!1s0x40d4cf6c21a8cb9b:0x112c857875e255b7!2z0YPQuy4g0JHQsNGB0YLQuNC-0L3QvdCw0Y8sIDMsINCa0LjQtdCyLCAwMjAwMA!3b1!8m2!3d50.419154!4d30.5496014!16s%2Fg%2F11hz2l9xhw!3m5!1s0x40d4cf6c21a8cb9b:0x112c857875e255b7!8m2!3d50.419154!4d30.5496014!16s%2Fg%2F11hz2l9xhw?entry=ttu&g_ep=EgoyMDI0MTAyNy4wIKXMDSoASAFQAw%3D%3D" className="w-full text-sm p-3 border border-[#111] rounded-[4px] block text-center hover:opacity-65 mt-6">Подивитись на мапі</Link>
 
       </div>
-    </div>
+    </div> */}
 
     <div className="md:max-w-[384px] w-full rounded-[8px] bg-white overflow-hidden mb-2">
       <div className="w-full h-[269px] overflow-hidden">

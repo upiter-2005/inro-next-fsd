@@ -12,7 +12,7 @@ interface ISocialsMini {
 export const SocialsMini:React.FC<ISocialsMini> = ({className}) => {
   return(
     <div className={cn("flex gap-2", className)}>
-      <Link href="https://www.instagram.com/inro.reserve?igsh=MTlma2R1MGV2c2Y5Yg==" target="blank" className="hover:opacity-70"><Image src={insta} width={30} height={30} alt="Inro" /></Link>
+      <Link href="https://www.instagram.com/inro.com.ua/" target="blank" className="hover:opacity-70"><Image src={insta} width={30} height={30} alt="Inro" /></Link>
       <Link href="https://t.me/inro_ua" target="blank" className="hover:opacity-70"><Image src={tg} width={30} height={30} alt="Inro" /></Link>
       <Link href="https://www.facebook.com/inro.ua" target="blank" className="hover:opacity-70"><Image src={fb} width={30} height={30} alt="Inro" /></Link>
     </div>

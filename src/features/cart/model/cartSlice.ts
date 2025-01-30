@@ -102,7 +102,7 @@ export const useCartStore = create<CartState>()(
     ),
     {
       name: 'inroCart',
-      version: 0.4,
+      version: 0.5,
       storage: createJSONStorage(()=> localStorage),
        partialize: (state) => ({cartItems: state.cartItems, total: state.total, discountType: state.discountType, couponCode: state.couponCode}),
 

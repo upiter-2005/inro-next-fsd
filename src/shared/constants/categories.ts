@@ -14,15 +14,20 @@ export const categoriesObj =[
     image: 'https://www.api.inro.com.ua/wp-content/uploads/2024/10/parfum.png',
     child: [
       {
+        id: 96,
+        name: 'Парфуми',
+        slug: 'parfumy',
+      },
+      {
         id: 153,
         name: 'Тестери ароматів',
         slug: 'testeri-aromativ',
       },
-      // {
-      //   id: 212,
-      //   name: 'Сети',
-      //   slug: 'sety',
-      // }
+      {
+        id: 212,
+        name: 'Сети',
+        slug: 'sety',
+      }
     ]
   },
   {

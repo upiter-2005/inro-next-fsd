@@ -1,0 +1,1 @@
+export { CustomersPage, metadata } from './ui/CustomersPage'
