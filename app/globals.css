@@ -164,6 +164,10 @@ select:-webkit-autofill:focus {
         }
     }
 }
+.inro_product-description ul{
+  padding-left: 28px;
+  list-style-type: disc;
+}
 .np-department-select{
     width: 50%;
     margin-top: 26px;

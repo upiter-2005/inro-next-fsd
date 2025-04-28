@@ -113,6 +113,11 @@ export const categoriesObj =[
         slug: 'nabory',
       },
       {
+        id: 251,
+        name: 'Подарункове пакування',
+        slug: 'podarunkove-pakuvannya',
+      },
+      {
         id: 93,
         name: 'Сертифікати',
         slug: 'gift-certificates',
@@ -125,11 +130,40 @@ export const categoriesObj =[
     slug: 'aromaty',
     image: 'https://www.api.inro.com.ua/wp-content/uploads/2024/10/aromaty.png',
     child: [
-      
+      {
+        id: 241,
+        name: 'Angeli',
+        slug: 'angeli',
+      },
       {
         id: 71,
         name: 'Arrone',
         slug: 'arrone-uk',
+      },
+      {
+        id: 244,
+        name: 'Black Amber',
+        slug: 'black-amber',
+      },
+      {
+        id: 230,
+        name: 'Black Pepper',
+        slug: 'black-pepper',
+      },
+      {
+        id: 248,
+        name: 'Black Rose',
+        slug: 'black-rose',
+      },
+      {
+        id: 249,
+        name: 'Black Water',
+        slug: 'black-water',
+      },
+      {
+        id: 246,
+        name: 'Bordeaux',
+        slug: 'bordeaux',
       },
       {
         id: 72,
@@ -146,20 +180,30 @@ export const categoriesObj =[
         name: 'Griotte',
         slug: 'griotte-uk',
       },
-      {
-        id: 75,
-        name: 'Kiran',
-        slug: 'kiran-uk',
-      },
+      // {
+      //   id: 75,
+      //   name: 'Kiran',
+      //   slug: 'kiran-uk',
+      // },
       {
         id: 76,
         name: 'Lewante',
         slug: 'lewante-uk',
       },
       {
+        id: 250,
+        name: 'Monza',
+        slug: 'monza',
+      },
+      {
         id: 79,
         name: 'Palermo',
         slug: 'palermo-uk',
+      },
+      {
+        id: 247,
+        name: 'Royal',
+        slug: 'royal',
       },
       {
         id: 80,

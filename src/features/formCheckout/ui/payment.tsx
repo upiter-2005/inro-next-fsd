@@ -34,10 +34,10 @@ export const Payment:React.FC<IPayment> = ({className}) => {
 
      <div className={cn("flex items-center gap-2 mb-8", className)}>
         <RadioGroup className='flex flex-col gap-4' defaultValue={"LiqPay Моментальні платежі по всьому світу"} onValueChange={(val)=>handlePayment(val)}>
-          {/* <div className="flex items-center space-x-2 ">
+          <div className="flex items-center space-x-2 ">
             <RadioGroupItem value="Оплата при отриманні" id="pay1" {...register("payment")} />
             <Label htmlFor="pay1" className="cursor-pointer">Оплата при отриманні</Label>
-          </div> */}
+          </div>
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="LiqPay Моментальні платежі по всьому світу" id="pay2" {...register("payment")}   />
             <Label htmlFor="pay2" className="cursor-pointer">LiqPay Моментальні платежі по всьому світу</Label>

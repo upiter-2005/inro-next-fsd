@@ -42,14 +42,20 @@ export const CarouselBanerInro:React.FC<ICarouselBanerInro> = ({className}) => {
         >
         {!isMobile && 
           <CarouselContent>
+            
+            {/* <CarouselItem>
+            <Link href="/catalog">
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2025/04/1-2.png" className="h-[813px] w-full object-cover" alt="Inro"/>
+            </Link>
+          </CarouselItem> */}
             <CarouselItem>
-            <Link href="/category/novinki-uk">
-              <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/12/Frame-131-2.png" className="h-[813px] w-full object-cover" alt="Inro"/>
+            <Link href="/category/bordeaux">
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2025/02/1-2.jpg" className="h-[813px] w-full object-cover" alt="Inro"/>
             </Link>
           </CarouselItem>
           <CarouselItem>
-            <Link href="/category/novinki-uk">
-              <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/11/Frame-106.png" className="h-[813px] w-full object-cover" alt="Inro"/>
+            <Link href="/catalog?pa_noty=237">
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2025/03/1-7-scaled.jpg" className="h-[813px] w-full object-cover" alt="Inro"/>
             </Link>
           </CarouselItem>
           <CarouselItem>
@@ -63,14 +69,19 @@ export const CarouselBanerInro:React.FC<ICarouselBanerInro> = ({className}) => {
 
         {isMobile && 
           <CarouselContent>
+             {/* <CarouselItem>
+            <Link href="/catalog">
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2025/04/2-3.png" className="h-[653px] w-full object-cover" alt="Inro"/>
+            </Link>
+          </CarouselItem> */}
             <CarouselItem>
-            <Link href="/category/novinki-uk">
-              <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/12/iPhone-16-15.png" className="h-[653px] w-full object-cover" alt="Inro"/>
+            <Link href="/category/bordeaux">
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2025/02/2-2.jpg" className="h-[653px] w-full object-cover" alt="Inro"/>
             </Link>
           </CarouselItem>
           <CarouselItem>
-            <Link href="/category/novinki-uk">
-              <img src="https://www.api.inro.com.ua/wp-content/uploads/2024/11/iPhone-16-6.png" className="h-[653px] w-full object-cover" alt="Inro"/>
+            <Link href="/catalog?pa_noty=237">
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2025/03/2-5.jpg" className="h-[653px] w-full object-cover" alt="Inro"/>
             </Link>
           </CarouselItem>
           <CarouselItem>

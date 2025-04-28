@@ -33,7 +33,7 @@ export const SingleProductData:React.FC<ISingleProductData> = ({className, produ
       <div className="flex gap-[10px]">
         <ProductCategoryTags categories={categories} />
       </div>
-      <div dangerouslySetInnerHTML={{__html: product.short_description}} className="leading-5"></div>
+      <div dangerouslySetInnerHTML={{__html: product.short_description}} className="leading-5 inro_product-description"></div>
       <div className="text-2xl font-semibold tracking-wide">₴ {product.price}</div>
       <div className="flex gap-2 border-b border-b-[#c1c1c1] pb-8">
         {addCartAction}
@@ -52,9 +52,9 @@ export const SingleProductData:React.FC<ISingleProductData> = ({className, produ
         </Accordion>
 
         <Accordion  type="single" collapsible >
-          <AccordionItem value="howToUse" className="border-b border-b-[#c1c1c1] px-4 pb-5">
+          <AccordionItem value="howToUse" className="border-b border-b-[#c1c1c1] px-4 ">
             <AccordionTrigger className="py-4">Характеристики</AccordionTrigger>
-            <AccordionContent className="border border-[#c1c1c1] rounded-[8px]">
+            <AccordionContent className="border border-[#c1c1c1] rounded-[8px] mb-4">
             {chars}
 
             </AccordionContent>
