@@ -43,11 +43,11 @@ export const CarouselBanerInro:React.FC<ICarouselBanerInro> = ({className}) => {
         {!isMobile && 
           <CarouselContent>
             
-            {/* <CarouselItem>
+            <CarouselItem>
             <Link href="/catalog">
-              <img src="https://www.api.inro.com.ua/wp-content/uploads/2025/04/1-2.png" className="h-[813px] w-full object-cover" alt="Inro"/>
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2025/05/photo_2025-05-10-11.10.14.jpeg" className="h-[813px] w-full object-cover" alt="Inro"/>
             </Link>
-          </CarouselItem> */}
+          </CarouselItem>
             <CarouselItem>
             <Link href="/category/bordeaux">
               <img src="https://www.api.inro.com.ua/wp-content/uploads/2025/02/1-2.jpg" className="h-[813px] w-full object-cover" alt="Inro"/>
@@ -69,14 +69,10 @@ export const CarouselBanerInro:React.FC<ICarouselBanerInro> = ({className}) => {
 
         {isMobile && 
           <CarouselContent>
-             {/* <CarouselItem>
-            <Link href="/catalog">
-              <img src="https://www.api.inro.com.ua/wp-content/uploads/2025/04/2-3.png" className="h-[653px] w-full object-cover" alt="Inro"/>
-            </Link>
-          </CarouselItem> */}
+             e
             <CarouselItem>
-            <Link href="/category/bordeaux">
-              <img src="https://www.api.inro.com.ua/wp-content/uploads/2025/02/2-2.jpg" className="h-[653px] w-full object-cover" alt="Inro"/>
+            <Link href="/catalog">
+              <img src="https://www.api.inro.com.ua/wp-content/uploads/2025/05/photo_2025-05-10-11.10.21.jpeg" className="h-[653px] w-full object-cover" alt="Inro"/>
             </Link>
           </CarouselItem>
           <CarouselItem>

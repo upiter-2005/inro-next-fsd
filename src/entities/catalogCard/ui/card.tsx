@@ -30,7 +30,7 @@ export const Card: React.FC<ICardProps> = ({ className, actionSlot, product, adv
      
       <div className="flex flex-col md:flex-row justify-between md:items-center ">
         <ProductCardName name={product.name} productId={product.slug} />
-        <ProductCardPrice salePrice={product.sale_price} regularPrice={product.regular_price} />
+        <ProductCardPrice salePrice={product.price} regularPrice={product.regular_price} />
       </div>
 
       {actionSlot}

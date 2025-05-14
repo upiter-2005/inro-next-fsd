@@ -4,6 +4,8 @@ import { findProduct, ISearchParamsTypes } from '@/features/filters/helpers/find
 
 import { CatalogFilteredWidget } from '@/widgets/catalog-filtered';
 import { List } from '@/shared/ui/customers/list';
+import { DownloadButton } from '@/features/downloadExelOrderCustomers';
+import { Suspense } from 'react';
 
 // export const revalidate = 15
 
@@ -12,18 +14,25 @@ export const metadata: Metadata = {
   description: "Inro - Users",
 };
 
-//export const dynamic = 'force-dynamic'
+export const dynamic = 'force-dynamic'
 export async function CustomersPage({searchParams}: {searchParams: {page: string}}) {
 
   const resp = await fetch(`${process.env.NEXT_API_HOST}/wp-json/wc/v3/customers?per_page=100&page=${searchParams.page}&consumer_key=ck_7d0a0a541e4fc91baf8b23e22031cf8502c76b24&consumer_secret=cs_84669f4a9e954e566d4817d059786263b9a05ef7`).then(res => res.json()).then(res => res)
 
+  const orders = await fetch(`${process.env.NEXT_API_HOST}/wp-json/wc/v3/orders?per_page=100&page=${searchParams.page}&consumer_key=ck_7d0a0a541e4fc91baf8b23e22031cf8502c76b24&consumer_secret=cs_84669f4a9e954e566d4817d059786263b9a05ef7`).then(res => res.json()).then(res => res)
 
-  
-  
+   if(!resp)return <>not found</>
 
-  //const products = await findProduct(searchParams)
-
-  return <>
+  return (
+      <>
+        <DownloadButton orders={orders}/>
+        <Suspense>
           <List customers={resp} />
-    </>;
+        </Suspense>
+      </>
+    
+  )
+   
+      
+
 }
